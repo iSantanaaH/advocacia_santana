@@ -4,6 +4,13 @@
   --black900: #111;
   --gray300: #d5d5d5;
   --gray400: #c2c2c2;
+  --gray200: #ebebeb;
+  --gray150: #e2e8f0;
+  --blue100: #60a5fa;
+  --blue150: #3b82f6;
+  --blue400: #1e40af;
+  --blue600: #4a5568;
+  --blueIce: #a0aec0;
 }
 
 * {
