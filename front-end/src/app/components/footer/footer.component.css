@@ -35,6 +35,10 @@
   }
 }
 
+.FlexContainer div:nth-child(2) p {
+  font-size: 0.9rem;
+}
+
 .FlexContainer div:nth-child(2) input:focus {
   outline: none;
   border-color: --blue100;
@@ -44,7 +48,7 @@
 .FlexContainer div:nth-child(2) button {
   background: var(--blue100);
   padding: 0.5rem 1rem;
-  border-radius: 0.5rem;
+  border-radius: 2rem;
   color: var(--whiteFull);
   font-size: 1.25rem;
   transition: background 0.3s ease;
