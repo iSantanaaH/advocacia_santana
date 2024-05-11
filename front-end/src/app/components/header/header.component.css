@@ -17,17 +17,3 @@
   border-color: var(--blue100);
   box-shadow: 0 0 0 0.13rem rgba(66, 153, 225, 0.5);
 }
-
-.SocialNetworks {
-  display: flex;
-  gap: 0.5rem;
-}
-
-.SocialNetworks li {
-  list-style: none;
-}
-
-.SocialNetworks li img {
-  width: 30px;
-  height: 30px;
-}

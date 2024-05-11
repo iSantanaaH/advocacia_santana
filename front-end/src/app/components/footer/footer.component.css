@@ -64,6 +64,30 @@
   font-size: 1.1rem;
 }
 
-.FlexContainer div:nth-child(3) {
-  margin: 4rem 0 4rem 0;
+.FlexContainer div:nth-child(4) {
+  margin: 3rem 0 2rem 0;
+}
+
+.FlexContainer .SocialNetworks {
+  display: flex;
+  gap: 0.5rem;
+  margin-top: 3rem;
+}
+
+.FlexContainer .SocialNetworks li {
+  list-style: none;
+}
+
+.FlexContainer .SocialNetworks li img {
+  width: 30px;
+  height: 30px;
+}
+
+.CopyRight p {
+  color: var(--gray800);
+  cursor: pointer;
+}
+
+.CopyRight p:hover {
+  color: var(--gray600);
 }
