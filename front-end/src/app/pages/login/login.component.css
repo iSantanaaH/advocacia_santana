@@ -1,0 +1,47 @@
+.ContainerLoginForm {
+  display: flex;
+  width: 100%;
+}
+
+.FormLogin {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  width: 100%;
+}
+
+.FormLogin .InputEmail,
+.FormLogin .InputPassword {
+  padding: 0.6rem;
+  border: none;
+  background: var(--gray150);
+  border: 0.1rem solid var(--gray300);
+  width: 17rem;
+  color: var(--black900);
+  font-size: 1rem;
+}
+
+.FormLogin .InputEmail:focus,
+.FormLogin .InputPassword:focus {
+  outline: none;
+}
+
+.FormLogin a {
+  color: var(--blue200);
+}
+
+.FormLogin .InputSubmit {
+  width: 100%;
+  font-size: 1rem;
+  padding: 0.6rem;
+  background: var(--blue100);
+  border: none;
+  color: var(--white900);
+  transition: background 0.3s ease, color 0.3s ease;
+  border-radius: 0.2rem;
+}
+
+.FormLogin .InputSubmit:hover {
+  background: var(--blue150);
+  color: var(--whiteFull);
+}

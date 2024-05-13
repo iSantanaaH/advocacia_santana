@@ -1,0 +1,25 @@
+<section class="AuthPage">
+  <div class="ContainerFlex">
+    <div *ngIf="routerLogin">
+      <h1>Entrar</h1>
+    </div>
+    <div *ngIf="routerRegister">
+      <h1>Cadastrar</h1>
+    </div>
+
+    <div
+      class="LinksOutlet"
+      [ngClass]="{
+        'active-login': isActiveRoute('/auth-user/login'),
+        'active-register': isActiveRoute('/auth-user/cadastro')
+      }"
+    >
+      <a class="Login" href="auth-user/login">Login</a>
+      <a class="register" href="auth-user/cadastro">Cadastrar</a>
+    </div>
+
+    <div class="RouterOutlet">
+      <router-outlet />
+    </div>
+  </div>
+</section>

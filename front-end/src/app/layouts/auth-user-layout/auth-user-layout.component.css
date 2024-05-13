@@ -1,0 +1,73 @@
+.AuthPage {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  background: url("/assets/Images/florest.jpg") no-repeat center;
+  background-size: cover;
+}
+
+.ContainerFlex {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  margin: 0 auto;
+  width: 30rem;
+  height: auto;
+  background: rgba(255, 255, 255, 0.8);
+  border-radius: 0.5rem;
+}
+
+.ContainerFlex h1 {
+  margin-top: 1.2rem;
+  font-size: 2.5rem;
+  font-weight: 500;
+}
+
+.LinksOutlet {
+  display: flex;
+  margin-top: 1rem;
+  justify-content: space-around;
+  align-items: center;
+  border-bottom: 0.2rem solid var(--gray800);
+  border-radius: 0.1rem;
+  gap: 1rem;
+  width: calc(100% - 8rem);
+  position: relative;
+}
+
+.LinksOutlet a {
+  margin-bottom: 0.3rem;
+  color: var(--black900);
+  transition: background 0.3s ease;
+}
+
+.RouterOutlet {
+  display: flex;
+  justify-content: center;
+  width: calc(100% - 7rem);
+  height: auto;
+  margin: 2rem auto;
+}
+
+.active-login::after {
+  content: "";
+  width: 50%;
+  height: 0.2rem;
+  background: var(--blue150);
+  position: absolute;
+  bottom: -0.185rem;
+  left: 0;
+  border-radius: 0.1rem;
+}
+
+.active-register::after {
+  content: "";
+  width: 50%;
+  height: 0.2rem;
+  background: var(--blue150);
+  position: absolute;
+  bottom: 0.185rem;
+  right: 0;
+  border-radius: 0.1rem;
+}

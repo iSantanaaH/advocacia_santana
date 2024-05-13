@@ -1,5 +1,6 @@
 :root {
   --whiteFull: #fff;
+  --white900: #f5f2f2;
   --blackFull: #000;
   --black900: #111;
   --gray150: #e2e8f0;
@@ -11,6 +12,7 @@
   --gray600: #4a5568;
   --blue100: #60a5fa;
   --blue150: #3b82f6;
+  --blue200: #3778e0;
   --blue400: #1e40af;
   --blue600: #4a5568;
   --blueIce: #a0aec0;

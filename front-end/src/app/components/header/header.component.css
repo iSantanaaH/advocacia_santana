@@ -1,6 +1,7 @@
 .MainSection {
   display: flex;
   justify-content: space-around;
+  align-items: center;
   background: var(--gray200);
   padding: 1rem;
 }
@@ -16,4 +17,22 @@
   outline: none;
   border-color: var(--blue100);
   box-shadow: 0 0 0 0.13rem rgba(66, 153, 225, 0.5);
+}
+
+.NavLinks ul {
+  display: flex;
+  gap: 0.7rem;
+}
+
+.NavLinks ul li {
+  list-style: none;
+}
+
+.NavLinks li a {
+  color: var(--gray800);
+  cursor: pointer;
+}
+
+.NavLinks li a:hover {
+  color: var(--gray600);
 }
