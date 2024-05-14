@@ -59,6 +59,7 @@
   bottom: -0.185rem;
   left: 0;
   border-radius: 0.1rem;
+  transition: background 0.3s ease;
 }
 
 .active-register::after {
@@ -67,7 +68,8 @@
   height: 0.2rem;
   background: var(--blue150);
   position: absolute;
-  bottom: 0.185rem;
+  bottom: -0.185rem;
   right: 0;
   border-radius: 0.1rem;
+  transition: background 0.3s ease;
 }
