@@ -1,6 +1,12 @@
 import { NgClass } from '@angular/common';
 import { Component } from '@angular/core';
-import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
+import {
+  AbstractControl,
+  FormBuilder,
+  ReactiveFormsModule,
+  ValidationErrors,
+  Validators,
+} from '@angular/forms';
 
 @Component({
   selector: 'app-register',
@@ -12,8 +18,18 @@ import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
 export class RegisterComponent {
   constructor(private _fb: FormBuilder) {}
 
+  fullNameValidator(control: AbstractControl): ValidationErrors | null {
+    const value = control.value;
+
+    if (typeof value === 'string' && value.trim().split(' ').length >= 2) {
+      return null;
+    }
+
+    return { fullName: 'o nome precisa ser completo' };
+  }
+
   public registerForm = this._fb.group({
-    name: ['', Validators.required],
+    name: ['', [Validators.required, this.fullNameValidator]],
     email: ['', [Validators.required, Validators.email]],
     password: ['', [Validators.required, Validators.minLength(8)]],
     repeatPassword: ['', Validators.required],

@@ -11,7 +11,7 @@
         <img
           src="/assets/Images/alertCicle.svg"
           alt="icone de alerta"
-          title="o nome precisa ser completo"
+          [title]="registerForm.controls['name'].errors?.['fullName']"
           class="AlertCircle"
           [ngClass]="{
             HiddenAlert:
