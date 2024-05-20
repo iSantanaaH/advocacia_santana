@@ -1,43 +1,134 @@
 <div class="ContainerRegisterForm">
-  <form class="FormRegister">
-    <div>
-      <label>
-        <input class="InputName" type="text" placeholder="nome completo" required />
-      </label>
-    </div>
-    <div>
-      <label>
-        <input class="InputEmail" type="email" placeholder="email" required />
-      </label>
-    </div>
-    <div>
-      <label>
-        <input class="InputPassword" type="password" placeholder="senha" required />
-      </label>
-    </div>
+  <form [formGroup]="registerForm" class="FormRegister">
     <div>
       <label>
         <input
-          class="InputPassword"
-          type="password"
-          placeholder="repetir senha"
-          required
+          formControlName="name"
+          class="InputName"
+          type="text"
+          placeholder="nome completo"
+        />
+        <img
+          src="/assets/Images/alertCicle.svg"
+          alt="icone de alerta"
+          title="o nome precisa ser completo"
+          class="AlertCircle"
+          [ngClass]="{
+            HiddenAlert:
+              !registerForm.controls['name'].touched ||
+              registerForm.controls['name'].valid
+          }"
         />
       </label>
     </div>
     <div>
       <label>
-        <input class="InputDate" type="date" placeholder="aniversário" required />
+        <input
+          formControlName="email"
+          class="InputEmail"
+          type="email"
+          placeholder="email"
+        />
+        <img
+          title="formato de email inválido"
+          src="/assets/Images/alertCicle.svg"
+          alt="icone de alerta"
+          class="AlertCircle"
+          [ngClass]="{
+            HiddenAlert:
+              !registerForm.controls['email'].touched ||
+              registerForm.controls['email'].valid
+          }"
+        />
       </label>
     </div>
     <div>
       <label>
-        <input class="InputPhone" type="tel" placeholder="telefone" required />
+        <input
+          formControlName="password"
+          class="InputPassword"
+          type="password"
+          placeholder="senha"
+        />
+        <img
+          title="a senha deve conter no mínimo 8 caracteres"
+          src="/assets/Images/alertCicle.svg"
+          alt="icone de alerta"
+          class="AlertCircle"
+          [ngClass]="{
+            HiddenAlert:
+              !registerForm.controls['password'].touched ||
+              registerForm.controls['password'].valid
+          }"
+        />
+      </label>
+    </div>
+    <div>
+      <label>
+        <input
+          formControlName="repeatPassword"
+          class="InputPassword"
+          type="password"
+          placeholder="repetir senha"
+        />
+        <img
+          title="as senhas não coincidem"
+          src="/assets/Images/alertCicle.svg"
+          alt="icone de alerta"
+          class="AlertCircle"
+          [ngClass]="{
+            HiddenAlert:
+              !registerForm.controls['repeatPassword'].touched ||
+              registerForm.controls['repeatPassword'].valid
+          }"
+        />
+      </label>
+    </div>
+    <div>
+      <label>
+        <input
+          formControlName="birthdate"
+          class="InputDate"
+          type="date"
+          placeholder="aniversário"
+        />
+        <img
+          title="formato dd/mm/aaaa"
+          src="/assets/Images/alertCicle.svg"
+          alt="icone de alerta"
+          class="AlertCircle"
+          [ngClass]="{
+            HiddenAlert:
+              !registerForm.controls['birthdate'].touched ||
+              registerForm.controls['birthdate'].valid
+          }"
+        />
+      </label>
+    </div>
+    <div>
+      <label>
+        <input
+          formControlName="phone"
+          class="InputPhone"
+          type="tel"
+          placeholder="telefone"
+        />
+        <img
+          title="formato (99)99999-9999"
+          src="/assets/Images/alertCicle.svg"
+          alt="icone de alerta"
+          class="AlertCircle"
+          [ngClass]="{
+            HiddenAlert:
+              !registerForm.controls['phone'].touched ||
+              registerForm.controls['phone'].valid
+          }"
+        />
       </label>
     </div>
     <div>
       <a href="/forgot-password">Esqueceu a senha?</a>
     </div>
-    <input class="InputSubmit" type="submit" value="Login" required />
+    <input class="InputSubmit" type="submit" value="Login" />
   </form>
 </div>
