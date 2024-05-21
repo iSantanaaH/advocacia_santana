@@ -11,7 +11,7 @@
         <img
           src="/assets/Images/alertCicle.svg"
           alt="icone de alerta"
-          [title]="registerForm.controls['name'].errors?.['fullName']"
+          [title]="registerForm.controls['name'].errors?.['fullNameError']"
           class="AlertCircle"
           [ngClass]="{
             HiddenAlert:
@@ -70,9 +70,10 @@
           class="InputPassword"
           type="password"
           placeholder="repetir senha"
+          (blur)="checkIdenticalPasswords()"
         />
         <img
-          title="as senhas não coincidem"
+          [title]="registerForm.controls['repeatPassword'].errors?.['identicalPasswordsError']"
           src="/assets/Images/alertCicle.svg"
           alt="icone de alerta"
           class="AlertCircle"

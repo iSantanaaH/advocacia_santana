@@ -1,5 +1,5 @@
 import { NgClass } from '@angular/common';
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import {
   AbstractControl,
   FormBuilder,
@@ -15,8 +15,14 @@ import {
   templateUrl: './register.component.html',
   styleUrl: './register.component.css',
 })
-export class RegisterComponent {
+export class RegisterComponent implements OnInit {
   constructor(private _fb: FormBuilder) {}
+
+  ngOnInit(): void {
+    this.registerForm.get('phone')?.valueChanges.subscribe(() => {
+      this.formatPhoneOnChange();
+    });
+  }
 
   fullNameValidator(control: AbstractControl): ValidationErrors | null {
     const value = control.value;
@@ -25,7 +31,47 @@ export class RegisterComponent {
       return null;
     }
 
-    return { fullName: 'o nome precisa ser completo' };
+    return { fullNameError: 'nome incompleto' };
+  }
+
+  checkIdenticalPasswords(): void {
+    const password = this.registerForm.get('password');
+    const repeatPassword = this.registerForm.get('repeatPassword');
+
+    if (password && repeatPassword) {
+      if (password.value !== repeatPassword.value) {
+        repeatPassword.setErrors({
+          identicalPasswordsError: 'as senhas não coincidem',
+        });
+      } else {
+        repeatPassword.setErrors(null);
+      }
+    }
+  }
+
+  formatPhoneOnChange(): void {
+    const phoneControl = this.registerForm.get('phone');
+
+    if (phoneControl) {
+      let phone = phoneControl.value;
+
+      if (typeof phone === 'string') {
+        phone = phone.replace(/\D/g, '');
+        let formattedPhone = '';
+
+        if (phone.length <= 2) {
+          formattedPhone = phone;
+        } else if (phone.length <= 7) {
+          formattedPhone = `(${phone.substring(0, 2)}) ${phone.substring(2)}`;
+        } else {
+          formattedPhone = `(${phone.substring(0, 2)}) ${phone.substring(
+            2,
+            7
+          )}-${phone.substring(7, 11)}`;
+        }
+        phoneControl.setValue(formattedPhone, { emitEvent: false });
+      }
+    }
   }
 
   public registerForm = this._fb.group({
@@ -33,7 +79,7 @@ export class RegisterComponent {
     email: ['', [Validators.required, Validators.email]],
     password: ['', [Validators.required, Validators.minLength(8)]],
     repeatPassword: ['', Validators.required],
-    birthdate: ['', [Validators.required, Validators.maxLength(8)]],
-    phone: ['', [Validators.required, Validators.maxLength(11)]],
+    birthdate: ['', [Validators.required, Validators.maxLength(10)]],
+    phone: ['', [Validators.required, Validators.maxLength(15)]],
   });
 }
