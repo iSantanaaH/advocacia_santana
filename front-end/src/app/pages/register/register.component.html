@@ -43,12 +43,20 @@
       </label>
     </div>
     <div>
-      <label>
+      <label class="LabelPassword">
         <input
           formControlName="password"
           class="InputPassword"
           type="password"
+          #passwordInput
           placeholder="senha"
+          [type]="SHOW_PASSWORD ? 'text' : 'password'"
+        />
+        <img
+          class="OpenEye"
+          src="/assets/Images/{{ SHOW_PASSWORD ? 'eyeOff.svg' : 'eye.svg' }}"
+          alt="imagem olhos abertos"
+          (mousedown)="togglePasswordVisibility($event)"
         />
         <img
           title="a senha deve conter no mínimo 8 caracteres"
@@ -64,13 +72,21 @@
       </label>
     </div>
     <div>
-      <label>
+      <label class="LabelPassword">
         <input
           formControlName="repeatPassword"
           class="InputPassword"
-          type="password"
+          [type]="SHOW_REPEAT_PASSWORD ? 'text' : 'password'"
           placeholder="repetir senha"
           (blur)="checkIdenticalPasswords()"
+        />
+        <img
+          class="OpenEye"
+          src="/assets/Images/{{
+            SHOW_REPEAT_PASSWORD ? 'eyeOff.svg' : 'eye.svg'
+          }}"
+          alt="imagem olhos abertos"
+          (mousedown)="toggleRepeatPasswordVisibility($event)"
         />
         <img
           [title]="registerForm.controls['repeatPassword'].errors?.['identicalPasswordsError']"
@@ -115,7 +131,7 @@
           placeholder="telefone"
         />
         <img
-          title="formato (99)99999-9999"
+          title="formato inválido"
           src="/assets/Images/alertCicle.svg"
           alt="icone de alerta"
           class="AlertCircle"

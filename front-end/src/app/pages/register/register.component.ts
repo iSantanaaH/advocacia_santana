@@ -1,5 +1,5 @@
 import { NgClass } from '@angular/common';
-import { Component, OnInit } from '@angular/core';
+import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import {
   AbstractControl,
   FormBuilder,
@@ -16,6 +16,10 @@ import {
   styleUrl: './register.component.css',
 })
 export class RegisterComponent implements OnInit {
+  @ViewChild('passwordInput') passwordInput!: ElementRef;
+  public SHOW_PASSWORD: boolean = false;
+  public SHOW_REPEAT_PASSWORD: boolean = false;
+
   constructor(private _fb: FormBuilder) {}
 
   ngOnInit(): void {
@@ -74,12 +78,25 @@ export class RegisterComponent implements OnInit {
     }
   }
 
+  toggleRepeatPasswordVisibility(event: MouseEvent): void {
+    event.preventDefault();
+    this.SHOW_REPEAT_PASSWORD = !this.SHOW_REPEAT_PASSWORD;
+  }
+
+  togglePasswordVisibility(event: MouseEvent): void {
+    event.preventDefault();
+    this.SHOW_PASSWORD = !this.SHOW_PASSWORD;
+  }
+
   public registerForm = this._fb.group({
     name: ['', [Validators.required, this.fullNameValidator]],
     email: ['', [Validators.required, Validators.email]],
     password: ['', [Validators.required, Validators.minLength(8)]],
     repeatPassword: ['', Validators.required],
     birthdate: ['', [Validators.required, Validators.maxLength(10)]],
-    phone: ['', [Validators.required, Validators.maxLength(15)]],
+    phone: [
+      '',
+      [Validators.required, Validators.minLength(15), Validators.maxLength(15)],
+    ],
   });
 }

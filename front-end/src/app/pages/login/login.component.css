@@ -8,6 +8,7 @@
   flex-direction: column;
   gap: 1rem;
   width: 100%;
+  height: auto;
 }
 
 .FormLogin .InputEmail,
@@ -19,6 +20,7 @@
   width: 17rem;
   color: var(--black900);
   font-size: 1rem;
+  box-sizing: border-box;
 }
 
 .FormLogin .InputEmail:focus,
@@ -44,4 +46,23 @@
 .FormLogin .InputSubmit:hover {
   background: var(--blue150);
   color: var(--whiteFull);
+}
+
+.labelPassword {
+  display: flex;
+  align-items: center;
+  position: relative;
+  z-index: 1;
+}
+
+.labelPassword img {
+  width: 1.7rem;
+  position: absolute;
+  right: 0.2rem;
+  top: 0.3rem;
+  z-index: 2;
+}
+
+.FormLogin .InputPassword {
+  padding-right: 2rem;
 }
