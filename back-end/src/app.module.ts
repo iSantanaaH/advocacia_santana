@@ -5,10 +5,12 @@ import { RegisterController } from './user/controllers/register/register.control
 import { LoginController } from './user/controllers/login/login.controller';
 import { RegisterService } from './user/services/register/register.service';
 import { LoginService } from './user/services/login/login.service';
+import { PrismaService } from './services/prisma/prisma.service';
+import { PrismaModule } from './services/prisma/prisma.module';
 
 @Module({
-  imports: [],
+  imports: [PrismaModule],
   controllers: [AppController, RegisterController, LoginController],
-  providers: [AppService, RegisterService, LoginService],
+  providers: [AppService, RegisterService, LoginService, PrismaService],
 })
 export class AppModule {}

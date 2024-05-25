@@ -15,7 +15,7 @@ datasource db {
 
 model User {
   id         Int       @id @default(autoincrement())
-  name       String
+  name       String    @unique
   email      String    @unique
   password   String
   birthdate  String
@@ -39,7 +39,7 @@ model Role {
 
 model Post {
   id         Int       @id @default(autoincrement())
-  title      String    @db.VarChar(120)
+  title      String    @unique @db.VarChar(120)
   content    String
   published  Boolean   @default(false)
   comments   String?
@@ -47,6 +47,7 @@ model Post {
   authorId   Int
   created_at DateTime  @default(now())
   updated_at DateTime? @updatedAt
+  deleted_at DateTime?
 }
 
 model Image {
