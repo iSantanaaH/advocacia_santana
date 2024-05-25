@@ -1,5 +1,5 @@
 import { NgClass } from '@angular/common';
-import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import {
   AbstractControl,
   FormBuilder,
@@ -7,20 +7,24 @@ import {
   ValidationErrors,
   Validators,
 } from '@angular/forms';
+import { RegisterService } from '../../services/user/register/register.service';
+import { HttpClientModule } from '@angular/common/http';
 
 @Component({
   selector: 'app-register',
   standalone: true,
-  imports: [ReactiveFormsModule, NgClass],
+  imports: [ReactiveFormsModule, NgClass, HttpClientModule],
   templateUrl: './register.component.html',
   styleUrl: './register.component.css',
 })
 export class RegisterComponent implements OnInit {
-  @ViewChild('passwordInput') passwordInput!: ElementRef;
   public SHOW_PASSWORD: boolean = false;
   public SHOW_REPEAT_PASSWORD: boolean = false;
 
-  constructor(private _fb: FormBuilder) {}
+  constructor(
+    private _fb: FormBuilder,
+    private registerService: RegisterService
+  ) {}
 
   ngOnInit(): void {
     this.registerForm.get('phone')?.valueChanges.subscribe(() => {
@@ -86,6 +90,32 @@ export class RegisterComponent implements OnInit {
   togglePasswordVisibility(event: MouseEvent): void {
     event.preventDefault();
     this.SHOW_PASSWORD = !this.SHOW_PASSWORD;
+  }
+
+  onSubmit(): void {
+    if (this.registerForm.valid) {
+      const name = this.registerForm.get('name')?.value ?? '';
+      const email = this.registerForm.get('email')?.value ?? '';
+      const password = this.registerForm.get('password')?.value ?? '';
+      const birthdate = this.registerForm.get('birthdate')?.value ?? '';
+      const phone = this.registerForm.get('phone')?.value ?? '';
+
+      this.registerService
+        .register(name, email, password, birthdate, phone)
+        .subscribe({
+          next: (response) => {
+            console.log('Registro bem-sucedido', response);
+          },
+          error: (error) => {
+            console.error('Erro no registro', error.message);
+          },
+          complete: () => {
+            console.log('Processo de registro completo');
+          },
+        });
+    } else {
+      console.log('Formulário inválido');
+    }
   }
 
   public registerForm = this._fb.group({

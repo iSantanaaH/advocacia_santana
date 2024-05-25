@@ -1,5 +1,5 @@
 <div class="ContainerRegisterForm">
-  <form [formGroup]="registerForm" class="FormRegister">
+  <form (ngSubmit)="onSubmit()" [formGroup]="registerForm" class="FormRegister">
     <div>
       <label>
         <input
