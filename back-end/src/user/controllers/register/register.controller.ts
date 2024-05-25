@@ -7,14 +7,7 @@ import {
   Post,
 } from '@nestjs/common';
 import { RegisterService } from 'src/user/services/register/register.service';
-
-interface UserDataProps {
-  name: string;
-  email: string;
-  password: string;
-  birthdate: string;
-  phone: string;
-}
+import { UserDataProps } from 'src/user/services/register/userDataProps';
 
 @Controller('api/auth/register')
 export class RegisterController {
@@ -27,6 +20,7 @@ export class RegisterController {
 
       return { message: 'Usuário registrado com sucesso', data: result };
     } catch (error) {
+      console.log(error.message);
       throw new HttpException(
         'falha ao registrar usuário',
         HttpStatus.BAD_REQUEST,
