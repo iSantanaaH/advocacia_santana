@@ -16,9 +16,11 @@ export class RegisterController {
   @Post()
   async registerUser(@Body() userData: UserDataProps) {
     try {
+      console.log(`dados recebidos: ${userData}`);
       const result = await this.registerService.register(userData);
+      console.log(result);
 
-      return { message: 'Usuário registrado com sucesso', data: result };
+      return { message: 'usuário registrado com sucesso'! };
     } catch (error) {
       console.log(error.message);
       throw new HttpException(
