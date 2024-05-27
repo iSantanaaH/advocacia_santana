@@ -1,4 +1,5 @@
 <div class="ContainerRegisterForm">
+  <app-toast [message]="TOAST_MESSAGE" [show]="SHOW_TOAST" />
   <form (ngSubmit)="onSubmit()" [formGroup]="registerForm" class="FormRegister">
     <div>
       <label>

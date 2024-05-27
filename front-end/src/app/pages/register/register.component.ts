@@ -9,21 +9,26 @@ import {
 } from '@angular/forms';
 import { RegisterService } from '../../services/user/register/register.service';
 import { HttpClientModule } from '@angular/common/http';
+import { Router } from '@angular/router';
+import { ToastComponent } from '../../components/toast/toast/toast.component';
 
 @Component({
   selector: 'app-register',
   standalone: true,
-  imports: [ReactiveFormsModule, NgClass, HttpClientModule],
+  imports: [ReactiveFormsModule, NgClass, HttpClientModule, ToastComponent],
   templateUrl: './register.component.html',
   styleUrl: './register.component.css',
 })
 export class RegisterComponent implements OnInit {
   public SHOW_PASSWORD: boolean = false;
   public SHOW_REPEAT_PASSWORD: boolean = false;
+  public SHOW_TOAST: boolean = true;
+  public TOAST_MESSAGE: string = 'Mensagem Teste';
 
   constructor(
     private _fb: FormBuilder,
-    private registerService: RegisterService
+    private registerService: RegisterService,
+    private router: Router
   ) {}
 
   ngOnInit(): void {
@@ -104,17 +109,33 @@ export class RegisterComponent implements OnInit {
         .register(name, email, password, birthdate, phone)
         .subscribe({
           next: (response) => {
-            console.log('Registro bem-sucedido', response);
+            console.log(response);
+            this.TOAST_MESSAGE = 'Registro realizado com sucesso!';
+            this.SHOW_TOAST = true;
           },
           error: (error) => {
-            console.error('Erro no registro', error.message);
+            console.error(error.message);
+            this.TOAST_MESSAGE = 'Falha no registro. Tente novamnete.';
+            this.SHOW_TOAST = true;
+
+            setTimeout(() => {
+              this.SHOW_TOAST = false;
+            }, 2500);
           },
           complete: () => {
-            console.log('Processo de registro completo');
+            this.registerForm.reset();
+
+            setTimeout(() => {
+              this.router.navigate(['/']);
+            }, 2000);
+
+            setTimeout(() => {
+              this.SHOW_TOAST = false;
+            }, 3000);
           },
         });
     } else {
-      console.log('Formulário inválido');
+      console.error('Formulário inválido');
     }
   }
 
