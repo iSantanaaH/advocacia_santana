@@ -23,7 +23,7 @@ model User {
   photo      String?
   created_at DateTime  @default(now())
   updated_at DateTime? @updatedAt
-  roleId     Int?
+  roleId     Int
   status     Boolean
 
   Role Role?  @relation(fields: [roleId], references: [id])
