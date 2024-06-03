@@ -49,6 +49,7 @@
 
 .FormRegister a {
   color: var(--blue200);
+  outline: none;
 }
 
 .FormRegister label img {
@@ -73,6 +74,7 @@
   color: var(--white900);
   transition: background 0.3s ease, color 0.3s ease;
   border-radius: 0.2rem;
+  cursor: pointer;
 }
 
 .FormRegister .InputSubmit:hover {
@@ -88,4 +90,19 @@
 
 .HiddenAlert {
   display: none;
+}
+
+.ShowAlert {
+  display: flex;
+}
+
+.ErrorInput {
+  border: 0.1rem solid var(--red800) !important;
+}
+
+.AcceptInput {
+  border: 0.1rem solid var(--green100) !important;
+}
+
+.ContainerToast {
 }

@@ -1,3 +1,7 @@
-<div class="toast" [ngClass]="{ show: show }">
+<div *ngIf="isVisible" class="toast">
   <p>{{ message }}</p>
+
+  <div (click)="hideToast()" class="fixedDiv">
+    <div class="x-mark"></div>
+  </div>
 </div>

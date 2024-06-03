@@ -2,14 +2,49 @@
   position: fixed;
   top: 1.25rem;
   right: 1.25rem;
-  background: var(--gray400);
-  color: var(--whiteFull);
-  padding: 0.625rem;
+  background: var(--gray200);
+  color: var(--black900);
+  padding: 1.8rem;
   border-radius: 0.313rem;
-  opacity: 0;
-  transition: opacity 0.5s;
+  width: 18rem;
+  height: 1rem;
+  transform: translateX(calc(100% + 1.25rem));
+  transition: transform 0.5s;
 }
 
 .toast.show {
-  opacity: 1;
+  transform: translateX(0);
+}
+
+.x-mark {
+  position: relative;
+  width: 1.5rem;
+  height: 1.5rem;
+}
+
+.fixedDiv {
+  position: absolute;
+  top: 0.1rem;
+  right: 0.5rem;
+  cursor: pointer;
+}
+
+.x-mark::before,
+.x-mark::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0.1rem;
+  height: 100%;
+  background-color: var(--gray800);
+  transform-origin: center;
+}
+
+.x-mark::before {
+  transform: translate(-50%, -50%) rotate(45deg);
+}
+
+.x-mark::after {
+  transform: translate(-50%, -50%) rotate(-45deg);
 }

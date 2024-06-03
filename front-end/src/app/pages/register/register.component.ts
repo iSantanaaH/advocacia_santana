@@ -1,5 +1,11 @@
-import { NgClass } from '@angular/common';
-import { Component, OnInit } from '@angular/core';
+import { NgClass, NgIf } from '@angular/common';
+import {
+  ChangeDetectorRef,
+  Component,
+  ElementRef,
+  OnInit,
+  ViewChild,
+} from '@angular/core';
 import {
   AbstractControl,
   FormBuilder,
@@ -15,20 +21,45 @@ import { ToastComponent } from '../../components/toast/toast/toast.component';
 @Component({
   selector: 'app-register',
   standalone: true,
-  imports: [ReactiveFormsModule, NgClass, HttpClientModule, ToastComponent],
+  imports: [
+    ReactiveFormsModule,
+    NgClass,
+    HttpClientModule,
+    ToastComponent,
+    NgIf,
+  ],
   templateUrl: './register.component.html',
-  styleUrl: './register.component.css',
+  styleUrls: ['./register.component.css'],
 })
 export class RegisterComponent implements OnInit {
+  public registerForm = this._fb.group({
+    name: ['', Validators.required],
+    email: ['', [Validators.required, Validators.email]],
+    password: ['', [Validators.required, Validators.minLength(8)]],
+    repeatPassword: ['', Validators.required],
+    birthdate: ['', [Validators.required, Validators.maxLength(10)]],
+    phone: [
+      '',
+      [Validators.required, Validators.minLength(15), Validators.maxLength(15)],
+    ],
+  });
+
+  @ViewChild('nameInput') nameInput!: ElementRef;
+  @ViewChild('emailInput') emailInput!: ElementRef;
+  @ViewChild('passwordInput') passwordInput!: ElementRef;
+  @ViewChild('repeatPasswordInput') repeatPasswordInput!: ElementRef;
+  @ViewChild('birthdateInput') birthdateInput!: ElementRef;
+  @ViewChild('phoneInput') phoneInput!: ElementRef;
+
   public SHOW_PASSWORD: boolean = false;
   public SHOW_REPEAT_PASSWORD: boolean = false;
-  public SHOW_TOAST: boolean = true;
-  public TOAST_MESSAGE: string = 'Mensagem Teste';
+  public TOAST_MESSAGE: string = '';
 
   constructor(
     private _fb: FormBuilder,
     private registerService: RegisterService,
-    private router: Router
+    private router: Router,
+    private cdRef: ChangeDetectorRef
   ) {}
 
   ngOnInit(): void {
@@ -37,28 +68,179 @@ export class RegisterComponent implements OnInit {
     });
   }
 
-  fullNameValidator(control: AbstractControl): ValidationErrors | null {
-    const value = control.value;
+  blurNameField() {
+    const name = this.registerForm.get('name');
+    const nameValue = this.nameInput.nativeElement.value.trim();
 
-    if (typeof value === 'string' && value.trim().split(' ').length >= 2) {
-      return null;
+    if (nameValue.length === 0) {
+      name?.setErrors({ nameFieldError: 'campo obrigatório' });
+      this.nameInput.nativeElement.classList.remove('AcceptInput');
+      this.nameInput.nativeElement.classList.add('ErrorInput');
+    } else {
+      const words = nameValue.split(' ');
+
+      if (words.length >= 2 && words[1].length > 0) {
+        this.nameInput.nativeElement.classList.remove('ErrorInput');
+        this.nameInput.nativeElement.classList.add('AcceptInput');
+        name?.setErrors(null);
+      } else {
+        this.nameInput.nativeElement.classList.remove('AcceptInput');
+        this.nameInput.nativeElement.classList.add('ErrorInput');
+        name?.setErrors({ nameFieldError: 'nome incompleto' });
+      }
     }
-
-    return { fullNameError: 'nome incompleto' };
   }
 
   checkIdenticalPasswords(): void {
     const password = this.registerForm.get('password');
     const repeatPassword = this.registerForm.get('repeatPassword');
 
+    if (repeatPassword?.value?.length === 0) {
+      this.repeatPasswordInput.nativeElement.classList.remove('AcceptInput');
+      this.repeatPasswordInput.nativeElement.classList.add('ErrorInput');
+      repeatPassword.setErrors({
+        repeatPasswordFieldError: 'campo obrigatório',
+      });
+    }
+
     if (password && repeatPassword) {
-      if (password.value !== repeatPassword.value) {
-        repeatPassword.setErrors({
-          identicalPasswordsError: 'as senhas não coincidem',
-        });
-      } else {
-        repeatPassword.setErrors(null);
+      if (repeatPassword.value) {
+        if (password.value !== repeatPassword.value) {
+          this.repeatPasswordInput.nativeElement.classList.remove(
+            'AcceptInput'
+          );
+          this.repeatPasswordInput.nativeElement.classList.add('ErrorInput');
+          repeatPassword.setErrors({
+            repeatPasswordFieldError: 'as senhas não coincidem',
+          });
+        } else {
+          this.repeatPasswordInput.nativeElement.classList.remove('ErrorInput');
+          this.repeatPasswordInput.nativeElement.classList.add(
+            'AcceptInput',
+            'InputPassword'
+          );
+        }
       }
+    }
+  }
+
+  blurEmailField() {
+    const email = this.registerForm.get('email');
+
+    if (this.emailInput.nativeElement.value.length > 0) {
+      if (email?.valid) {
+        this.emailInput.nativeElement.classList.remove('ErrorInput');
+        this.emailInput.nativeElement.classList.add('AcceptInput');
+        email?.setErrors(null);
+      } else {
+        this.emailInput.nativeElement.classList.remove('AcceptInput');
+        this.emailInput.nativeElement.classList.add('ErrorInput');
+        email?.setErrors({ emailFieldError: 'formato inválido' });
+      }
+    } else {
+      this.emailInput.nativeElement.classList.remove('AcceptInput');
+      this.emailInput.nativeElement.classList.add('ErrorInput');
+      email?.setErrors({ emailFieldError: 'campo obrigatório' });
+    }
+  }
+
+  blurPasswordField() {
+    const password = this.registerForm.get('password');
+
+    if (this.passwordInput.nativeElement.value.length >= 8) {
+      this.passwordInput.nativeElement.classList.remove('ErrorInput');
+      this.passwordInput.nativeElement.classList.add(
+        'AcceptInput',
+        'InputPassword'
+      );
+    } else if (this.passwordInput.nativeElement.value.length > 0) {
+      this.passwordInput.nativeElement.classList.remove('AcceptInput');
+      this.passwordInput.nativeElement.classList.add(
+        'ErrorInput',
+        'InputPassword'
+      );
+      password?.setErrors({
+        errorPasswordField: 'a senha deve conter no mínimo 8 dígitos',
+      });
+    } else if (this.passwordInput.nativeElement.value.length === 0) {
+      this.passwordInput.nativeElement.classList.remove('AcceptInput');
+      this.passwordInput.nativeElement.classList.add(
+        'ErrorInput',
+        'InputPassword'
+      );
+      password?.setErrors({
+        errorPasswordField: 'campo obrigatório',
+      });
+    }
+  }
+
+  blurBirthdateField() {
+    const birthdate = this.registerForm.get('birthdate');
+
+    if (this.birthdateInput.nativeElement.value.length > 0) {
+      if (birthdate?.valid) {
+        this.birthdateInput.nativeElement.classList.remove('ErrorInput');
+        this.birthdateInput.nativeElement.classList.add(
+          'AcceptInput',
+          'InputDate'
+        );
+        birthdate.setErrors(null);
+      }
+    } else {
+      this.birthdateInput.nativeElement.classList.remove('AcceptInput');
+      this.birthdateInput.nativeElement.classList.add(
+        'ErrorInput',
+        'InputDate'
+      );
+      birthdate?.setErrors({ birthdateFieldError: 'campo obrigatório' });
+    }
+  }
+
+  focusNameField() {
+    const name = this.registerForm.get('name');
+    this.nameInput.nativeElement.classList.remove('ErrorInput');
+    name?.setErrors(null);
+  }
+  focusEmailField() {
+    const email = this.registerForm.get('email');
+    this.emailInput.nativeElement.classList.remove('ErrorInput');
+    email?.setErrors(null);
+  }
+  focusPasswordField() {
+    const password = this.registerForm.get('password');
+    this.passwordInput.nativeElement.classList.remove('ErrorInput');
+    password?.setErrors(null);
+  }
+  focusRepeatPasswordField() {
+    const repeatPassword = this.registerForm.get('repeatPassword');
+    this.repeatPasswordInput.nativeElement.classList.remove('ErrorInput');
+    repeatPassword?.setErrors(null);
+  }
+  focusBirthdateField() {
+    const birthdate = this.registerForm.get('birthdate');
+    this.birthdateInput.nativeElement.classList.remove('ErrorInput');
+    birthdate?.setErrors(null);
+  }
+  focusPhoneField() {
+    const phone = this.registerForm.get('phone');
+    this.phoneInput.nativeElement.classList.remove('ErrorInput');
+    phone?.setErrors(null);
+  }
+
+  blurPhoneField() {
+    const phone = this.registerForm.get('phone');
+
+    if (this.phoneInput.nativeElement.value.length === 15) {
+      this.phoneInput.nativeElement.classList.remove('ErrorInput');
+      this.phoneInput.nativeElement.classList.add('AcceptInput', 'InputPhone');
+    } else if (this.phoneInput.nativeElement.value.length > 0) {
+      this.phoneInput.nativeElement.classList.remove('AcceptInput');
+      this.phoneInput.nativeElement.classList.add('ErrorInput', 'InputPhone');
+      phone?.setErrors({ phoneFieldError: 'formato inválido' });
+    } else if (this.phoneInput.nativeElement.value.length === 0) {
+      this.phoneInput.nativeElement.classList.remove('AcceptInput');
+      this.phoneInput.nativeElement.classList.add('ErrorInput', 'InputPhone');
+      phone?.setErrors({ phoneFieldError: 'campo obrigatório' });
     }
   }
 
@@ -98,6 +280,13 @@ export class RegisterComponent implements OnInit {
   }
 
   onSubmit(): void {
+    this.blurNameField();
+    this.blurEmailField();
+    this.blurPasswordField();
+    this.checkIdenticalPasswords();
+    this.blurBirthdateField();
+    this.blurPhoneField();
+
     if (this.registerForm.valid) {
       const name = this.registerForm.get('name')?.value ?? '';
       const email = this.registerForm.get('email')?.value ?? '';
@@ -111,16 +300,12 @@ export class RegisterComponent implements OnInit {
           next: (response) => {
             console.log(response);
             this.TOAST_MESSAGE = 'Registro realizado com sucesso!';
-            this.SHOW_TOAST = true;
+            this.cdRef.detectChanges();
           },
           error: (error) => {
             console.error(error.message);
-            this.TOAST_MESSAGE = 'Falha no registro. Tente novamnete.';
-            this.SHOW_TOAST = true;
-
-            setTimeout(() => {
-              this.SHOW_TOAST = false;
-            }, 2500);
+            this.TOAST_MESSAGE = 'Falha no registro. Tente novamente.';
+            this.cdRef.detectChanges();
           },
           complete: () => {
             this.registerForm.reset();
@@ -128,26 +313,13 @@ export class RegisterComponent implements OnInit {
             setTimeout(() => {
               this.router.navigate(['/']);
             }, 2000);
-
-            setTimeout(() => {
-              this.SHOW_TOAST = false;
-            }, 3000);
           },
         });
     } else {
-      console.error('Formulário inválido');
+      this.TOAST_MESSAGE = 'Preencha todos os campos kakaakka';
+
+      console.log('formulário inválido');
+      return;
     }
   }
-
-  public registerForm = this._fb.group({
-    name: ['', [Validators.required, this.fullNameValidator]],
-    email: ['', [Validators.required, Validators.email]],
-    password: ['', [Validators.required, Validators.minLength(8)]],
-    repeatPassword: ['', Validators.required],
-    birthdate: ['', [Validators.required, Validators.maxLength(10)]],
-    phone: [
-      '',
-      [Validators.required, Validators.minLength(15), Validators.maxLength(15)],
-    ],
-  });
 }

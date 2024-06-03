@@ -1,14 +1,29 @@
-import { NgClass } from '@angular/common';
-import { Component, Input } from '@angular/core';
+import { NgClass, NgIf } from '@angular/common';
+import { Component, Input, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-toast',
   standalone: true,
-  imports: [NgClass],
+  imports: [NgClass, NgIf],
   templateUrl: './toast.component.html',
-  styleUrl: './toast.component.css',
+  styleUrls: ['./toast.component.css'],
 })
-export class ToastComponent {
+export class ToastComponent implements OnInit {
   @Input() message: string = '';
-  @Input() show: boolean = false;
+  public isVisible: boolean = false;
+
+  ngOnInit(): void {
+    this.showToast();
+  }
+
+  showToast(): void {
+    this.isVisible = true;
+    setTimeout(() => {
+      this.isVisible = false;
+    }, 3000);
+  }
+
+  hideToast() {
+    this.isVisible = false;
+  }
 }

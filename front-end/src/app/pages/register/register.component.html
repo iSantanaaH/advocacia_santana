@@ -1,5 +1,7 @@
 <div class="ContainerRegisterForm">
-  <app-toast [message]="TOAST_MESSAGE" [show]="SHOW_TOAST" />
+  <!-- <div class="ContainerToast"> -->
+  <app-toast [message]="TOAST_MESSAGE" />
+  <!-- </div> -->
   <form (ngSubmit)="onSubmit()" [formGroup]="registerForm" class="FormRegister">
     <div>
       <label>
@@ -8,17 +10,16 @@
           class="InputName"
           type="text"
           placeholder="nome completo"
+          #nameInput
+          (blur)="blurNameField()"
+          (focus)="focusNameField()"
         />
         <img
+          [title]="registerForm.controls['name'].errors?.['nameFieldError']"
+          *ngIf="registerForm.controls['name'].hasError('nameFieldError')"
           src="/assets/Images/alertCicle.svg"
-          alt="icone de alerta"
-          [title]="registerForm.controls['name'].errors?.['fullNameError']"
+          alt=""
           class="AlertCircle"
-          [ngClass]="{
-            HiddenAlert:
-              !registerForm.controls['name'].touched ||
-              registerForm.controls['name'].valid
-          }"
         />
       </label>
     </div>
@@ -29,17 +30,17 @@
           class="InputEmail"
           type="email"
           placeholder="email"
+          [ngClass]="{ ErrorInput: registerForm.controls['email'].errors?.['emailFieldError']}"
+          #emailInput
+          (blur)="blurEmailField()"
+          (focus)="focusEmailField()"
         />
         <img
-          title="formato de email inválido"
+          [title]="registerForm.controls['email'].errors?.['emailFieldError']"
+          *ngIf="registerForm.controls['email'].hasError('emailFieldError')"
           src="/assets/Images/alertCicle.svg"
-          alt="icone de alerta"
+          alt=""
           class="AlertCircle"
-          [ngClass]="{
-            HiddenAlert:
-              !registerForm.controls['email'].touched ||
-              registerForm.controls['email'].valid
-          }"
         />
       </label>
     </div>
@@ -51,6 +52,9 @@
           type="password"
           placeholder="senha"
           [type]="SHOW_PASSWORD ? 'text' : 'password'"
+          #passwordInput
+          (blur)="blurPasswordField()"
+          (focus)="focusPasswordField()"
         />
         <img
           class="OpenEye"
@@ -59,15 +63,13 @@
           (click)="togglePasswordVisibility($event)"
         />
         <img
-          title="a senha deve conter no mínimo 8 caracteres"
+          [title]="registerForm.controls['password'].errors?.['errorPasswordField']"
+          *ngIf="
+            registerForm.controls['password'].hasError('errorPasswordField')
+          "
           src="/assets/Images/alertCicle.svg"
-          alt="icone de alerta"
+          alt=""
           class="AlertCircle"
-          [ngClass]="{
-            HiddenAlert:
-              !registerForm.controls['password'].touched ||
-              registerForm.controls['password'].valid
-          }"
         />
       </label>
     </div>
@@ -79,6 +81,8 @@
           [type]="SHOW_REPEAT_PASSWORD ? 'text' : 'password'"
           placeholder="repetir senha"
           (blur)="checkIdenticalPasswords()"
+          (focus)="focusRepeatPasswordField()"
+          #repeatPasswordInput
         />
         <img
           class="OpenEye"
@@ -89,15 +93,15 @@
           (click)="toggleRepeatPasswordVisibility($event)"
         />
         <img
-          [title]="registerForm.controls['repeatPassword'].errors?.['identicalPasswordsError']"
+          [title]="registerForm.controls['repeatPassword'].errors?.['repeatPasswordFieldError']"
+          *ngIf="
+            registerForm.controls['repeatPassword'].hasError(
+              'repeatPasswordFieldError'
+            )
+          "
           src="/assets/Images/alertCicle.svg"
-          alt="icone de alerta"
+          alt=""
           class="AlertCircle"
-          [ngClass]="{
-            HiddenAlert:
-              !registerForm.controls['repeatPassword'].touched ||
-              registerForm.controls['repeatPassword'].valid
-          }"
         />
       </label>
     </div>
@@ -108,17 +112,18 @@
           class="InputDate"
           type="date"
           placeholder="aniversário"
+          #birthdateInput
+          (blur)="blurBirthdateField()"
+          (focus)="focusBirthdateField()"
         />
         <img
-          title="formato dd/mm/aaaa"
+          [title]="registerForm.controls['birthdate'].errors?.['birthdateFieldError']"
+          *ngIf="
+            registerForm.controls['birthdate'].hasError('birthdateFieldError')
+          "
           src="/assets/Images/alertCicle.svg"
-          alt="icone de alerta"
+          alt=""
           class="AlertCircle"
-          [ngClass]="{
-            HiddenAlert:
-              !registerForm.controls['birthdate'].touched ||
-              registerForm.controls['birthdate'].valid
-          }"
         />
       </label>
     </div>
@@ -129,17 +134,16 @@
           class="InputPhone"
           type="tel"
           placeholder="telefone"
+          #phoneInput
+          (blur)="blurPhoneField()"
+          (focus)="focusPhoneField()"
         />
         <img
-          title="formato inválido"
+          [title]="registerForm.controls['phone'].errors?.['phoneFieldError']"
+          *ngIf="registerForm.controls['phone'].hasError('phoneFieldError')"
           src="/assets/Images/alertCicle.svg"
-          alt="icone de alerta"
+          alt=""
           class="AlertCircle"
-          [ngClass]="{
-            HiddenAlert:
-              !registerForm.controls['phone'].touched ||
-              registerForm.controls['phone'].valid
-          }"
         />
       </label>
     </div>
