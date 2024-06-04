@@ -1,5 +1,5 @@
 import { NgClass, NgIf } from '@angular/common';
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input } from '@angular/core';
 
 @Component({
   selector: 'app-toast',
@@ -12,10 +12,6 @@ export class ToastComponent {
   @Input() message: string = '';
   public isVisible: boolean = false;
   public animationClass: string = '';
-
-  // ngOnInit(): void {
-  //   this.showToast();
-  // }
 
   showToast(): void {
     this.isVisible = true;
