@@ -301,7 +301,7 @@ export class RegisterComponent implements OnInit {
             this.registerForm.reset();
 
             setTimeout(() => {
-              this.router.navigate(['/']);
+              this.router.navigate(['/auth-user/login']);
             }, 2000);
           },
         });
