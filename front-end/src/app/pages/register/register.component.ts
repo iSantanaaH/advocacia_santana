@@ -1,18 +1,6 @@
 import { NgClass, NgIf } from '@angular/common';
-import {
-  ChangeDetectorRef,
-  Component,
-  ElementRef,
-  OnInit,
-  ViewChild,
-} from '@angular/core';
-import {
-  AbstractControl,
-  FormBuilder,
-  ReactiveFormsModule,
-  ValidationErrors,
-  Validators,
-} from '@angular/forms';
+import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
 import { RegisterService } from '../../services/user/register/register.service';
 import { HttpClientModule } from '@angular/common/http';
 import { Router } from '@angular/router';
@@ -50,6 +38,7 @@ export class RegisterComponent implements OnInit {
   @ViewChild('repeatPasswordInput') repeatPasswordInput!: ElementRef;
   @ViewChild('birthdateInput') birthdateInput!: ElementRef;
   @ViewChild('phoneInput') phoneInput!: ElementRef;
+  @ViewChild(ToastComponent) toastComponent!: ToastComponent;
 
   public SHOW_PASSWORD: boolean = false;
   public SHOW_REPEAT_PASSWORD: boolean = false;
@@ -58,8 +47,7 @@ export class RegisterComponent implements OnInit {
   constructor(
     private _fb: FormBuilder,
     private registerService: RegisterService,
-    private router: Router,
-    private cdRef: ChangeDetectorRef
+    private router: Router
   ) {}
 
   ngOnInit(): void {
@@ -300,12 +288,14 @@ export class RegisterComponent implements OnInit {
           next: (response) => {
             console.log(response);
             this.TOAST_MESSAGE = 'Registro realizado com sucesso!';
-            this.cdRef.detectChanges();
+            this.toastComponent.message = this.TOAST_MESSAGE;
+            this.toastComponent.showToast();
           },
           error: (error) => {
             console.error(error.message);
             this.TOAST_MESSAGE = 'Falha no registro. Tente novamente.';
-            this.cdRef.detectChanges();
+            this.toastComponent.message = this.TOAST_MESSAGE;
+            this.toastComponent.showToast();
           },
           complete: () => {
             this.registerForm.reset();
@@ -316,9 +306,9 @@ export class RegisterComponent implements OnInit {
           },
         });
     } else {
-      this.TOAST_MESSAGE = 'Preencha todos os campos kakaakka';
-
-      console.log('formulário inválido');
+      this.TOAST_MESSAGE = 'Preencha todos os campos';
+      this.toastComponent.message = this.TOAST_MESSAGE;
+      this.toastComponent.showToast();
       return;
     }
   }

@@ -1,4 +1,4 @@
-<div *ngIf="isVisible" class="toast">
+<div [ngClass]="animationClass" *ngIf="isVisible" class="toast">
   <p>{{ message }}</p>
 
   <div (click)="hideToast()" class="fixedDiv">

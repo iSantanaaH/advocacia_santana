@@ -8,12 +8,18 @@
   border-radius: 0.313rem;
   width: 18rem;
   height: 1rem;
-  transform: translateX(calc(100% + 1.25rem));
+  transform: translateX(100%);
   transition: transform 0.5s;
 }
 
-.toast.show {
+.toastEnter {
   transform: translateX(0);
+  /* transition: transform 0.5s; */
+}
+
+.toastLeave {
+  transform: translateX(100%);
+  /* transition: transform 0.5s; */
 }
 
 .x-mark {
