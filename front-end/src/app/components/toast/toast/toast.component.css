@@ -1,4 +1,7 @@
 .toast {
+  display: flex;
+  align-items: center;
+  justify-content: center;
   position: fixed;
   top: 1.25rem;
   right: 1.25rem;
@@ -7,7 +10,7 @@
   padding: 1.8rem;
   border-radius: 0.313rem;
   width: 18rem;
-  height: 1rem;
+  height: auto;
   transform: translateX(100%);
   transition: transform 0.5s;
 }
