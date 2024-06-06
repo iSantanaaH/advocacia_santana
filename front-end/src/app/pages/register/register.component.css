@@ -44,7 +44,7 @@
 }
 
 .LabelPassword .InputPassword {
-  padding-right: 2rem;
+  padding-right: 2.3rem;
 }
 
 .FormRegister a {
@@ -86,14 +86,6 @@
   position: absolute;
   right: -1.7rem;
   top: 0.5rem;
-}
-
-.HiddenAlert {
-  display: none;
-}
-
-.ShowAlert {
-  display: flex;
 }
 
 .ErrorInput {

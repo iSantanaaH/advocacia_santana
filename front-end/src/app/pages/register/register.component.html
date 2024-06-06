@@ -1,7 +1,5 @@
 <div class="ContainerRegisterForm">
-  <!-- <div class="ContainerToast"> -->
   <app-toast [message]="TOAST_MESSAGE" />
-  <!-- </div> -->
   <form (ngSubmit)="onSubmit()" [formGroup]="registerForm" class="FormRegister">
     <div>
       <label>
@@ -49,7 +47,6 @@
         <input
           formControlName="password"
           class="InputPassword"
-          type="password"
           placeholder="senha"
           [type]="SHOW_PASSWORD ? 'text' : 'password'"
           #passwordInput
