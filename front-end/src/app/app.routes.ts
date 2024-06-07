@@ -4,6 +4,7 @@ import { NotFoundComponent } from './pages/not-found/not-found.component';
 import { HomePageLayoutComponent } from './layouts/home-page-layout/home-page-layout.component';
 import { AuthUserLayoutComponent } from './layouts/auth-user-layout/auth-user-layout.component';
 import { RegisterComponent } from './pages/register/register.component';
+import { ProfileComponent } from './components/user/profile/profile/profile.component';
 
 export const routes: Routes = [
   {
@@ -31,6 +32,11 @@ export const routes: Routes = [
         pathMatch: 'full',
       },
     ],
+  },
+  {
+    path: 'user/profile',
+    component: ProfileComponent,
+    pathMatch: 'full',
   },
   {
     path: '',
