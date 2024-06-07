@@ -1,7 +1,7 @@
 import { NgClass, NgIf } from '@angular/common';
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
-import { RegisterService } from '../../services/user/register/register.service';
+import { RegisterService } from '../../services/user/auth/register/register.service';
 import { HttpClientModule } from '@angular/common/http';
 import { Router } from '@angular/router';
 import { ToastComponent } from '../../components/toast/toast/toast.component';

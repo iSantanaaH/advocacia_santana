@@ -5,7 +5,7 @@ import { NgIf } from '@angular/common';
 import {
   LoginResponse,
   LoginService,
-} from '../../services/user/login/login.service';
+} from '../../services/user/auth/login/login.service';
 import { Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 
@@ -94,6 +94,7 @@ export class LoginComponent implements OnDestroy {
         next: (response: LoginResponse) => {
           const userName = response.user.name;
           const token = response.token;
+
           this.TOAST_MESSAGE = `Bem vindo, ${userName}`;
           this.toastComponent.message = this.TOAST_MESSAGE;
           this.toastComponent.showToast();
