@@ -11,6 +11,28 @@
   height: auto;
 }
 
+.FormLogin label {
+  display: flex;
+  align-items: center;
+  position: relative;
+  z-index: 1;
+}
+
+.FormLogin .ImageEye {
+  position: absolute;
+  top: 0.5rem;
+  right: 0.2rem;
+  z-index: 2;
+  width: 1.5rem;
+}
+
+.FormLogin .AlertCircle {
+  position: absolute;
+  right: -1.7rem;
+  top: 0.5rem;
+  cursor: pointer;
+}
+
 .FormLogin .InputEmail,
 .FormLogin .InputPassword {
   padding: 0.6rem;
@@ -32,6 +54,11 @@
   color: var(--blue200);
 }
 
+.FormLogin img {
+  width: 1.7rem;
+  z-index: 2;
+}
+
 .FormLogin .InputSubmit {
   width: 100%;
   font-size: 1rem;
@@ -48,21 +75,14 @@
   color: var(--whiteFull);
 }
 
-.labelPassword {
-  display: flex;
-  align-items: center;
-  position: relative;
-  z-index: 1;
-}
-
-.labelPassword img {
-  width: 1.7rem;
-  position: absolute;
-  right: 0.2rem;
-  top: 0.3rem;
-  z-index: 2;
-}
-
 .FormLogin .InputPassword {
-  padding-right: 2rem;
+  padding-right: 2.3rem;
+}
+
+.ErrorInput {
+  border: 0.1rem solid var(--red800) !important;
+}
+
+.AcceptInput {
+  border: 0.1rem solid var(--green100) !important;
 }

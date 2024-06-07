@@ -1,19 +1,52 @@
 <div class="ContainerLoginForm">
-  <form class="FormLogin">
+  <app-toast [message]="TOAST_MESSAGE" />
+  <form (ngSubmit)="onSubmit()" [formGroup]="loginForm" class="FormLogin">
     <div>
       <label>
-        <input class="InputEmail" type="email" placeholder="email" required />
+        <input
+          formControlName="email"
+          class="InputEmail"
+          type="email"
+          placeholder="email"
+          required
+          (focus)="focusEmailField()"
+          (blur)="blurEmailField()"
+          #emailInput
+        />
+        <img
+          src="/assets/Images/alertCicle.svg"
+          alt="ícone de alerta"
+          class="AlertCircle"
+          *ngIf="loginForm.controls['email'].hasError('emailFieldError')"
+          [title]="loginForm.controls['email'].errors?.['emailFieldError']"
+        />
       </label>
     </div>
     <div>
-      <label class="labelPassword">
+      <label>
         <input
+          formControlName="password"
           class="InputPassword"
-          type="password"
           placeholder="senha"
           required
+          [type]="SHOW_PASSWORD ? 'text' : 'password'"
+          (focus)="focusPasswordField()"
+          (blur)="focusPasswordField()"
+          #passwordInput
         />
-        <img src="/assets/Images/eye.svg" alt="" />
+        <img
+          class="ImageEye"
+          src="/assets/Images/{{ SHOW_PASSWORD ? 'eyeOff.svg' : 'eye.svg' }}"
+          alt="{{ SHOW_PASSWORD ? 'olhos fechados' : 'olhos abertos' }}"
+          (click)="togglePasswordVisibility($event)"
+        />
+        <img
+          src="/assets/Images/alertCicle.svg"
+          alt="ícone de alerta"
+          class="AlertCircle"
+          *ngIf="loginForm.controls['password'].hasError('passwordFieldError')"
+          [title]="loginForm.controls['password'].errors?.['passwordFieldError']"
+        />
       </label>
     </div>
     <div>
