@@ -5,6 +5,7 @@ import { HomePageLayoutComponent } from './layouts/home-page-layout/home-page-la
 import { AuthUserLayoutComponent } from './layouts/auth-user-layout/auth-user-layout.component';
 import { RegisterComponent } from './pages/register/register.component';
 import { ProfileComponent } from './components/user/profile/profile/profile.component';
+import { authGuard } from './services/user/auth/authGuard/auth.guard';
 
 export const routes: Routes = [
   {
@@ -20,6 +21,7 @@ export const routes: Routes = [
         path: 'login',
         component: LoginComponent,
         pathMatch: 'full',
+        canActivate: [authGuard],
       },
       {
         path: 'cadastro',
