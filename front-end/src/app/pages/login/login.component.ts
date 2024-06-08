@@ -94,6 +94,8 @@ export class LoginComponent implements OnDestroy {
         next: (response: LoginResponse) => {
           const userName = response.user.name;
           const token = response.token;
+          localStorage.setItem('advocacia_santana_token', token);
+          console.log(localStorage.getItem('advocacia_santana_token'));
 
           this.TOAST_MESSAGE = `Bem vindo, ${userName}`;
           this.toastComponent.message = this.TOAST_MESSAGE;
