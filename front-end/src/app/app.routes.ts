@@ -39,6 +39,7 @@ export const routes: Routes = [
     path: 'user/profile',
     component: ProfileComponent,
     pathMatch: 'full',
+    canActivate: [authGuard],
   },
   {
     path: '',
