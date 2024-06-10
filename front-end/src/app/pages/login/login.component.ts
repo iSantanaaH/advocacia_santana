@@ -1,4 +1,10 @@
-import { Component, ElementRef, OnDestroy, ViewChild } from '@angular/core';
+import {
+  Component,
+  ElementRef,
+  OnDestroy,
+  ViewChild,
+  inject,
+} from '@angular/core';
 import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
 import { ToastComponent } from '../../components/toast/toast/toast.component';
 import { NgIf } from '@angular/common';
@@ -8,6 +14,7 @@ import {
 } from '../../services/user/auth/login/login.service';
 import { Router } from '@angular/router';
 import { Subscription } from 'rxjs';
+import { AuthService } from '../../services/user/auth/authService/auth.service';
 
 @Component({
   selector: 'app-login',
@@ -20,7 +27,8 @@ export class LoginComponent implements OnDestroy {
   constructor(
     private _fb: FormBuilder,
     private loginService: LoginService,
-    private router: Router
+    private router: Router,
+    private authService: AuthService
   ) {}
 
   private subscription: Subscription = new Subscription();
@@ -45,7 +53,6 @@ export class LoginComponent implements OnDestroy {
     const email = this.loginForm.get('email');
     this.emailInput.nativeElement.classList.remove('ErrorInput');
     email?.setErrors(null);
-    console.log('email focado');
   }
   focusPasswordField() {
     const password = this.loginForm.get('password');
@@ -73,15 +80,33 @@ export class LoginComponent implements OnDestroy {
     }
   }
 
+  changePasswordField() {
+    if (this.passwordInput.nativeElement.value.length > 0) {
+      this.passwordInput.nativeElement.classList.add('AcceptInput');
+      this.passwordInput.nativeElement.classList.remove('ErrorInput');
+    } else {
+      this.passwordInput.nativeElement.classList.remove('AcceptInput');
+    }
+  }
+
+  changeEmailField() {
+    if (this.emailInput.nativeElement.value.length > 0) {
+      this.emailInput.nativeElement.classList.add('AcceptInput');
+      this.emailInput.nativeElement.classList.remove('ErrorInput');
+    } else {
+      this.emailInput.nativeElement.classList.remove('AcceptInput');
+    }
+  }
+
   blurPasswordField() {
     const password = this.loginForm.get('password');
 
-    if (this.passwordInput.nativeElement.value.length > 0) {
+    if (this.passwordInput.nativeElement.value.length === 0) {
       this.passwordInput.nativeElement.classList.remove('AcceptInput');
       this.passwordInput.nativeElement.classList.add('ErrorInput');
       password?.setErrors({ passwordFieldError: 'campo obrigatório' });
     } else {
-      this.passwordInput.nativeElement.classList.remove('AcceptInput');
+      this.passwordInput.nativeElement.classList.add('AcceptInput');
     }
   }
 
@@ -94,8 +119,8 @@ export class LoginComponent implements OnDestroy {
         next: (response: LoginResponse) => {
           const userName = response.user.name;
           const token = response.token;
-          localStorage.setItem('advocacia_santana_token', token);
-          console.log(localStorage.getItem('advocacia_santana_token'));
+          console.log(token);
+          this.authService.login(token);
 
           this.TOAST_MESSAGE = `Bem vindo, ${userName}`;
           this.toastComponent.message = this.TOAST_MESSAGE;
@@ -103,7 +128,7 @@ export class LoginComponent implements OnDestroy {
         },
         error: (error) => {
           console.error(error.message);
-          this.TOAST_MESSAGE = 'Falha no registro. Tente novamente';
+          this.TOAST_MESSAGE = 'Falha no login. Tente novamente';
           this.toastComponent.message = this.TOAST_MESSAGE;
           this.toastComponent.showToast();
         },

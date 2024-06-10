@@ -1,20 +1,25 @@
 import { Injectable } from '@angular/core';
+import { CookieService } from '../cookie/cookie.service';
 
 @Injectable({
   providedIn: 'root',
 })
 export class AuthService {
-  constructor() {}
+  private readonly COOKIE_NAME = 'a7fK9Lz0jH';
+
+  constructor(private cookieService: CookieService) {}
 
   isLoggedIn(): boolean {
-    return !!localStorage.getItem('advocacia_santana_token');
+    const token = this.cookieService.getCookie(this.COOKIE_NAME);
+    console.log(token);
+    return token !== null && token !== '';
   }
 
   login(token: string): void {
-    localStorage.setItem('advocacia_santana_token', token);
+    this.cookieService.setCookie(this.COOKIE_NAME, token, 1);
   }
 
   logout(): void {
-    localStorage.removeItem('advocacia_santana_token');
+    this.cookieService.deleteCookie(this.COOKIE_NAME);
   }
 }

@@ -9,6 +9,7 @@
           type="email"
           placeholder="email"
           required
+          (input)="changeEmailField()"
           (focus)="focusEmailField()"
           (blur)="blurEmailField()"
           #emailInput
@@ -30,9 +31,10 @@
           placeholder="senha"
           required
           [type]="SHOW_PASSWORD ? 'text' : 'password'"
-          (focus)="focusPasswordField()"
-          (blur)="focusPasswordField()"
           #passwordInput
+          (input)="changePasswordField()"
+          (blur)="blurPasswordField()"
+          (focus)="focusPasswordField()"
         />
         <img
           class="ImageEye"

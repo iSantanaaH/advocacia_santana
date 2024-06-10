@@ -13,43 +13,32 @@ export const routes: Routes = [
     component: AuthUserLayoutComponent,
     children: [
       {
-        path: '',
-        redirectTo: 'login',
-        pathMatch: 'full',
-      },
-      {
         path: 'login',
         component: LoginComponent,
-        pathMatch: 'full',
         canActivate: [authGuard],
       },
       {
         path: 'cadastro',
         component: RegisterComponent,
-        pathMatch: 'full',
       },
       {
         path: '**',
         redirectTo: 'page-not-found',
-        pathMatch: 'full',
       },
     ],
   },
   {
     path: 'user/profile',
     component: ProfileComponent,
-    pathMatch: 'full',
     canActivate: [authGuard],
   },
   {
     path: '',
     component: HomePageLayoutComponent,
-    pathMatch: 'full',
   },
   {
     path: 'page-not-found',
     component: NotFoundComponent,
-    pathMatch: 'full',
   },
   {
     path: '**',
