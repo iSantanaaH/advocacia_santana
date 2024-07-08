@@ -9,7 +9,7 @@ import { Router, RouterOutlet } from '@angular/router';
   templateUrl: './auth-user-layout.component.html',
   styleUrl: './auth-user-layout.component.css',
 })
-export class AuthUserLayoutComponent {
+export default class AuthUserLayoutComponent {
   public routerLogin: boolean = this.router.url === '/auth-user/login';
   public routerRegister: boolean = this.router.url === '/auth-user/cadastro';
 

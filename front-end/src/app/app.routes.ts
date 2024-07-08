@@ -1,25 +1,22 @@
 import { Routes } from '@angular/router';
-import { LoginComponent } from './pages/login/login.component';
-import { NotFoundComponent } from './pages/not-found/not-found.component';
-import { HomePageLayoutComponent } from './layouts/home-page-layout/home-page-layout.component';
-import { AuthUserLayoutComponent } from './layouts/auth-user-layout/auth-user-layout.component';
-import { RegisterComponent } from './pages/register/register.component';
+
 import { ProfileComponent } from './components/user/profile/profile/profile.component';
 import { authGuard } from './services/user/auth/authGuard/auth.guard';
 
 export const routes: Routes = [
   {
     path: 'auth-user',
-    component: AuthUserLayoutComponent,
+    loadComponent: () =>
+      import('./layouts/auth-user-layout/auth-user-layout.component'),
     children: [
       {
         path: 'login',
-        component: LoginComponent,
+        loadChildren: () => import('./pages/login/login.component'),
         canActivate: [authGuard],
       },
       {
         path: 'cadastro',
-        component: RegisterComponent,
+        loadChildren: () => import('./pages/register/register.component'),
       },
       {
         path: '**',
@@ -34,11 +31,12 @@ export const routes: Routes = [
   },
   {
     path: '',
-    component: HomePageLayoutComponent,
+    loadComponent: () =>
+      import('./layouts/home-page-layout/home-page-layout.component'),
   },
   {
     path: 'page-not-found',
-    component: NotFoundComponent,
+    loadComponent: () => import('./pages/not-found/not-found.component'),
   },
   {
     path: '**',

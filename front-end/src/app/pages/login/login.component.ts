@@ -23,7 +23,7 @@ import { AuthService } from '../../services/user/auth/authService/auth.service';
   templateUrl: './login.component.html',
   styleUrl: './login.component.css',
 })
-export class LoginComponent implements OnDestroy {
+export default class LoginComponent implements OnDestroy {
   constructor(
     private _fb: FormBuilder,
     private loginService: LoginService,

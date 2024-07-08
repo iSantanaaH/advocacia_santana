@@ -19,7 +19,7 @@ import { ToastComponent } from '../../components/toast/toast/toast.component';
   templateUrl: './register.component.html',
   styleUrls: ['./register.component.css'],
 })
-export class RegisterComponent implements OnInit {
+export default class RegisterComponent implements OnInit {
   public registerForm = this._fb.group({
     name: ['', Validators.required],
     email: ['', [Validators.required, Validators.email]],
