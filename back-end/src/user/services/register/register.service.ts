@@ -15,8 +15,8 @@ export class RegisterService {
         password: userData.password,
         birthdate: userData.birthdate,
         phone: userData.phone,
-        status: true,
         roleId: 2,
+        status: true,
       },
     });
     return user;

@@ -11,12 +11,12 @@ export const routes: Routes = [
     children: [
       {
         path: 'login',
-        loadChildren: () => import('./pages/login/login.component'),
+        loadComponent: () => import('./pages/login/login.component'),
         canActivate: [authGuard],
       },
       {
         path: 'cadastro',
-        loadChildren: () => import('./pages/register/register.component'),
+        loadComponent: () => import('./pages/register/register.component'),
       },
       {
         path: '**',

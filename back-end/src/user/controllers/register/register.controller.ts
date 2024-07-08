@@ -16,7 +16,7 @@ export class RegisterController {
   @Post()
   async registerUser(@Body() userData: UserDataProps) {
     try {
-      console.log(`dados recebidos: ${userData}`);
+      console.log(`dados recebidos: ${JSON.stringify(userData)}`);
       const result = await this.registerService.register(userData);
       console.log(result);
 
