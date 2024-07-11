@@ -1,7 +1,6 @@
 import { Routes } from '@angular/router';
-
-import { ProfileComponent } from './components/user/profile/profile/profile.component';
 import { authGuard } from './services/user/auth/authGuard/auth.guard';
+import LoginComponent from './pages/login/login.component';
 
 export const routes: Routes = [
   {
@@ -10,36 +9,40 @@ export const routes: Routes = [
       import('./layouts/auth-user-layout/auth-user-layout.component'),
     children: [
       {
+        path: '',
+        redirectTo: 'login',
+        pathMatch: 'full',
+      },
+      {
         path: 'login',
-        loadComponent: () => import('./pages/login/login.component'),
+        component: LoginComponent,
         canActivate: [authGuard],
+        pathMatch: 'full',
       },
       {
         path: 'cadastro',
         loadComponent: () => import('./pages/register/register.component'),
+        pathMatch: 'full',
       },
       {
         path: '**',
         redirectTo: 'page-not-found',
+        pathMatch: 'full',
       },
     ],
   },
   {
-    path: 'user/profile',
-    component: ProfileComponent,
-    canActivate: [authGuard],
-  },
-  {
     path: '',
-    loadComponent: () =>
-      import('./layouts/home-page-layout/home-page-layout.component'),
+    loadComponent: () => import('./pages/home/home-page-layout.component'),
   },
   {
     path: 'page-not-found',
     loadComponent: () => import('./pages/not-found/not-found.component'),
+    pathMatch: 'full',
   },
   {
     path: '**',
     redirectTo: 'page-not-found',
+    pathMatch: 'full',
   },
 ];

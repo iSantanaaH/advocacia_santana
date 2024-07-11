@@ -1,5 +1,19 @@
-<header>
-  <app-header />
+<header class="header">
+  <div class="DivInput">
+    <input type="text" placeholder="Search..." />
+  </div>
+  <div>
+    <nav class="NavLinks">
+      <ul>
+        <li>
+          <a href="/auth-user/login">Login</a>
+        </li>
+        <li>
+          <a href="/auth-user/cadastro">Cria sua conta</a>
+        </li>
+      </ul>
+    </nav>
+  </div>
 </header>
 
 <main class="Main">
@@ -250,6 +264,52 @@
   </section>
 </main>
 
-<footer>
-  <app-footer />
+<footer class="footer">
+  <div class="FlexContainer">
+    <div>
+      <h1>Receba novidades em seu email</h1>
+    </div>
+    <div>
+      <input type="text" placeholder="Digite seu Email" />
+      <p>
+        Não se preocupe, não compartilharemos seus dados e também não enviaremos
+        spam.
+      </p>
+      <button type="submit">Enviar</button>
+    </div>
+    <div>
+      <nav>
+        <ul class="SocialNetworks">
+          <li>
+            <a href="/" target="_blank">
+              <img src="/assets/Images/facebook.png" alt="" />
+            </a>
+          </li>
+          <li>
+            <a href="/" target="_blank">
+              <img src="/assets/Images/instagram.png" alt="" />
+            </a>
+          </li>
+          <li>
+            <a href="/" target="_blank">
+              <img src="/assets/Images/linkedin.png" alt="" />
+            </a>
+          </li>
+          <li>
+            <a href="/" target="_blank">
+              <img src="/assets/Images/twitter.png" alt="" />
+            </a>
+          </li>
+          <li>
+            <a href="/" target="_blank">
+              <img src="/assets/Images/youtube.png" alt="" />
+            </a>
+          </li>
+        </ul>
+      </nav>
+    </div>
+    <div class="CopyRight">
+      <p>&copy; Amanda Stephany 2024</p>
+    </div>
+  </div>
 </footer>
