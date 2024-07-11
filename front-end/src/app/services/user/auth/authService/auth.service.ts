@@ -11,7 +11,6 @@ export class AuthService {
 
   isLoggedIn(): boolean {
     const token = this.cookieService.getCookie(this.COOKIE_NAME);
-    console.log(token);
     return token !== null && token !== '';
   }
 
