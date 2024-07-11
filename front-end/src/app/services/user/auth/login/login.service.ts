@@ -1,6 +1,6 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
+import { Observable, throwError } from 'rxjs';
 
 export interface LoginResponse {
   token: string;
@@ -8,6 +8,7 @@ export interface LoginResponse {
     id: number;
     name: string;
   };
+  statusCode: number;
 }
 
 @Injectable({
@@ -18,7 +19,14 @@ export class LoginService {
 
   private apiUrl = 'http://localhost:3000/api/auth-user/login';
 
-  login(email: string, password: string): Observable<LoginResponse> {
-    return this.http.post<LoginResponse>(this.apiUrl, { email, password });
+  login(
+    email: String,
+    password: String
+  ): Observable<HttpResponse<LoginResponse>> {
+    return this.http.post<LoginResponse>(
+      this.apiUrl,
+      { email, password },
+      { observe: 'response' }
+    );
   }
 }
