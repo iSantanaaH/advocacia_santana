@@ -1,10 +1,4 @@
-import {
-  Component,
-  ElementRef,
-  OnDestroy,
-  ViewChild,
-  inject,
-} from '@angular/core';
+import { Component, ElementRef, OnDestroy, ViewChild } from '@angular/core';
 import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
 import { ToastComponent } from '../../components/toast/toast/toast.component';
 import { NgIf } from '@angular/common';
@@ -15,6 +9,7 @@ import {
 import { Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { AuthService } from '../../services/user/auth/authService/auth.service';
+import { HttpResponse } from '@angular/common/http';
 
 @Component({
   selector: 'app-login',
@@ -116,33 +111,46 @@ export default class LoginComponent implements OnDestroy {
       const password = this.loginForm.get('password')?.value ?? '';
 
       const loginSub = this.loginService.login(email, password).subscribe({
-        next: (response: LoginResponse) => {
-          const userName = response.user.name;
-          const token = response.token;
-          console.log(token);
-          this.authService.login(token);
+        next: (response: HttpResponse<LoginResponse>) => {
+          if (response.status === 200) {
+            const responseBody = response.body;
+            const token = responseBody!.token;
+            const userName = responseBody!.user.name;
+            this.authService.login(token);
 
-          this.TOAST_MESSAGE = `Bem vindo, ${userName}`;
-          this.toastComponent.message = this.TOAST_MESSAGE;
-          this.toastComponent.showToast();
+            this.TOAST_MESSAGE = `Bem vindo, ${userName}`;
+            this.toastComponent.message = this.TOAST_MESSAGE;
+            this.toastComponent.showToast();
+            this.loginForm.reset();
+            setTimeout(() => {
+              this.router.navigate(['/']);
+            }, 2000);
+          }
         },
         error: (error) => {
-          console.error(error.message);
-          this.TOAST_MESSAGE = 'Falha no login. Tente novamente';
-          this.toastComponent.message = this.TOAST_MESSAGE;
-          this.toastComponent.showToast();
-        },
-        complete: () => {
-          this.loginForm.reset();
-
-          setTimeout(() => {
-            this.router.navigate(['/']);
-          }, 2000);
+          if (error.status === 400) {
+            const errorMessage =
+              error.error.message ||
+              'Erro desconhecido. Por favor, tente novamente';
+            this.TOAST_MESSAGE = errorMessage;
+            this.toastComponent.message = this.TOAST_MESSAGE;
+            this.toastComponent.showToast();
+            this.passwordInput.nativeElement.classList.remove('AcceptInput');
+            this.emailInput.nativeElement.classList.remove('AcceptInput');
+            this.emailInput.nativeElement.classList.add('ErrorInput');
+            this.passwordInput.nativeElement.classList.add('ErrorInput');
+            setTimeout(() => {
+              this.emailInput.nativeElement.classList.remove('ErrorInput');
+              this.passwordInput.nativeElement.classList.remove('ErrorInput');
+              this.emailInput.nativeElement.classList.remove('AcceptInput');
+              this.passwordInput.nativeElement.classList.remove('AcceptInput');
+            }, 1500);
+          }
         },
       });
       this.subscription.add(loginSub);
     } else {
-      this.TOAST_MESSAGE = 'Preencha todos os campos';
+      this.TOAST_MESSAGE = `Preencha todos os campos`;
       this.toastComponent.message = this.TOAST_MESSAGE;
       this.toastComponent.showToast();
     }
