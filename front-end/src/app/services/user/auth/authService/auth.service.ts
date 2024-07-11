@@ -10,8 +10,16 @@ export class AuthService {
   constructor(private cookieService: CookieService) {}
 
   isLoggedIn(): boolean {
-    const token = this.cookieService.getCookie(this.COOKIE_NAME);
-    return token !== null && token !== '';
+    const cookies = document.cookie.split(';');
+    for (let i = 0; i < cookies.length; i++) {
+      const cookie = cookies[i];
+
+      if (cookie.startsWith(this.COOKIE_NAME)) {
+        const token = cookie;
+        return token !== null;
+      }
+    }
+    return false;
   }
 
   login(token: string): void {

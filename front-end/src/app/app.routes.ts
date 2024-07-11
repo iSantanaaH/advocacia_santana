@@ -15,9 +15,9 @@ export const routes: Routes = [
       },
       {
         path: 'login',
-        component: LoginComponent,
-        canActivate: [authGuard],
+        loadComponent: () => import('./pages/login/login.component'),
         pathMatch: 'full',
+        canActivate: [authGuard],
       },
       {
         path: 'cadastro',
