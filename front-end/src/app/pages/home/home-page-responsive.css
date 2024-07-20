@@ -1,0 +1,11 @@
+@media only screen and (max-width: 320px) {
+    .header .search,
+    .header .navegation-auth {
+        display: none;
+    }
+
+    .header {
+        display: flex;
+        padding: 1rem;
+    }
+}
