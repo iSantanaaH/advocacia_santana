@@ -5,6 +5,12 @@ import { Component } from '@angular/core';
   standalone: true,
   imports: [],
   templateUrl: './home-page-layout.component.html',
-  styleUrl: './home-page-layout.component.css',
+  styleUrls: ['./home-page-layout.component.css', './home-page-responsive.css'],
 })
-export default class HomePageLayoutComponent {}
+export default class HomePageLayoutComponent {
+  public showMenu: boolean = false;
+
+  toggleMenu(): void {
+    this.showMenu = !this.showMenu;
+  }
+}
