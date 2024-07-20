@@ -1,9 +1,18 @@
 <header class="header">
-  <div class="DivInput">
+  @if(showMenu) {
+    <div class="content-menu">
+      <a href="/auth-user/login">Login</a>
+      <a href="/auth-user/cadastro">Cadastro</a>
+    </div>
+  }
+  <button type="button" (click)="toggleMenu()" class="container-menu">
+    <img class="menu" src="/assets/Images/menu-hamburguer.svg" alt="menu">
+  </button>
+  <div class="search">
     <input type="text" placeholder="Search..." />
   </div>
   <div>
-    <nav class="NavLinks">
+    <nav class="navegation-auth">
       <ul>
         <li>
           <a href="/auth-user/login">Login</a>
@@ -17,12 +26,12 @@
 </header>
 
 <main class="Main">
-  <section class="AttorneyInfo">
+  <section class="attorneyInfo">
     <div>
       <img src="/assets/Images/advocacia.png" alt="Imagem de Amanda Stephany" />
     </div>
     <div>
-      <div class="AboutAttorney">
+      <div class="aboutAttorney">
         <h1>
           Quem é Amanda<br />
           Stephany?
@@ -47,17 +56,17 @@
           <span> altamente respeitada e confiável no mercado jurídico. </span>
         </p>
       </div>
-      <div class="RedirectToAbout">
+      <div class="redirectToAbout">
         <a href="/about-amanda">Ler mais...</a>
       </div>
     </div>
   </section>
-  <section class="LatestPost">
-    <div class="TitleLatest">
+  <section class="latestPost">
+    <div class="titleLatest">
       <h1>Mais recente</h1>
     </div>
-    <div class="ContainerPost">
-      <div class="Post">
+    <div class="containerPost">
+      <div class="post">
         <div>
           <a href="/">
             <img
@@ -69,7 +78,7 @@
           </a>
         </div>
 
-        <div class="DatePost">
+        <div class="datePost">
           <a href="/">
             <p>Criado em:</p>
           </a>
@@ -78,7 +87,7 @@
           </a>
         </div>
 
-        <div class="AboutPost">
+        <div class="aboutPost">
           <a href="/">
             <h1>O que fazer quando o banco cobra juros</h1>
           </a>
@@ -91,7 +100,7 @@
         </div>
       </div>
 
-      <div class="Post">
+      <div class="post">
         <div>
           <a href="/">
             <img
@@ -103,7 +112,7 @@
           </a>
         </div>
 
-        <div class="DatePost">
+        <div class="datePost">
           <a href="/">
             <p>Criado em:</p>
           </a>
@@ -112,7 +121,7 @@
           </a>
         </div>
 
-        <div class="AboutPost">
+        <div class="aboutPost">
           <a href="/">
             <h1>O que fazer quando o banco cobra juros</h1>
           </a>
@@ -125,7 +134,7 @@
         </div>
       </div>
 
-      <div class="Post">
+      <div class="post">
         <div>
           <a href="/">
             <img
@@ -137,7 +146,7 @@
           </a>
         </div>
 
-        <div class="DatePost">
+        <div class="datePost">
           <a href="/">
             <p>Criado em:</p>
           </a>
@@ -146,7 +155,7 @@
           </a>
         </div>
 
-        <div class="AboutPost">
+        <div class="aboutPost">
           <a href="/">
             <h1>O que fazer quando o banco cobra juros</h1>
           </a>
@@ -159,7 +168,7 @@
         </div>
       </div>
 
-      <div class="Post">
+      <div class="post">
         <div>
           <a href="/">
             <img
@@ -171,7 +180,7 @@
           </a>
         </div>
 
-        <div class="DatePost">
+        <div class="datePost">
           <a href="/">
             <p>Criado em:</p>
           </a>
@@ -180,7 +189,7 @@
           </a>
         </div>
 
-        <div class="AboutPost">
+        <div class="aboutPost">
           <a href="/">
             <h1>O que fazer quando o banco cobra juros</h1>
           </a>
@@ -193,7 +202,7 @@
         </div>
       </div>
 
-      <div class="Post">
+      <div class="post">
         <div>
           <a href="/">
             <img
@@ -205,7 +214,7 @@
           </a>
         </div>
 
-        <div class="DatePost">
+        <div class="datePost">
           <a href="/">
             <p>Criado em:</p>
           </a>
@@ -214,7 +223,7 @@
           </a>
         </div>
 
-        <div class="AboutPost">
+        <div class="aboutPost">
           <a href="/">
             <h1>O que fazer quando o banco cobra juros</h1>
           </a>
@@ -227,7 +236,7 @@
         </div>
       </div>
 
-      <div class="Post">
+      <div class="post">
         <div>
           <a href="/">
             <img
@@ -239,7 +248,7 @@
           </a>
         </div>
 
-        <div class="DatePost">
+        <div class="datePost">
           <a href="/">
             <p>Criado em:</p>
           </a>
@@ -248,7 +257,7 @@
           </a>
         </div>
 
-        <div class="AboutPost">
+        <div class="aboutPost">
           <a href="/">
             <h1>O que fazer quando o banco cobra juros</h1>
           </a>
@@ -265,7 +274,7 @@
 </main>
 
 <footer class="footer">
-  <div class="FlexContainer">
+  <div class="flexContainer">
     <div>
       <h1>Receba novidades em seu email</h1>
     </div>
@@ -279,7 +288,7 @@
     </div>
     <div>
       <nav>
-        <ul class="SocialNetworks">
+        <ul class="socialNetworks">
           <li>
             <a href="/" target="_blank">
               <img src="/assets/Images/facebook.png" alt="" />
@@ -308,7 +317,7 @@
         </ul>
       </nav>
     </div>
-    <div class="CopyRight">
+    <div class="copyRight">
       <p>&copy; Amanda Stephany 2024</p>
     </div>
   </div>
