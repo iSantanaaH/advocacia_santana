@@ -1,11 +1,139 @@
 @media only screen and (max-width: 320px) {
-    .header .search,
-    .header .navegation-auth {
-        display: none;
+  @keyframes animationLazy {
+    from {
+      transform: translateX(-100%);
+      opacity: 0;
     }
+    to {
+      transform: translateX(0%);
+      opacity: 1;
+    }
+  }
 
-    .header {
-        display: flex;
-        padding: 1rem;
+  @keyframes disableAnimationLazy {
+    from {
+      transform: translateX(0%);
+      opacity: 1;
     }
+    to {
+      transform: translateX(-100%);
+      opacity: 0;
+    }
+  }
+
+  ul li {
+    list-style: none;
+  }
+
+  .header .navegation-auth {
+    display: none;
+  }
+
+  .header {
+    display: grid;
+    align-items: center;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(2, 1fr);
+    padding: 0.5rem;
+    gap: 0.5rem;
+  }
+
+  .header .title-attorney {
+    font-size: 1rem;
+    font-weight: 500;
+  }
+
+  .button-menu {
+    border: none;
+    cursor: pointer;
+    justify-self: end;
+    z-index: 2;
+    outline: none;
+  }
+
+  .button-menu .menu {
+    width: 1.5rem;
+    background: transparent;
+  }
+
+  .content-menu {
+    display: flex;
+    flex-direction: column;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 80%;
+    height: 100%;
+    background: var(--gray300);
+    z-index: 11;
+    user-select: none;
+    transform: translateX(-100%);
+  }
+
+  .content-menu.visible {
+    animation: animationLazy 1s forwards;
+  }
+
+  .content-menu.disableMenu {
+    animation: disableAnimationLazy 1s forwards;
+  }
+
+  .background-disable {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: var(--gray400);
+    opacity: 50%;
+    z-index: 10;
+  }
+
+  .content-menu h1 {
+    font-size: 1.3rem;
+    margin: 1rem 0 1rem 0;
+    padding: 0.5rem;
+    cursor: pointer;
+    font-weight: 600;
+  }
+
+  .content-menu summary {
+    cursor: pointer;
+    list-style: none;
+    padding: 0.5rem;
+    font-size: 1.1rem;
+  }
+
+  .content-menu details {
+    color: var(--blackFull);
+  }
+
+  .content-menu details ul {
+    margin-left: 1.8rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .content-menu ul a {
+    color: var(--orange800);
+  }
+
+  .search {
+    grid-column: span 2;
+  }
+
+  .search input {
+    padding: 0.3rem;
+    border-radius: 0.5rem;
+    font-size: 0.9rem;
+    box-sizing: border-box;
+  }
+}
+
+@media only screen and (min-width: 321px) {
+  .button-menu,
+  .search input {
+    display: none;
+  }
 }

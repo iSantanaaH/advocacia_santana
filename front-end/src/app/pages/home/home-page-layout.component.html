@@ -1,15 +1,35 @@
 <header class="header">
+  <a href="/">
+    <h1 class="title-attorney">Amanda Stephany</h1>
+  </a>
   @if(showMenu) {
-    <div class="content-menu">
-      <a href="/auth-user/login">Login</a>
-      <a href="/auth-user/cadastro">Cadastro</a>
-    </div>
+  <div (click)="disableMenu()" class="background-disable"></div>
+  <div #menuHidden class="content-menu visible">
+    <h1>Advocacia Santana</h1>
+    <details>
+      <summary>Conta</summary>
+      <ul>
+        <li>
+          <a href="/auth-user/login">Login</a>
+        </li>
+        <li>
+          <a href="/auth-user/cadastro">Cadastro</a>
+        </li>
+        <li>
+          <a href="/">Sair</a>
+        </li>
+      </ul>
+    </details>
+    <details>
+      <summary><a href="/sobre">Sobre</a></summary>
+    </details>
+  </div>
   }
-  <button type="button" (click)="toggleMenu()" class="container-menu">
-    <img class="menu" src="/assets/Images/menu-hamburguer.svg" alt="menu">
+  <button type="button" (click)="toggleMenu()" class="button-menu">
+    <img class="menu" src="/assets/Images/menu-hamburguer.svg" alt="menu" />
   </button>
   <div class="search">
-    <input type="text" placeholder="Search..." />
+    <input type="text" placeholder="procure..." />
   </div>
   <div>
     <nav class="navegation-auth">
@@ -18,7 +38,7 @@
           <a href="/auth-user/login">Login</a>
         </li>
         <li>
-          <a href="/auth-user/cadastro">Cria sua conta</a>
+          <a href="/auth-user/cadastro">Crie sua conta</a>
         </li>
       </ul>
     </nav>
@@ -28,7 +48,7 @@
 <main class="Main">
   <section class="attorneyInfo">
     <div>
-      <img src="/assets/Images/advocacia.png" alt="Imagem de Amanda Stephany" />
+      <img src="/assets/Images/amanda3.png" alt="Amanda Stephany" />
     </div>
     <div>
       <div class="aboutAttorney">
