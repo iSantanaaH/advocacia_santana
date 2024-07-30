@@ -1,7 +1,13 @@
 <header class="header">
-  <a href="/">
-    <h1 class="title-attorney">Amanda Stephany</h1>
-  </a>
+  <div class="containerInput">
+    <a href="/">
+      <h1 class="title-attorney">Amanda Stephany</h1>
+    </a>
+    <div class="search">
+      <input type="text" placeholder="procure..." />
+    </div>
+  </div>
+
   @if(showMenu) {
   <div (click)="disableMenu()" class="background-disable"></div>
   <div #menuHidden class="content-menu visible">
@@ -28,9 +34,7 @@
   <button type="button" (click)="toggleMenu()" class="button-menu">
     <img class="menu" src="/assets/Images/menu-hamburguer.svg" alt="menu" />
   </button>
-  <div class="search">
-    <input type="text" placeholder="procure..." />
-  </div>
+
   <div>
     <nav class="navegation-auth">
       <ul>
@@ -45,17 +49,20 @@
   </div>
 </header>
 
-<main class="Main">
+<main class="main">
   <section class="attorneyInfo">
     <div>
-      <img src="/assets/Images/amanda3.png" alt="Amanda Stephany" />
+      <img
+        width="1"
+        height="1"
+        ngSrc="/assets/Images/amanda3.png"
+        alt="Amanda Stephany"
+        priority
+      />
     </div>
     <div>
       <div class="aboutAttorney">
-        <h1>
-          Quem é Amanda<br />
-          Stephany?
-        </h1>
+        <h1>Quem é Amanda Stephany?</h1>
         <p>
           Amanda Stephany é uma advogada especializada em direitos bancários,
           com vasta experiência na área.
@@ -81,18 +88,22 @@
       </div>
     </div>
   </section>
+
   <section class="latestPost">
     <div class="titleLatest">
       <h1>Mais recente</h1>
     </div>
-    <div class="containerPost">
+
+    @defer (on viewport) {
+    <div class="containerPost visible">
       <div class="post">
         <div>
           <a href="/">
             <img
-              src="/assets/Images/advocacia.png"
-              width="450"
-              height="350"
+              class="imagePost"
+              ngSrc="/assets/Images/advocacia.png"
+              width="1"
+              height="1"
               alt=""
             />
           </a>
@@ -124,9 +135,10 @@
         <div>
           <a href="/">
             <img
-              src="/assets/Images/advocacia.png"
-              width="450"
-              height="350"
+              class="imagePost"
+              ngSrc="/assets/Images/advocacia.png"
+              width="1"
+              height="1"
               alt=""
             />
           </a>
@@ -158,9 +170,10 @@
         <div>
           <a href="/">
             <img
-              src="/assets/Images/advocacia.png"
-              width="450"
-              height="350"
+              class="imagePost"
+              ngSrc="/assets/Images/advocacia.png"
+              width="1"
+              height="1"
               alt=""
             />
           </a>
@@ -192,9 +205,10 @@
         <div>
           <a href="/">
             <img
-              src="/assets/Images/advocacia.png"
-              width="450"
-              height="350"
+              class="imagePost"
+              ngSrc="/assets/Images/advocacia.png"
+              width="1"
+              height="1"
               alt=""
             />
           </a>
@@ -226,43 +240,10 @@
         <div>
           <a href="/">
             <img
-              src="/assets/Images/advocacia.png"
-              width="450"
-              height="350"
-              alt=""
-            />
-          </a>
-        </div>
-
-        <div class="datePost">
-          <a href="/">
-            <p>Criado em:</p>
-          </a>
-          <a href="/">
-            <span>Maio, 10 2024</span>
-          </a>
-        </div>
-
-        <div class="aboutPost">
-          <a href="/">
-            <h1>O que fazer quando o banco cobra juros</h1>
-          </a>
-          <p>
-            Lorem Ipsum is simply dummy text of the printing and typesetting
-            industry. Lorem Ipsum has been the industry's standard dummy text
-            ever since the 1500s, when an unknown printer took a galley of type
-            and scrambled it to make a type specimen book.
-          </p>
-        </div>
-      </div>
-
-      <div class="post">
-        <div>
-          <a href="/">
-            <img
-              src="/assets/Images/advocacia.png"
-              width="450"
-              height="350"
+              class="imagePost"
+              ngSrc="/assets/Images/advocacia.png"
+              width="1"
+              height="1"
               alt=""
             />
           </a>
@@ -290,22 +271,28 @@
         </div>
       </div>
     </div>
+    } @placeholder {
+    <p></p>
+    }
   </section>
 </main>
 
 <footer class="footer">
   <div class="flexContainer">
-    <div>
-      <h1>Receba novidades em seu email</h1>
-    </div>
-    <div>
-      <input type="text" placeholder="Digite seu Email" />
-      <p>
-        Não se preocupe, não compartilharemos seus dados e também não enviaremos
-        spam.
-      </p>
-      <button type="submit">Enviar</button>
-    </div>
+    <form>
+      <div>
+        <h1>Receba novidades em seu email</h1>
+      </div>
+      <div>
+        <input type="email" placeholder="Digite seu Email" />
+        <p>
+          Não se preocupe, não compartilharemos seus dados e também não
+          enviaremos spam
+        </p>
+        <button type="submit">Enviar</button>
+      </div>
+    </form>
+
     <div>
       <nav>
         <ul class="socialNetworks">

@@ -23,8 +23,15 @@
   color: var(--gray600);
 }
 .attorneyInfo {
-  background: var(--red500);
+  /* background: var(--red500); */
 }
+
+.attorneyInfo img {
+  width: 100%;
+  height: auto;
+  aspect-ratio: 1;
+}
+
 .attorneyInfo .aboutAttorney h1 {
   color: var(--yellow800);
 }
@@ -40,6 +47,7 @@
 }
 .latestPost .titleLatest h1:hover {
   color: var(--gray600);
+  cursor: pointer;
 }
 .post .datePost p {
   color: var(--orange600);
