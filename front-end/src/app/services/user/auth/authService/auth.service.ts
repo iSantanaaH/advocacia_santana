@@ -10,13 +10,15 @@ export class AuthService {
   constructor(private cookieService: CookieService) {}
 
   isLoggedIn(): boolean {
-    const cookies = document.cookie.split(';');
-    for (let i = 0; i < cookies.length; i++) {
-      const cookie = cookies[i];
+    if (typeof window !== 'undefined') {
+      const cookies = document.cookie.split(';');
+      for (let i = 0; i < cookies.length; i++) {
+        const cookie = cookies[i];
 
-      if (cookie.startsWith(this.COOKIE_NAME)) {
-        const token = cookie;
-        return token !== null;
+        if (cookie.startsWith(this.COOKIE_NAME)) {
+          const token = cookie;
+          return token !== null;
+        }
       }
     }
     return false;
