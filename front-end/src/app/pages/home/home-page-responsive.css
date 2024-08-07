@@ -1,30 +1,26 @@
-@media only screen and (min-width: 320px) and (max-width: 767px) {
-  @keyframes animationLazy {
-    from {
-      transform: translateX(-100%);
-      opacity: 0;
-    }
-    to {
-      transform: translateX(0%);
-      opacity: 1;
-    }
+@keyframes animationLazy {
+  from {
+    transform: translateX(-100%);
+    opacity: 0;
   }
-
-  @keyframes disableAnimationLazy {
-    from {
-      transform: translateX(0%);
-      opacity: 1;
-    }
-    to {
-      transform: translateX(-100%);
-      opacity: 0;
-    }
+  to {
+    transform: translateX(0%);
+    opacity: 1;
   }
+}
 
-  ul li {
-    list-style: none;
+@keyframes disableAnimationLazy {
+  from {
+    transform: translateX(0%);
+    opacity: 1;
   }
+  to {
+    transform: translateX(-100%);
+    opacity: 0;
+  }
+}
 
+@media only screen and (min-width: 320px) and (max-width: 480px) {
   .header .navegation-auth {
     display: none;
   }
@@ -270,7 +266,7 @@
     padding: 0.3rem;
     border: none;
     border-radius: 0.3rem;
-    width: calc(100vw - 2.5rem);
+    width: calc(100vw - 4rem);
     margin-top: 0.5rem;
   }
 
@@ -318,13 +314,326 @@
   }
 }
 
-@media only screen and (min-width: 767px) {
-  .button-menu {
+@media only screen and (min-width: 481px) and (max-width: 768px) {
+  .header {
+    display: grid;
+    align-items: center;
+    grid-template-columns: repeat(2, 1fr);
+    padding: 0.8rem 1rem 0.8rem 1rem;
+  }
+
+  .navegation-auth {
     display: none;
   }
-}
 
-@media only screen and (min-width: 480px) and (max-width: 768px) {
+  .button-menu {
+    width: 1.6rem;
+    justify-self: end;
+    border: none;
+    cursor: pointer;
+  }
+
+  .button-menu .menu {
+    width: 100%;
+  }
+
+  .containerInput {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .containerInput input {
+    padding: 0.4rem;
+    border-radius: 0.3rem;
+    width: 20rem;
+    font-size: 0.9rem;
+  }
+
+  .main {
+    display: flex;
+    flex-direction: column;
+    gap: 2.5rem;
+    width: calc(100% - 5rem);
+    margin: 0 auto;
+  }
+
+  .button-menu {
+    border: none;
+    cursor: pointer;
+    justify-self: end;
+    z-index: 2;
+    outline: none;
+  }
+
+  .button-menu .menu {
+    width: 1.5rem;
+    background: transparent;
+  }
+
+  .content-menu {
+    display: flex;
+    flex-direction: column;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 80%;
+    height: 100%;
+    background: var(--gray300);
+    z-index: 11;
+    user-select: none;
+    transform: translateX(-100%);
+  }
+
+  .content-menu.visible {
+    animation: animationLazy 1s forwards;
+  }
+
+  .content-menu.disableMenu {
+    animation: disableAnimationLazy 1s forwards;
+  }
+
+  .background-disable {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: var(--gray400);
+    opacity: 50%;
+    z-index: 10;
+  }
+
+  .content-menu h1 {
+    font-size: 1.3rem;
+    margin: 1rem 0 1rem 0;
+    padding: 0.5rem;
+    cursor: pointer;
+    font-weight: 600;
+  }
+
+  .content-menu summary {
+    cursor: pointer;
+    list-style: none;
+    padding: 0.5rem;
+    font-size: 1.1rem;
+  }
+
+  .content-menu details {
+    color: var(--blackFull);
+  }
+
+  .content-menu details ul {
+    margin-left: 1.8rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .content-menu ul a {
+    color: var(--orange800);
+  }
+
+  .search {
+    grid-column: span 2;
+  }
+
+  .search input {
+    padding: 0.3rem;
+    border-radius: 0.5rem;
+    font-size: 0.9rem;
+    box-sizing: border-box;
+    width: calc(100vw - 7rem);
+  }
+
+  .attorneyInfo {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    margin-top: 2rem;
+  }
+
+  .containerImage {
+    display: flex;
+    justify-content: center;
+  }
+
+  .attorneyInfo img {
+    width: 85%;
+    border-radius: 0.3rem;
+    background: blue;
+    aspect-ratio: 1;
+    filter: drop-shadow(0.1rem 0.1rem 0.1rem var(--blackFull));
+    cursor: pointer;
+  }
+
+  .attorneyInfo .aboutAttorney {
+    display: flex;
+    flex-direction: column;
+    gap: 0.8rem;
+  }
+
+  .attorneyInfo .aboutAttorney h1 {
+    font-size: 1.1rem;
+    font-weight: 600;
+  }
+
+  .attorneyInfo .aboutAttorney h1:hover,
+  .attorneyInfo .aboutAttorney p:hover,
+  .containerPost .aboutPost h1:hover,
+  .containerPost .aboutPost p:hover,
+  .footer .flexContainer h1:hover {
+    color: var(--gray600);
+    cursor: pointer;
+  }
+
+  .attorneyInfo .aboutAttorney p,
+  .attorneyInfo .aboutAttorney h1,
+  .containerPost .aboutPost h1,
+  .containerPost .aboutPost p,
+  .footer .flexContainer h1 {
+    color: var(--gray800);
+    transition: 0.3s ease-in;
+  }
+
+  .attorneyInfo .aboutAttorney p span {
+    opacity: 70%;
+  }
+
+  .redirectToAbout {
+    margin: 1rem 0 1rem 0;
+  }
+
+  .redirectToAbout a {
+    padding: 0.6rem;
+    border-radius: 0.3rem;
+    background: var(--blue200);
+    color: var(--white900);
+    transition: 0.3s ease-in;
+  }
+
+  .redirectToAbout a:hover {
+    background: var(--blue150);
+    color: var(--whiteFull);
+  }
+
+  .titleLatest {
+    margin: 0 auto;
+  }
+
+  .latestPost,
+  .latestPost .containerPost {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+  }
+
+  .latestPost .containerPost {
+    display: flex;
+    flex-direction: column;
+    gap: 3rem;
+    transform: translateX(-100%);
+  }
+
+  .containerPost.visible {
+    animation: animationLazy 1.5s forwards;
+  }
+
+  .post div,
+  .post .aboutPost h1 {
+    margin-bottom: 0.5rem;
+  }
+
+  .post {
+    width: 85%;
+    margin: 0 auto;
+  }
+
+  .post img {
+    width: 100%;
+    height: auto;
+    filter: drop-shadow(0.1rem 0.1rem 0.1rem var(--blackFull));
+    border-radius: 0.3rem;
+    aspect-ratio: 1;
+  }
+
+  .containerPost .datePost {
+    display: flex;
+    gap: 0.5rem;
+  }
+
+  .containerPost .aboutPost h1 {
+    font-size: 1.2rem;
+    font-weight: 600;
+    transition: 0.3s ease-in;
+  }
+
+  .footer {
+    margin-top: 6rem;
+  }
+
+  .footer .flexContainer {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .flexContainer h1 {
+    font-size: 1.1rem;
+    transition: 0.3s ease-in;
+    font-weight: 600;
+    margin-top: 1.4rem;
+  }
+
+  .flexContainer input {
+    padding: 0.3rem;
+    border: none;
+    border-radius: 0.3rem;
+    width: calc(100vw - 4.5rem);
+    margin-top: 0.5rem;
+  }
+
+  .flexContainer input:focus {
+    outline: none;
+  }
+
+  .flexContainer p {
+    text-align: center;
+    font-size: 0.85rem;
+    width: calc(100vw - 2rem);
+  }
+
+  .flexContainer button {
+    padding: 0.5rem;
+    width: 7rem;
+    border: none;
+    border-radius: 0.2rem;
+    transition: 0.3s ease-in;
+    background: var(--blue200);
+    color: var(--white900);
+  }
+
+  .flexContainer button:hover {
+    background: var(--blue150);
+    color: var(--whiteFull);
+    cursor: pointer;
+  }
+
+  .socialNetworks {
+    display: flex;
+    gap: 1rem;
+    margin-top: 1rem;
+    flex-wrap: wrap;
+  }
+
+  .socialNetworks img {
+    width: 2rem;
+  }
+
+  .copyRight p {
+    margin-bottom: 1rem;
+    font-size: 1rem;
+    color: var(--blackFull);
+  }
 }
 
 @media only screen and (min-width: 768px) and (max-width: 1024px) {
@@ -353,5 +662,11 @@
 
   .navegation-auth ul li {
     list-style: none;
+  }
+}
+
+@media only screen and (min-width: 767px) {
+  .button-menu {
+    display: none;
   }
 }

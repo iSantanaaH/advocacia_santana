@@ -1,29 +1,35 @@
 /* CSS Global */
+ul li {
+  list-style: none;
+}
+
 .header {
   background: var(--gray200);
 }
+
 .header .title-attorney {
   color: var(--blue400);
   font-size: 1.5rem;
   font-weight: 600;
 }
+
 .search input {
   border: 0.1rem solid var(--gray150);
 }
+
 .search input:focus {
   outline: none;
   border-color: var(--blue100);
   box-shadow: 0 0 0 0.13rem rgba(66, 153, 225, 0.5);
 }
+
 .navegation-auth li a {
   color: var(--gray800);
   cursor: pointer;
 }
+
 .navegation-auth li a:hover {
   color: var(--gray600);
-}
-.attorneyInfo {
-  /* background: var(--red500); */
 }
 
 .attorneyInfo img {
