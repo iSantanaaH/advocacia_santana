@@ -545,10 +545,6 @@
     margin-top: 0.5rem;
   }
 
-  .flexContainer input:focus {
-    outline: none;
-  }
-
   .flexContainer p {
     text-align: center;
     font-size: 0.85rem;

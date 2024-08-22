@@ -31,13 +31,13 @@ ul li,
 }
 
 .search input,
-.flexContainer div:nth-child(2) input {
+.formNewsletter div:nth-child(2) input {
   border: 0.1rem solid var(--gray150);
   box-shadow: 0 0.1rem 0.125rem 0 rgba(0, 0, 0, 0.05);
 }
 
 .search input:focus,
-.flexContainer div:nth-child(2) input:focus {
+.formNewsletter div:nth-child(2) input:focus {
   outline: none;
   border-color: var(--blue100);
   box-shadow: 0 0 0 0.188rem rgba(66, 153, 225, 0.5);
