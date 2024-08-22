@@ -39,7 +39,7 @@
   }
 
   .header .title-attorney {
-    font-size: 1rem;
+    font-size: 1.1rem;
     font-weight: 600;
   }
 
@@ -123,10 +123,6 @@
     gap: 0.5rem;
   }
 
-  .content-menu ul a {
-    color: var(--orange800);
-  }
-
   .search {
     grid-column: span 2;
   }
@@ -154,33 +150,15 @@
     cursor: pointer;
   }
 
-  .attorneyInfo .aboutAttorney {
+  .attorneyInfo .aboutAttorney div {
     display: flex;
     flex-direction: column;
     gap: 0.8rem;
   }
 
   .attorneyInfo .aboutAttorney h1 {
-    font-size: 1.1rem;
+    font-size: 1.2rem;
     font-weight: 600;
-    transition: 0.3s ease-in;
-  }
-
-  .attorneyInfo .aboutAttorney h1:hover,
-  .attorneyInfo .aboutAttorney p:hover,
-  .containerPost .aboutPost h1:hover,
-  .containerPost .aboutPost p:hover,
-  .footer .flexContainer h1:hover {
-    color: var(--gray600);
-    cursor: pointer;
-  }
-
-  .attorneyInfo .aboutAttorney p,
-  .attorneyInfo .aboutAttorney h1,
-  .containerPost .aboutPost h1,
-  .containerPost .aboutPost p,
-  .footer .flexContainer h1 {
-    color: var(--gray800);
   }
 
   .attorneyInfo .aboutAttorney p span {
@@ -189,19 +167,12 @@
 
   .redirectToAbout {
     margin: 1rem 0 1rem 0;
+    width: 7rem;
   }
 
   .redirectToAbout a {
     padding: 0.6rem;
     border-radius: 0.3rem;
-    background: var(--blue200);
-    color: var(--white900);
-    transition: 0.3s ease-in;
-  }
-
-  .redirectToAbout a:hover {
-    background: var(--blue150);
-    color: var(--whiteFull);
   }
 
   .latestPost,
@@ -270,10 +241,6 @@
     margin-top: 0.5rem;
   }
 
-  .flexContainer input:focus {
-    outline: none;
-  }
-
   .flexContainer p {
     text-align: center;
     font-size: 0.85rem;
@@ -288,12 +255,6 @@
     transition: 0.3s ease-in;
     background: var(--blue200);
     color: var(--white900);
-  }
-
-  .flexContainer button:hover {
-    background: var(--blue150);
-    color: var(--whiteFull);
-    cursor: pointer;
   }
 
   .socialNetworks {
@@ -311,6 +272,12 @@
     margin-bottom: 1rem;
     font-size: 1rem;
     color: var(--blackFull);
+  }
+}
+
+@media only screen and (min-width: 767px) {
+  .button-menu {
+    display: none;
   }
 }
 
@@ -478,15 +445,6 @@
     font-weight: 600;
   }
 
-  .attorneyInfo .aboutAttorney h1:hover,
-  .attorneyInfo .aboutAttorney p:hover,
-  .containerPost .aboutPost h1:hover,
-  .containerPost .aboutPost p:hover,
-  .footer .flexContainer h1:hover {
-    color: var(--gray600);
-    cursor: pointer;
-  }
-
   .attorneyInfo .aboutAttorney p,
   .attorneyInfo .aboutAttorney h1,
   .containerPost .aboutPost h1,
@@ -510,11 +468,6 @@
     background: var(--blue200);
     color: var(--white900);
     transition: 0.3s ease-in;
-  }
-
-  .redirectToAbout a:hover {
-    background: var(--blue150);
-    color: var(--whiteFull);
   }
 
   .titleLatest {
@@ -612,12 +565,6 @@
     color: var(--white900);
   }
 
-  .flexContainer button:hover {
-    background: var(--blue150);
-    color: var(--whiteFull);
-    cursor: pointer;
-  }
-
   .socialNetworks {
     display: flex;
     gap: 1rem;
@@ -638,21 +585,29 @@
 
 @media only screen and (min-width: 768px) and (max-width: 1024px) {
   .header {
-    display: flex;
-    justify-content: space-between;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
     align-items: center;
-    padding: 0.8rem 1rem 0.8rem 1rem;
+    padding: 0.8rem 1.5rem 0.8rem 1.5rem;
   }
 
   .containerInput {
     display: flex;
+    flex-direction: column;
     gap: 0.7rem;
+    grid-column: 1;
   }
 
   .containerInput input {
     padding: 0.4rem;
     border-radius: 0.3rem;
     flex: 1 1 auto;
+    width: 25rem;
+  }
+
+  .content-nav {
+    justify-self: end;
+    grid-column: 2;
   }
 
   .navegation-auth ul {
@@ -663,10 +618,56 @@
   .navegation-auth ul li {
     list-style: none;
   }
-}
 
-@media only screen and (min-width: 767px) {
-  .button-menu {
-    display: none;
+  .main {
+    width: calc(100% - 5rem);
+    margin: 3rem auto;
+  }
+
+  .attorneyInfo {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem;
+    margin-bottom: 5rem;
+  }
+
+  .containerImage {
+    grid-column: 1;
+  }
+
+  .containerImage img {
+    width: 100%;
+    border-radius: 0.3rem;
+    filter: drop-shadow(0.1rem 0.1rem 0.1rem var(--blackFull));
+  }
+
+  .aboutAttorney {
+    grid-column: 2;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .aboutAttorney h1 {
+    margin-bottom: 0.7rem;
+    color: red;
+  }
+
+  .aboutAttorney p {
+    margin-bottom: 0.5rem;
+    transition: color 0.3s ease-out;
+  }
+
+  .redirectToAbout {
+    cursor: pointer;
+    margin-top: 1rem;
+  }
+
+  .redirectToAbout a {
+    padding: 0.5rem;
+    border-radius: 0.3rem;
+    background: var(--blue150);
+    color: var(--whiteFull);
+    transition: color 0.3s ease-out, background 0.3s ease-out;
   }
 }

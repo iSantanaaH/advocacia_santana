@@ -1,35 +1,70 @@
 /* CSS Global */
-ul li {
+ul li,
+.flexContainer .socialNetworks li {
   list-style: none;
 }
 
-.header {
+.header,
+.footer {
   background: var(--gray200);
 }
 
-.header .title-attorney {
-  color: var(--blue400);
-  font-size: 1.5rem;
-  font-weight: 600;
-}
-
-.search input {
-  border: 0.1rem solid var(--gray150);
-}
-
-.search input:focus {
-  outline: none;
-  border-color: var(--blue100);
-  box-shadow: 0 0 0 0.13rem rgba(66, 153, 225, 0.5);
-}
-
-.navegation-auth li a {
+.header .title-attorney,
+.attorneyInfo .aboutAttorney h1,
+.latestPost .titleLatest h1,
+.aboutPost h1,
+.copyRight p {
   color: var(--gray800);
+  transition: color 0.3s ease-in;
   cursor: pointer;
 }
 
-.navegation-auth li a:hover {
+.header .title-attorney {
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: var(--blue150);
+  transition: color 0.3s ease-in;
+}
+
+.header .title-attorney:hover {
+  color: var(--blue200);
+}
+
+.search input,
+.flexContainer div:nth-child(2) input {
+  border: 0.1rem solid var(--gray150);
+  box-shadow: 0 0.1rem 0.125rem 0 rgba(0, 0, 0, 0.05);
+}
+
+.search input:focus,
+.flexContainer div:nth-child(2) input:focus {
+  outline: none;
+  border-color: var(--blue100);
+  box-shadow: 0 0 0 0.188rem rgba(66, 153, 225, 0.5);
+}
+
+.navegation-auth li a,
+.datePost span,
+.copyRight p,
+.aboutPost p {
+  color: var(--gray800);
+  transition: color 0.3s ease-in;
+  cursor: pointer;
+}
+
+.navegation-auth li a:hover,
+.datePost span:hover,
+.copyRight p:hover,
+.latestPost .titleLatest h1:hover,
+.post .datePost p:hover,
+.aboutPost h1:hover,
+.attorneyInfo .aboutAttorney h1:hover,
+.attorneyInfo .aboutAttorney p:hover,
+.containerPost .aboutPost p:hover,
+.footer .flexContainer h1:hover {
   color: var(--gray600);
+  cursor: pointer;
+  transition: color 0.3s ease-out;
 }
 
 .attorneyInfo img {
@@ -38,119 +73,81 @@ ul li {
   aspect-ratio: 1;
 }
 
-.attorneyInfo .aboutAttorney h1 {
-  color: var(--yellow800);
-}
-.attorneyInfo .aboutAttorney p {
+.attorneyInfo .aboutAttorney p,
+.aboutPost p {
   text-align: justify;
+}
+
+.redirectToAbout a,
+.formNewsletter button {
+  background: var(--blue200);
+  color: var(--white900);
+  transition: 0.3s ease-in;
+  cursor: pointer;
+}
+
+.redirectToAbout a:hover,
+.formNewsletter button:hover {
+  background: var(--blue150);
   color: var(--whiteFull);
 }
-.attorneyInfo a {
-  background: var(--yellow800);
-}
-.latestPost .titleLatest h1 {
-  color: var(--gray800);
-}
-.latestPost .titleLatest h1:hover {
-  color: var(--gray600);
-  cursor: pointer;
-}
+
 .post .datePost p {
   color: var(--orange600);
+  transition: color 0.3s ease-in;
   cursor: pointer;
 }
+
 .post .datePost p:hover {
   color: var(--orange800);
 }
-.datePost span {
-  color: var(--gray800);
-  cursor: pointer;
+
+.flexContainer div:nth-child(2) input::placeholder {
+  color: var(--blueIce);
 }
-.datePost span:hover {
-  color: var(--gray600);
-}
-.aboutPost h1 {
-  color: var(--gray800);
-}
-.aboutPost p {
-  text-align: justify;
-  color: var(--gray500);
-}
-.aboutPost h1:hover {
-  color: var(--gray600);
-}
-.footer {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  background: var(--gray200);
-}
+
 .footer div {
   display: flex;
   flex-direction: column;
   align-items: center;
   gap: 1rem;
 }
-.flexContainer div:nth-child(2) input {
-  box-shadow: 0 0.1rem 0.125rem 0 rgba(0, 0, 0, 0.05);
-  color: var(--blue600);
-  ::placeholder {
-    color: var(--blueIce);
-  }
-}
-.flexContainer div:nth-child(2) input:focus {
-  outline: none;
-  border-color: --blue100;
-  box-shadow: 0 0 0 0.188rem rgba(66, 153, 225, 0.5);
-}
-.flexContainer div:nth-child(2) button {
-  background: var(--blue100);
-}
-.flexContainer div:nth-child(2) button:hover {
-  background: var(--blue150);
-}
-.flexContainer .socialNetworks li {
-  list-style: none;
-}
-.copyRight p {
-  color: var(--gray800);
-  cursor: pointer;
-}
-.copyRight p:hover {
-  color: var(--gray600);
-}
 
-@media only screen and (min-width: 1024px) {
+@media only screen and (min-width: 1025px) {
   .header {
     display: flex;
     justify-content: space-around;
     align-items: center;
     padding: 1rem;
   }
+
   .search input {
     padding: 0.5rem;
     border-radius: 0.8rem;
     font-size: 1rem;
   }
+
   .navegation-auth ul {
     display: flex;
     gap: 0.7rem;
   }
+
   .navegation-auth ul li {
     list-style: none;
   }
+
   Main {
     display: flex;
     flex-direction: column;
     gap: 3rem;
     min-height: 100vh;
   }
+
   .attorneyInfo {
     display: flex;
     align-items: center;
     justify-content: center;
     padding: 1rem;
-    gap: 9rem;
   }
 
   .attorneyInfo img {
@@ -166,31 +163,38 @@ ul li {
     gap: 1rem;
     width: 35rem;
   }
+
   .attorneyInfo .aboutAttorney h1 {
     font-size: 2.1rem;
   }
+
   .attorneyInfo .aboutAttorney p span {
     opacity: 0.4;
   }
+
   .attorneyInfo a {
     padding: 1rem;
     width: 6.5rem;
     border-radius: 0.3rem;
   }
+
   .attorneyInfo .redirectToAbout {
     margin-top: 1rem;
     display: flex;
   }
+
   .latestPost {
     display: flex;
     flex-direction: column;
     align-items: center;
   }
+
   .latestPost .titleLatest h1 {
     font-size: 2.25rem;
     margin-bottom: 3rem;
     cursor: pointer;
   }
+
   .containerPost {
     display: flex;
     flex-wrap: wrap;
@@ -198,28 +202,35 @@ ul li {
     gap: 5rem;
     justify-content: center;
   }
+
   .containerPost .post {
     width: 30rem;
   }
+
   .containerPost img {
     border: 0.125rem solid black;
   }
+
   .datePost {
     display: flex;
     gap: 0.3rem;
   }
+
   .aboutPost h1 {
     font-size: 2.25rem;
     font-weight: bold;
     margin: 0.5rem 0 0.5rem 0;
   }
+
   .flexContainer {
     display: flex;
     padding: 1rem;
   }
+
   .flexContainer div:nth-child(1) h1 {
     font-size: 2rem;
   }
+
   .flexContainer div:nth-child(2) input {
     width: 35rem;
     padding: 1rem;
@@ -228,9 +239,11 @@ ul li {
     border-radius: 1rem;
     font-size: 0.875rem;
   }
+
   .flexContainer div:nth-child(2) p {
     font-size: 0.9rem;
   }
+
   .flexContainer div:nth-child(2) button {
     padding: 0.5rem 1rem;
     border-radius: 2rem;
@@ -240,17 +253,27 @@ ul li {
     border: none;
     width: 10rem;
   }
+
+  .flexContainer button:hover {
+    background: var(--blue150);
+    color: var(--whiteFull);
+    cursor: pointer;
+  }
+
   .flexContainer div:nth-child(3) p {
     font-size: 1.1rem;
   }
+
   .flexContainer div:nth-child(4) {
     margin: 3rem 0 2rem 0;
   }
+
   .flexContainer .socialNetworks {
     display: flex;
     gap: 0.5rem;
     margin-top: 3rem;
   }
+
   .flexContainer .socialNetworks li img {
     width: 1.875rem;
     height: 1.875rem;
