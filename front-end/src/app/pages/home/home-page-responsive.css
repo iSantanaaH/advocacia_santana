@@ -20,7 +20,7 @@
   }
 }
 
-@media only screen and (min-width: 320px) and (max-width: 480px) {
+@media only screen and (min-width: 320px) and (max-width: 479px) {
   .header .navegation-auth {
     display: none;
   }
@@ -193,17 +193,13 @@
     animation: animationLazy 1.5s forwards;
   }
 
+  .post img {
+    width: 100%;
+  }
+
   .containerPost .post div,
   .containerPost .post .aboutPost h1 {
     margin-bottom: 0.5rem;
-  }
-
-  .containerPost .post img {
-    width: 100%;
-    height: auto;
-    filter: drop-shadow(0.1rem 0.1rem 0.1rem var(--blackFull));
-    border-radius: 0.3rem;
-    aspect-ratio: 1;
   }
 
   .containerPost .datePost {
@@ -271,7 +267,6 @@
   .copyRight p {
     margin-bottom: 1rem;
     font-size: 1rem;
-    color: var(--blackFull);
   }
 }
 
@@ -281,7 +276,7 @@
   }
 }
 
-@media only screen and (min-width: 481px) and (max-width: 768px) {
+@media only screen and (min-width: 480px) and (max-width: 768px) {
   .header {
     display: grid;
     align-items: center;
@@ -321,7 +316,7 @@
     display: flex;
     flex-direction: column;
     gap: 2.5rem;
-    width: calc(100% - 5rem);
+    width: calc(100% - 4rem);
     margin: 0 auto;
   }
 
@@ -426,7 +421,7 @@
   }
 
   .attorneyInfo img {
-    width: 85%;
+    width: calc(100% - 1.5rem);
     border-radius: 0.3rem;
     background: blue;
     aspect-ratio: 1;
@@ -504,10 +499,6 @@
 
   .post img {
     width: 100%;
-    height: auto;
-    filter: drop-shadow(0.1rem 0.1rem 0.1rem var(--blackFull));
-    border-radius: 0.3rem;
-    aspect-ratio: 1;
   }
 
   .containerPost .datePost {
@@ -662,8 +653,79 @@
   .redirectToAbout a {
     padding: 0.5rem;
     border-radius: 0.3rem;
-    background: var(--blue150);
-    color: var(--whiteFull);
-    transition: color 0.3s ease-out, background 0.3s ease-out;
+  }
+
+  .latestPost .titleLatest {
+    display: flex;
+    justify-content: center;
+  }
+
+  .titleLatest h1 {
+    font-size: 1.8rem;
+  }
+
+  .containerPost {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    margin-top: 3rem;
+  }
+
+  .post img {
+    width: 100%;
+  }
+
+  .post {
+    width: 20rem;
+    margin-bottom: 3rem;
+  }
+
+  .datePost {
+    display: flex;
+    margin: 0.1rem 0 0.7rem 0;
+    gap: 0.3rem;
+  }
+
+  .socialNetworks {
+    display: flex;
+    gap: 0.7rem;
+  }
+
+  .formNewsletter {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .formNewsletter h1 {
+    font-size: 1.5rem;
+    margin-top: 2rem;
+  }
+
+  .formNewsletter input {
+    width: 40rem;
+    padding: 0.5rem;
+    border-radius: 0.3rem;
+    font-weight: 500;
+  }
+
+  .formNewsletter button {
+    padding: 0.5rem;
+    width: 9rem;
+    border-radius: 0.3rem;
+    border: none;
+    font-size: 0.9rem;
+  }
+
+  .socialNetworks img {
+    width: 2rem;
+  }
+
+  .copyRight {
+    margin-bottom: 1rem;
+  }
+
+  .copyRight p {
+    font-size: 1.1rem;
   }
 }
