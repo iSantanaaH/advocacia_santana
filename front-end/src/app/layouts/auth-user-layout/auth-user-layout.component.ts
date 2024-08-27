@@ -7,7 +7,7 @@ import { Router, RouterOutlet } from '@angular/router';
   standalone: true,
   imports: [RouterOutlet, NgClass, NgIf],
   templateUrl: './auth-user-layout.component.html',
-  styleUrl: './auth-user-layout.component.css',
+  styleUrls: ['./auth-user-layout.component.css', './auth-user-responsive.css'],
 })
 export default class AuthUserLayoutComponent {
   public routerLogin: boolean = this.router.url === '/auth-user/login';

@@ -95,8 +95,8 @@
     </div>
 
     @defer (on viewport) {
-    <div class="containerPost visible">
-      <div class="post">
+    <div class="containerPost">
+      <div class="post visible">
         <div>
           <a href="/">
             <img
@@ -131,7 +131,7 @@
         </div>
       </div>
 
-      <div class="post">
+      <div class="post visible">
         <div>
           <a href="/">
             <img
@@ -166,7 +166,7 @@
         </div>
       </div>
 
-      <div class="post">
+      <div class="post visible">
         <div>
           <a href="/">
             <img
@@ -201,7 +201,7 @@
         </div>
       </div>
 
-      <div class="post">
+      <div class="post visible">
         <div>
           <a href="/">
             <img
@@ -236,7 +236,7 @@
         </div>
       </div>
 
-      <div class="post">
+      <div class="post visible">
         <div>
           <a href="/">
             <img
@@ -295,33 +295,62 @@
 
     <div>
       <nav>
+        @defer (on viewport) {
         <ul class="socialNetworks">
           <li>
             <a href="/" target="_blank">
-              <img src="/assets/Images/facebook.png" alt="" />
+              <img
+                width="1000"
+                height="1000"
+                ngSrc="/assets/Images/facebook.png"
+                alt="facebook"
+              />
             </a>
           </li>
           <li>
             <a href="/" target="_blank">
-              <img src="/assets/Images/instagram.png" alt="" />
+              <img
+                width="1"
+                height="1"
+                ngSrc="/assets/Images/instagram.png"
+                alt="instagram"
+              />
             </a>
           </li>
           <li>
             <a href="/" target="_blank">
-              <img src="/assets/Images/linkedin.png" alt="" />
+              <img
+                width="1"
+                height="1"
+                ngSrc="/assets/Images/linkedin.png"
+                alt="linkedin"
+              />
             </a>
           </li>
           <li>
             <a href="/" target="_blank">
-              <img src="/assets/Images/twitter.png" alt="" />
+              <img
+                width="1"
+                height="1"
+                ngSrc="/assets/Images/twitter.png"
+                alt="twitter"
+              />
             </a>
           </li>
           <li>
             <a href="/" target="_blank">
-              <img src="/assets/Images/youtube.png" alt="" />
+              <img
+                width="1"
+                height="1"
+                ngSrc="/assets/Images/youtube.png"
+                alt="youtube"
+              />
             </a>
           </li>
         </ul>
+        } @placeholder {
+        <p></p>
+        }
       </nav>
     </div>
     <div class="copyRight">

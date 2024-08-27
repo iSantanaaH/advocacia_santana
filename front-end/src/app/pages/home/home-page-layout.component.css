@@ -1,4 +1,15 @@
 /* CSS Global */
+@keyframes enterInView {
+  from {
+    transform: translateX(-100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0%);
+    opacity: 1;
+  }
+}
+
 ul li,
 .flexContainer .socialNetworks li {
   list-style: none;
@@ -85,10 +96,10 @@ img {
   left: 0;
   width: 100%;
   height: 100%;
-  background: url("../../../assets/Images/justica3.jpg") no-repeat center;
+  background: url("../../../assets/Images/justica3.jpg") no-repeat bottom;
   background-size: cover;
   z-index: -1;
-  opacity: 0.5;
+  opacity: 0.6;
 }
 
 .attorneyInfo .aboutAttorney p,
@@ -179,6 +190,7 @@ img {
     gap: 3rem;
     z-index: 1;
     position: relative;
+    min-height: 45rem;
   }
 
   .attorneyInfo img {
@@ -186,7 +198,7 @@ img {
     box-sizing: border-box;
     aspect-ratio: 1;
     object-fit: cover;
-    border-radius: 0.3rem;
+    border-radius: 0.2rem;
     filter: drop-shadow(0.1rem 0.1rem 0.1rem var(--blackFull));
   }
 
@@ -234,28 +246,45 @@ img {
   }
 
   .containerPost {
-    display: flex;
-    flex-wrap: wrap;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
     align-items: center;
     gap: 5rem;
     justify-content: center;
+    padding-bottom: 6rem;
   }
 
   .containerPost .post {
-    width: 30rem;
+    width: 25rem;
+    height: auto;
+    transition: width 0.3s ease-out;
+    transform: translateX(-100%);
+    opacity: 0;
   }
 
-  .containerPost img {
-    border: 0.125rem solid black;
+  .post.visible {
+    animation: enterInView 1.5s forwards;
+  }
+
+  .post .imagePost {
+    width: 100%;
+    height: auto;
+    aspect-ratio: 1;
+    transition: transform 0.3s ease-out;
+  }
+
+  .post .imagePost:hover {
+    transform: scale(1.03);
   }
 
   .datePost {
     display: flex;
     gap: 0.3rem;
+    margin-top: 0.5rem;
   }
 
   .aboutPost h1 {
-    font-size: 2.25rem;
+    font-size: 1.6rem;
     font-weight: bold;
     margin: 0.5rem 0 0.5rem 0;
   }
@@ -266,7 +295,8 @@ img {
   }
 
   .flexContainer div:nth-child(1) h1 {
-    font-size: 2rem;
+    font-size: 1.8rem;
+    margin-bottom: 0.5rem;
   }
 
   .flexContainer div:nth-child(2) input {
@@ -312,8 +342,8 @@ img {
     margin-top: 3rem;
   }
 
-  .flexContainer .socialNetworks li img {
+  .socialNetworks li img {
     width: 1.875rem;
-    height: 1.875rem;
+    height: auto;
   }
 }
