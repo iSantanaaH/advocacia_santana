@@ -1,4 +1,52 @@
 /* CSS Global */
+.ContainerFlex h1 {
+  font-size: 1.7rem;
+}
+
+.redirectLogin,
+.redirectRegister {
+  position: relative;
+}
+
+.redirectLogin {
+  justify-self: center;
+}
+
+.redirectRegister {
+  justify-self: center;
+}
+
+.activeEffectInRoute {
+  width: 50%;
+  height: 0.2rem;
+  background: var(--blue150);
+  position: absolute;
+  bottom: -0.185rem;
+  border-radius: 0.1rem;
+}
+
+.active-login::after {
+  content: "";
+  width: 50%;
+  height: 0.2rem;
+  background: var(--blue150);
+  position: absolute;
+  bottom: -0.185rem;
+  left: 0;
+  border-radius: 0.1rem;
+}
+
+.active-register::after {
+  content: "";
+  width: 50%;
+  height: 0.2rem;
+  background: var(--blue150);
+  position: absolute;
+  bottom: -0.185rem;
+  right: 0;
+  border-radius: 0.1rem;
+}
+
 .LinksOutlet {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
@@ -14,24 +62,18 @@
   color: var(--whiteFull);
 }
 
-.AuthPage {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  min-height: 100vh;
-  background: url("/assets/Images/justica6.jpg") no-repeat center;
-  background-size: cover;
-}
-
 .ContainerFlex {
   display: flex;
   align-items: center;
   flex-direction: column;
   margin: 0 auto;
+  gap: 1.5rem;
   background: rgba(29, 29, 29, 0.8);
   border-radius: 0.5rem;
   filter: drop-shadow(0.1rem 0.1rem 0.1rem var(--blackFull));
   box-sizing: border-box;
+  height: auto;
+  padding: 1rem;
 }
 
 .ContainerFlex h1 {

@@ -131,6 +131,20 @@ img {
   gap: 1rem;
 }
 
+.latestPost .containerPost {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(25rem, 1fr));
+  align-items: center;
+  margin: 0 auto;
+  padding: 3rem 0 6rem 0;
+  gap: 3rem;
+  /* transform: translateX(-100%); */
+}
+
+.post {
+  justify-self: center;
+}
+
 @media only screen and (min-width: 1025px) {
   @keyframes enterInView {
     from {
@@ -239,10 +253,9 @@ img {
     margin-top: 1rem;
   }
 
-  .latestPost {
+  .latestPost .titleLatest {
     display: flex;
-    flex-direction: column;
-    align-items: center;
+    justify-content: center;
   }
 
   .latestPost .titleLatest h1 {
@@ -253,11 +266,13 @@ img {
 
   .containerPost {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(auto-fit, minmax(25rem, 1fr));
     align-items: center;
-    gap: 5rem;
-    justify-content: center;
-    padding-bottom: 6rem;
+    margin: 0 auto;
+    padding: 3rem 0 6rem 0;
+    width: 100%;
+    width: calc(100% - 3.5rem);
+    /* transform: translateX(-100%); */
   }
 
   .containerPost.visible {
@@ -265,7 +280,7 @@ img {
   }
 
   .containerPost .post {
-    width: 25rem;
+    width: 26rem;
     height: auto;
   }
 

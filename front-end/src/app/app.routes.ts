@@ -4,36 +4,19 @@ import LoginComponent from './pages/login/login.component';
 
 export const routes: Routes = [
   {
-    path: 'auth-user',
-    loadComponent: () =>
-      import('./layouts/auth-user-layout/auth-user-layout.component'),
-    children: [
-      {
-        path: '',
-        redirectTo: 'login',
-        pathMatch: 'full',
-      },
-      {
-        path: 'login',
-        loadComponent: () => import('./pages/login/login.component'),
-        pathMatch: 'full',
-        canActivate: [authGuard],
-      },
-      {
-        path: 'cadastro',
-        loadComponent: () => import('./pages/register/register.component'),
-        pathMatch: 'full',
-      },
-      {
-        path: '**',
-        redirectTo: 'page-not-found',
-        pathMatch: 'full',
-      },
-    ],
-  },
-  {
     path: '',
     loadComponent: () => import('./pages/home/home-page-layout.component'),
+  },
+  {
+    path: 'login',
+    loadComponent: () => import('./pages/login/login.component'),
+    pathMatch: 'full',
+    canActivate: [authGuard],
+  },
+  {
+    path: 'cadastro',
+    loadComponent: () => import('./pages/register/register.component'),
+    pathMatch: 'full',
   },
   {
     path: 'page-not-found',

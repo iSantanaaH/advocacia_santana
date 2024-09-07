@@ -480,18 +480,10 @@
     margin: 0 auto;
   }
 
-  .latestPost,
-  .latestPost .containerPost {
+  .latestPost {
     display: flex;
     flex-direction: column;
     gap: 2rem;
-  }
-
-  .latestPost .containerPost {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(17rem, 1fr));
-    gap: 3rem;
-    transform: translateX(-100%);
   }
 
   .containerPost.visible {

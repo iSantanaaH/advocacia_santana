@@ -1,19 +1,11 @@
 /* CSS Global */
-
-@media only screen and (min-width: 1025px) {
-}
-
-.ContainerLoginForm {
+.MainLoginForm {
   display: flex;
-  width: 100%;
-}
-
-.FormLogin {
-  display: flex;
-  flex-direction: column;
-  gap: 1rem;
-  width: 100%;
-  height: auto;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  background: url("/assets/Images/justica6.jpg") no-repeat center;
+  background-size: cover;
 }
 
 .FormLogin label {
