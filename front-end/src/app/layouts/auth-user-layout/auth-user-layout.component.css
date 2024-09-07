@@ -1,3 +1,19 @@
+/* CSS Global */
+.LinksOutlet {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  align-items: center;
+  width: calc(100% - 2rem);
+  position: relative;
+  border-bottom: 0.2rem solid var(--gray800);
+}
+
+.LinksOutlet a {
+  margin-bottom: 0.3rem;
+  transition: background 0.3s ease;
+  color: var(--whiteFull);
+}
+
 .AuthPage {
   display: flex;
   align-items: center;
@@ -12,67 +28,48 @@
   align-items: center;
   flex-direction: column;
   margin: 0 auto;
-  width: 30rem;
-  height: auto;
-  background: rgba(22, 21, 21, 0.8);
+  background: rgba(29, 29, 29, 0.8);
   border-radius: 0.5rem;
   filter: drop-shadow(0.1rem 0.1rem 0.1rem var(--blackFull));
+  box-sizing: border-box;
 }
 
 .ContainerFlex h1 {
-  margin-top: 1.2rem;
-  font-size: 2.3rem;
   font-weight: 500;
   color: var(--whiteFull);
 }
 
-.LinksOutlet {
-  display: flex;
-  margin-top: 1rem;
-  justify-content: space-around;
-  align-items: center;
-  border-bottom: 0.2rem solid var(--gray800);
-  border-radius: 0.1rem;
-  gap: 1rem;
-  width: calc(100% - 8rem);
-  position: relative;
-}
+@media only screen and (min-width: 1025px) {
+  .ContainerFlex {
+    width: 30rem;
+    height: auto;
+  }
 
-.LinksOutlet a {
-  margin-bottom: 0.3rem;
-  color: var(--black900);
-  transition: background 0.3s ease;
-  color: var(--whiteFull);
-}
+  .ContainerFlex h1 {
+    margin-top: 1.2rem;
+    font-size: 2.3rem;
+  }
 
-.RouterOutlet {
-  display: flex;
-  justify-content: center;
-  width: calc(100% - 7rem);
-  height: auto;
-  margin: 2rem auto;
-}
+  .LinksOutlet {
+    display: flex;
+    margin-top: 1rem;
+    justify-content: space-around;
+    align-items: center;
+    border-radius: 0.1rem;
+    gap: 1rem;
+    width: calc(100% - 8rem);
+    position: relative;
+  }
 
-.active-login::after {
-  content: "";
-  width: 50%;
-  height: 0.2rem;
-  background: var(--blue150);
-  position: absolute;
-  bottom: -0.185rem;
-  left: 0;
-  border-radius: 0.1rem;
-  transition: background 0.3s ease;
-}
+  .LinksOutlet a {
+    margin-bottom: 0.3rem;
+  }
 
-.active-register::after {
-  content: "";
-  width: 50%;
-  height: 0.2rem;
-  background: var(--blue150);
-  position: absolute;
-  bottom: -0.185rem;
-  right: 0;
-  border-radius: 0.1rem;
-  transition: background 0.3s ease;
+  .RouterOutlet {
+    display: flex;
+    justify-content: center;
+    width: calc(100% - 7rem);
+    height: auto;
+    margin: 2rem auto;
+  }
 }

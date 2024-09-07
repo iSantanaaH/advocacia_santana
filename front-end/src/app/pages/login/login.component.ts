@@ -16,7 +16,7 @@ import { HttpResponse } from '@angular/common/http';
   standalone: true,
   imports: [ReactiveFormsModule, ToastComponent, NgIf],
   templateUrl: './login.component.html',
-  styleUrl: './login.component.css',
+  styleUrls: ['./login.component.css', './login-responsive.css'],
 })
 export default class LoginComponent implements OnDestroy {
   constructor(

@@ -1,3 +1,8 @@
+/* CSS Global */
+
+@media only screen and (min-width: 1025px) {
+}
+
 .ContainerLoginForm {
   display: flex;
   width: 100%;
@@ -20,15 +25,17 @@
 
 .FormLogin .ImageEye {
   position: absolute;
-  top: 0.5rem;
+  top: 0;
   right: 0.2rem;
   z-index: 2;
   width: 1.5rem;
+  cursor: pointer;
+  height: 100%;
 }
 
 .FormLogin .AlertCircle {
   position: absolute;
-  right: -1.7rem;
+  right: -2rem;
   top: 0.5rem;
   cursor: pointer;
 }
@@ -74,6 +81,7 @@
 .FormLogin .InputSubmit:hover {
   background: var(--blue150);
   color: var(--whiteFull);
+  cursor: pointer;
 }
 
 .FormLogin .InputPassword {
