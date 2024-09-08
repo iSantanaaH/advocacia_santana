@@ -131,16 +131,6 @@ img {
   gap: 1rem;
 }
 
-.latestPost .containerPost {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(25rem, 1fr));
-  align-items: center;
-  margin: 0 auto;
-  padding: 3rem 0 6rem 0;
-  gap: 3rem;
-  /* transform: translateX(-100%); */
-}
-
 .post {
   justify-self: center;
 }
@@ -266,13 +256,12 @@ img {
 
   .containerPost {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(25rem, 1fr));
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: auto;
     align-items: center;
     margin: 0 auto;
-    padding: 3rem 0 6rem 0;
-    width: 100%;
-    width: calc(100% - 3.5rem);
-    /* transform: translateX(-100%); */
+    width: calc(100% - 10rem);
+    padding-bottom: 6rem;
   }
 
   .containerPost.visible {
@@ -282,6 +271,7 @@ img {
   .containerPost .post {
     width: 26rem;
     height: auto;
+    padding-bottom: 4rem;
   }
 
   .post .imagePost {

@@ -3,6 +3,18 @@
     <app-toast [message]="TOAST_MESSAGE" />
   </div>
   <form (ngSubmit)="onSubmit()" [formGroup]="loginForm" class="FormLogin">
+    <div class="RedirectHome">
+      <a href="/">
+        <img
+          src="/assets/Images/home.png"
+          alt="Página inicial"
+          title="Página inicial"
+        />
+      </a>
+    </div>
+    <div>
+      <h1>Login</h1>
+    </div>
     <div>
       <label>
         <input
@@ -53,7 +65,8 @@
         />
       </label>
     </div>
-    <div>
+    <div class="ContainerRedirect">
+      <p>Já tem uma conta? <a href="/cadastro">Cadastrar</a></p>
       <a href="/forgot-password">Esqueceu a senha?</a>
     </div>
     <input class="InputSubmit" type="submit" value="Login" />

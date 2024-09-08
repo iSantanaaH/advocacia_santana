@@ -8,6 +8,35 @@
   background-size: cover;
 }
 
+.FormLogin {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: rgba(9, 19, 20, 0.8);
+  border-radius: 0.3rem;
+  filter: drop-shadow(0.1rem 0.1rem 0.1rem var(--blackFull));
+  position: relative;
+  box-sizing: border-box;
+  height: auto;
+}
+
+.FormLogin h1 {
+  font-size: 2.2rem;
+  color: var(--whiteFull);
+  font-weight: 500;
+  margin-bottom: 1rem;
+}
+
+.RedirectHome {
+  position: absolute;
+  background: var(--whiteFull);
+  border-radius: 0.5rem;
+  padding: 0.1rem;
+  cursor: pointer;
+  left: 1rem;
+}
+
 .FormLogin label {
   display: flex;
   align-items: center;
@@ -34,15 +63,18 @@
 
 .FormLogin .InputEmail,
 .FormLogin .InputPassword {
-  padding: 0.6rem;
   border: none;
   background: var(--gray150);
   border: 0.1rem solid var(--gray300);
-  width: 17rem;
   color: var(--black900);
-  font-size: 1rem;
   box-sizing: border-box;
   transition: border 0.2s ease-out;
+}
+
+.FormLogin .InputEmail,
+.FormLogin .InputPassword,
+.FormLogin .InputSubmit {
+  border-radius: 0.15rem;
 }
 
 .FormLogin .InputEmail:focus,
@@ -60,14 +92,12 @@
 }
 
 .FormLogin .InputSubmit {
-  width: 100%;
-  font-size: 1rem;
-  padding: 0.6rem;
   background: var(--blue100);
   border: none;
   color: var(--white900);
   transition: background 0.3s ease, color 0.3s ease;
-  border-radius: 0.2rem;
+  box-sizing: border-box;
+  margin: 0.3rem 0 1rem 0;
 }
 
 .FormLogin .InputSubmit:hover {
@@ -78,6 +108,17 @@
 
 .FormLogin .InputPassword {
   padding-right: 2.3rem;
+}
+
+.ContainerRedirect {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+}
+
+.ContainerRedirect p {
+  color: var(--whiteFull);
 }
 
 .ErrorInput {
