@@ -17,7 +17,7 @@ import { ToastComponent } from '../../components/toast/toast/toast.component';
     NgIf,
   ],
   templateUrl: './register.component.html',
-  styleUrls: ['./register.component.css'],
+  styleUrls: ['./register.component.css', 'register.component-responsive.css'],
 })
 export default class RegisterComponent implements OnInit {
   public registerForm = this._fb.group({
