@@ -1,6 +1,20 @@
-<div class="ContainerRegisterForm">
-  <app-toast [message]="TOAST_MESSAGE" />
+<main class="MainRegisterForm">
+  <div class="toastContainer">
+    <app-toast [message]="TOAST_MESSAGE" />
+  </div>
   <form (ngSubmit)="onSubmit()" [formGroup]="registerForm" class="FormRegister">
+    <div class="RedirectHome">
+      <a href="/">
+        <img
+          src="/assets/Images/home.png"
+          alt="Página inicial"
+          title="Página inicial"
+        />
+      </a>
+    </div>
+    <div>
+      <h1>Cadastro</h1>
+    </div>
     <div>
       <label>
         <input
@@ -43,7 +57,7 @@
       </label>
     </div>
     <div>
-      <label class="LabelPassword">
+      <label>
         <input
           formControlName="password"
           class="InputPassword"
@@ -52,9 +66,10 @@
           #passwordInput
           (blur)="blurPasswordField()"
           (focus)="focusPasswordField()"
+          required
         />
         <img
-          class="OpenEye"
+          class="ImageEye"
           src="/assets/Images/{{ SHOW_PASSWORD ? 'eyeOff.svg' : 'eye.svg' }}"
           alt="imagem olhos abertos"
           (click)="togglePasswordVisibility($event)"
@@ -71,7 +86,7 @@
       </label>
     </div>
     <div>
-      <label class="LabelPassword">
+      <label>
         <input
           formControlName="repeatPassword"
           class="InputPassword"
@@ -82,7 +97,7 @@
           #repeatPasswordInput
         />
         <img
-          class="OpenEye"
+          class="ImageEye"
           src="/assets/Images/{{
             SHOW_REPEAT_PASSWORD ? 'eyeOff.svg' : 'eye.svg'
           }}"
@@ -144,9 +159,9 @@
         />
       </label>
     </div>
-    <div>
-      <a href="/forgot-password">Esqueceu a senha?</a>
+    <div class="ContainerRedirect">
+      <p>Já possui uma conta? <a href="/login">Login</a></p>
     </div>
-    <input class="InputSubmit" type="submit" value="Login" />
+    <input class="InputSubmit" type="submit" value="Cadastrar" />
   </form>
-</div>
+</main>
