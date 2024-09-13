@@ -1,0 +1,101 @@
+@media only screen and (min-width: 320px) and (max-width: 479px) {
+  .FormRegister {
+    width: 85vw;
+    padding: 0.5rem;
+    gap: 1rem;
+  }
+
+  .FormRegister .InputName,
+  .FormRegister .InputEmail,
+  .FormRegister .InputPassword,
+  .FormRegister .InputSubmit,
+  .FormRegister .InputDate,
+  .FormRegister .InputPhone {
+    padding: 0.5rem;
+    width: 17rem;
+    font-size: 1rem;
+  }
+
+  .RedirectHome {
+    top: 0.8rem;
+  }
+}
+
+@media only screen and (min-width: 480px) and (max-width: 767px) {
+  .FormRegister {
+    width: 80vw;
+    min-width: 15rem;
+    max-width: 25rem;
+    padding: 1rem;
+    gap: 1rem;
+  }
+
+  .FormRegister .InputName,
+  .FormRegister .InputEmail,
+  .FormRegister .InputPassword,
+  .FormRegister .InputSubmit,
+  .FormRegister .InputDate,
+  .FormRegister .InputPhone {
+    padding: 0.5rem;
+    width: 20rem;
+    font-size: 1rem;
+  }
+
+  .RedirectHome {
+    top: 1.3rem;
+  }
+}
+
+@media only screen and (min-width: 768px) and (max-width: 1024px) {
+  .FormRegister {
+    width: 55vw;
+    max-width: 27rem;
+    padding: 1rem;
+    gap: 1rem;
+  }
+
+  .FormRegister .InputName,
+  .FormRegister .InputEmail,
+  .FormRegister .InputPassword,
+  .FormRegister .InputSubmit,
+  .FormRegister .InputDate,
+  .FormRegister .InputPhone {
+    padding: 0.5rem;
+    width: 20rem;
+    font-size: 1rem;
+  }
+
+  .RedirectHome {
+    top: 1.3rem;
+  }
+}
+
+@media only screen and (min-width: 1025px) {
+  .FormRegister {
+    width: 40vw;
+    max-width: 29rem;
+    gap: 1rem;
+    padding: 1rem;
+  }
+
+  .FormRegister .InputSubmit {
+    width: 100%;
+    font-size: 1rem;
+    padding: 0.6rem;
+  }
+
+  .FormRegister .InputName,
+  .FormRegister .InputEmail,
+  .FormRegister .InputPassword,
+  .FormRegister .InputSubmit,
+  .FormRegister .InputDate,
+  .FormRegister .InputPhone {
+    padding: 0.6rem;
+    width: 19rem;
+    font-size: 1rem;
+  }
+
+  .RedirectHome {
+    top: 1.3rem;
+  }
+}
