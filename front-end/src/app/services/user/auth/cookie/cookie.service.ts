@@ -13,7 +13,6 @@ export class CookieService {
   setCookie(
     name: string,
     value: string,
-    days?: number,
     path: string = '/',
     secure: boolean = true,
     sameSite: string = 'Strict'
@@ -24,11 +23,9 @@ export class CookieService {
 
     let cookieString = `${name}=${value}; path=${path};`;
 
-    if (days) {
-      const date = new Date();
-      date.setTime(date.getTime() + days * 24 * 60 * 60 * 1000);
-      cookieString += `expires=${date.toUTCString()};`;
-    }
+    const date = new Date();
+    date.setTime(date.getTime() + 60 * 60 * 1000);
+    cookieString += `expires=${date.toUTCString()};`;
 
     if (secure) {
       cookieString += ' Secure;';
@@ -38,7 +35,6 @@ export class CookieService {
       cookieString += ` SameSite=${sameSite};`;
     }
 
-    console.log(`Setting cookie: ${cookieString}`);
     document.cookie = cookieString;
   }
 
