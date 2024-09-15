@@ -1,5 +1,6 @@
 import { NgOptimizedImage } from '@angular/common';
 import { Component, ElementRef, ViewChild } from '@angular/core';
+import { AuthService } from '../../services/user/auth/authService/auth.service';
 
 @Component({
   selector: 'app-home-page-layout',
@@ -9,6 +10,7 @@ import { Component, ElementRef, ViewChild } from '@angular/core';
   styleUrls: ['./home-page-layout.component.css', './home-page-responsive.css'],
 })
 export default class HomePageLayoutComponent {
+  constructor(public authService: AuthService) {}
   @ViewChild('menuHidden') menuHidden!: ElementRef;
   public showMenu: boolean = false;
 
