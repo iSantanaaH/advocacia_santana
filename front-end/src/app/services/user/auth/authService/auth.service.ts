@@ -29,13 +29,16 @@ export class AuthService {
   }
 
   login(token: string, userName: string): void {
-    this.cookieService.setCookie(this.COOKIE_NAME, token, 1);
+    this.cookieService.setCookie(this.COOKIE_NAME, token);
     this.userName = userName;
   }
 
   logout(): void {
     this.cookieService.deleteCookie(this.COOKIE_NAME);
     this.userName = null;
+    if (typeof window !== 'undefined') {
+      window.location.reload();
+    }
   }
 
   getUserName(): string | null {
