@@ -22,7 +22,7 @@
           <a href="/cadastro">Cadastro</a>
         </li>
         <li>
-          <a href="/desconectar">Sair</a>
+          <a href="/">Sair</a>
         </li>
       </ul>
     </details>
@@ -44,6 +44,18 @@
         <li>
           <a href="/cadastro">Crie sua conta</a>
         </li>
+        @if(authService.isLoggedIn()) {
+        <li>
+          <img
+            src="/assets/Images/avatar3.png"
+            [title]="authService.getUserName()"
+            alt="user"
+          />
+        </li>
+        <li>
+          <img src="/assets/Images/exit.png" title="Sair" alt="saída" />
+        </li>
+        }
       </ul>
     </nav>
   </div>
