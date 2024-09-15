@@ -116,7 +116,7 @@ export default class LoginComponent implements OnDestroy {
             const responseBody = response.body;
             const token = responseBody!.token;
             const userName = responseBody!.user.name;
-            this.authService.login(token);
+            this.authService.login(token, userName);
 
             this.TOAST_MESSAGE = `Bem vindo, ${userName}`;
             this.toastComponent.message = this.TOAST_MESSAGE;
