@@ -17,7 +17,7 @@ export interface LoginResponse {
 export class LoginService {
   constructor(private http: HttpClient) {}
 
-  private apiUrl = 'http://localhost:3000/api/auth-user/login';
+  private apiUrl = 'http://localhost:3000/api/auth/login';
 
   login(
     email: String,
