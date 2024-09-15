@@ -58,6 +58,10 @@ img {
   cursor: pointer;
 }
 
+.navegation-auth img {
+  width: 2rem;
+}
+
 .navegation-auth li a:hover,
 .datePost span:hover,
 .copyRight p:hover,
@@ -158,6 +162,11 @@ img {
     display: flex;
     flex-direction: column;
     gap: 0.5rem;
+  }
+
+  .navegation-auth ul {
+    display: flex;
+    align-items: center;
   }
 
   .search input {
