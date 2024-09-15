@@ -8,7 +8,7 @@ import {
 } from '@nestjs/common';
 import { LoginService } from 'src/user/services/login/login.service';
 
-@Controller('api/auth-user/login')
+@Controller('api/auth/login')
 export class LoginController {
   constructor(private readonly loginService: LoginService) {}
 
@@ -18,7 +18,7 @@ export class LoginController {
     if (userData) {
       try {
         const loginResult = await this.loginService.login(userData);
-
+        console.log(loginResult);
         return loginResult;
       } catch (error) {
         throw new BadRequestException(error.message);
