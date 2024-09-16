@@ -10,7 +10,7 @@ export class AuthService {
 
   constructor(private cookieService: CookieService) {}
 
-  isLoggedIn(): boolean {
+  public isLoggedIn(): boolean {
     const token = this.getToken();
     return !!token;
   }
@@ -28,12 +28,12 @@ export class AuthService {
     return null;
   }
 
-  login(token: string, userName: string): void {
+  public login(token: string, userName: string): void {
     this.cookieService.setCookie(this.COOKIE_NAME, token);
     this.userName = userName;
   }
 
-  logout(): void {
+  public logout(): void {
     this.cookieService.deleteCookie(this.COOKIE_NAME);
     this.userName = null;
     if (typeof window !== 'undefined') {
@@ -41,7 +41,7 @@ export class AuthService {
     }
   }
 
-  getUserName(): string | null {
+  public getUserName(): string | null {
     return this.userName;
   }
 }
