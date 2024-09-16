@@ -1,5 +1,6 @@
 import { Routes } from '@angular/router';
 import { authGuard } from './guards/authGuard/auth.guard';
+import { createPostGuard } from './guards/createPostGuard/create-post.guard';
 
 export const routes: Routes = [
   {
@@ -21,7 +22,7 @@ export const routes: Routes = [
     path: 'admin/createPost',
     loadComponent: () => import('./pages/postCreator/post-creator.component'),
     pathMatch: 'full',
-    canActivate: [authGuard],
+    canActivate: [createPostGuard],
   },
   {
     path: 'page-not-found',

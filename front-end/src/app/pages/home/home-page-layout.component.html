@@ -45,6 +45,7 @@
           <a href="/cadastro">Crie sua conta</a>
         </li>
         <li><a href="/admin/createPost">Criar Post</a></li>
+        <button (click)="authService.isLoggedIn()">Teste</button>
         @if(authService.isLoggedIn()) {
         <li>
           <img

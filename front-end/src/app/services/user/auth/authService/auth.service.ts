@@ -12,6 +12,7 @@ export class AuthService {
 
   public isLoggedIn(): boolean {
     const token = this.getToken();
+    console.log(token);
     return !!token;
   }
 
