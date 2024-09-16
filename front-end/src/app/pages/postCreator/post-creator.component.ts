@@ -5,8 +5,9 @@ import { Component } from '@angular/core';
   standalone: true,
   imports: [],
   templateUrl: './post-creator.component.html',
-  styleUrl: './post-creator.component.css'
+  styleUrls: [
+    './post-creator.component.css',
+    'post-creator.component-responsive.css',
+  ],
 })
-export class PostCreatorComponent {
-
-}
+export class PostCreatorComponent {}
