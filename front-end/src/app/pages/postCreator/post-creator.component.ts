@@ -10,4 +10,4 @@ import { Component } from '@angular/core';
     'post-creator.component-responsive.css',
   ],
 })
-export class PostCreatorComponent {}
+export default class PostCreatorComponent {}

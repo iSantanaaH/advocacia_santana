@@ -1,0 +1,61 @@
+.MainPostCreator {
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: url("/assets/Images/justica3.jpg") no-repeat center;
+  background-size: cover;
+}
+
+.MainPostCreator .FormPost {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: rgba(9, 19, 20, 0.8);
+  filter: drop-shadow(0.1rem 0.1rem 0.1rem var(--blackFull));
+  padding: 1rem;
+  border-radius: 0.3rem;
+  gap: 1rem;
+  width: 50rem;
+}
+
+.FormPost label {
+  font-size: 1.1rem;
+  color: var(--whiteFull);
+}
+
+.FormPost textarea {
+  resize: none;
+  width: 100%;
+  outline: none;
+  margin-top: 0.5rem;
+  font-size: 1.1rem;
+  text-align: center;
+}
+
+.FormPost .title {
+  padding: 0.1rem;
+}
+
+.FormPost .description {
+  height: 15rem;
+}
+
+.FormPost input[type="submit"] {
+  width: 10rem;
+  padding: 0.5rem;
+  border-radius: 0.2rem;
+  border: none;
+  outline: none;
+  transition: all 0.3s ease-out;
+  background: var(--blue150);
+  color: var(--white900);
+}
+
+.FormPost input[type="submit"]:hover {
+  background: var(--blue100);
+  color: var(--whiteFull);
+  cursor: pointer;
+}
