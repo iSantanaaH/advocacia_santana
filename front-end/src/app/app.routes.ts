@@ -1,6 +1,5 @@
 import { Routes } from '@angular/router';
-import { authGuard } from './services/user/auth/authGuard/auth.guard';
-import LoginComponent from './pages/login/login.component';
+import { authGuard } from './guards/authGuard/auth.guard';
 
 export const routes: Routes = [
   {
@@ -17,6 +16,12 @@ export const routes: Routes = [
     path: 'cadastro',
     loadComponent: () => import('./pages/register/register.component'),
     pathMatch: 'full',
+  },
+  {
+    path: 'admin/createPost',
+    loadComponent: () => import('./pages/postCreator/post-creator.component'),
+    pathMatch: 'full',
+    canActivate: [authGuard],
   },
   {
     path: 'page-not-found',
