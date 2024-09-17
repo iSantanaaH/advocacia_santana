@@ -15,14 +15,16 @@
     <details>
       <summary>Conta</summary>
       <ul>
+        @if(!authService.isLoggedIn()) {
         <li>
           <a href="/login">Login</a>
         </li>
+        }
         <li>
           <a href="/cadastro">Cadastro</a>
         </li>
         <li>
-          <a href="/">Sair</a>
+          <a (click)="authService.logout()" href="/">Sair</a>
         </li>
       </ul>
     </details>
@@ -38,13 +40,16 @@
   <div class="content-nav">
     <nav class="navegation-auth">
       <ul>
+        @if(!authService.isLoggedIn()) {
         <li>
           <a href="/login">Login</a>
         </li>
         <li>
-          <a href="/cadastro">Crie sua conta</a>
+          <a href="/cadastro">Cadastro</a>
         </li>
-        <li><a href="/admin/createPost">Criar Post</a></li>
+        }
+
+        <!-- <li><a href="/admin/createPost">Criar Post</a></li> -->
         @if(authService.isLoggedIn()) {
         <li>
           <img
@@ -53,6 +58,7 @@
             alt="user"
           />
         </li>
+        <li></li>
         <li>
           <img
             (click)="authService.logout()"
