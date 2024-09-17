@@ -9,7 +9,15 @@ export class AuthService {
   private readonly COOKIE_NAME = 'a7fK9Lz0jH';
   private userName: string | null = null;
 
-  constructor(private cookieService: CookieService) {}
+  constructor(private cookieService: CookieService) {
+    const token = this.getToken();
+    if (token) {
+      const decoded = this.decodedToken(token);
+      if (decoded && decoded.user) {
+        this.userName = decoded.user.name;
+      }
+    }
+  }
 
   public isLoggedIn(): boolean {
     const token = this.getToken();
