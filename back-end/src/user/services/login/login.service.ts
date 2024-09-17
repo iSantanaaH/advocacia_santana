@@ -18,19 +18,24 @@ export class LoginService {
       select: {
         id: true,
         name: true,
+        roleId: true,
       },
     });
 
     if (user) {
-      const token = this.generateToken(user.id);
-      return { token, user };
+      const token = this.generateToken(user);
+      return { token };
     } else {
       throw new BadRequestException('Email ou senha inválidos');
     }
   }
 
-  private generateToken(userId: number): string {
-    const token = jwt.sign({ userId }, process.env.SECRET_KEY, {
+  private generateToken(user: {
+    id: number;
+    name: string;
+    roleId: number;
+  }): string {
+    const token = jwt.sign({ user }, process.env.SECRET_KEY, {
       expiresIn: '1h',
     });
     return token;
