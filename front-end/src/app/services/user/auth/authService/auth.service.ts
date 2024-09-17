@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { CookieService } from '../cookie/cookie.service';
+import { jwtDecode } from 'jwt-decode';
 
 @Injectable({
   providedIn: 'root',
@@ -12,8 +13,28 @@ export class AuthService {
 
   public isLoggedIn(): boolean {
     const token = this.getToken();
-    console.log(token);
     return !!token;
+  }
+
+  public login(token: string, userName: string): void {
+    this.cookieService.setCookie(this.COOKIE_NAME, token);
+    this.userName = userName;
+  }
+
+  public decodedToken(token: string): any {
+    return jwtDecode(token);
+  }
+
+  public logout(): void {
+    this.cookieService.deleteCookie(this.COOKIE_NAME);
+    this.userName = null;
+    if (typeof window !== 'undefined') {
+      window.location.reload();
+    }
+  }
+
+  public getUserName(): string | null {
+    return this.userName;
   }
 
   private getToken(): string | null {
@@ -27,22 +48,5 @@ export class AuthService {
       }
     }
     return null;
-  }
-
-  public login(token: string, userName: string): void {
-    this.cookieService.setCookie(this.COOKIE_NAME, token);
-    this.userName = userName;
-  }
-
-  public logout(): void {
-    this.cookieService.deleteCookie(this.COOKIE_NAME);
-    this.userName = null;
-    if (typeof window !== 'undefined') {
-      window.location.reload();
-    }
-  }
-
-  public getUserName(): string | null {
-    return this.userName;
   }
 }
