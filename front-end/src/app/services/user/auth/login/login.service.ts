@@ -4,11 +4,6 @@ import { Observable } from 'rxjs';
 
 export interface LoginResponse {
   token: string;
-  user: {
-    id: number;
-    name: string;
-  };
-  statusCode: number;
 }
 
 @Injectable({
