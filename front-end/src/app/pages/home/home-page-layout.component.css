@@ -58,7 +58,11 @@ img {
   cursor: pointer;
 }
 
-.navegation-auth img {
+.navegation-auth .doorImage {
+  width: 1.5rem;
+}
+
+.navegation-auth .userImage {
   width: 2rem;
 }
 

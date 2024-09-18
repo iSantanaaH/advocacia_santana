@@ -49,7 +49,7 @@
   top: 0;
   right: 0.2rem;
   z-index: 2;
-  width: 1.5rem;
+  width: 1.3rem;
   cursor: pointer;
   height: 100%;
 }
@@ -86,7 +86,7 @@
 .FormRegister .InputSubmit,
 .FormRegister .InputDate,
 .FormRegister .InputPhone {
-  border-radius: 0.15rem;
+  border-radius: 0.5rem;
 }
 
 .FormRegister .InputName:focus,
