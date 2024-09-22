@@ -40,16 +40,6 @@
   <div class="content-nav">
     <nav class="navegation-auth">
       <ul>
-        @if(!authService.isLoggedIn()) {
-        <li>
-          <a href="/login">Login</a>
-        </li>
-        <li>
-          <a href="/cadastro">Cadastro</a>
-        </li>
-        }
-
-        <!-- <li><a href="/admin/createPost">Criar Post</a></li> -->
         @if(authService.isLoggedIn()) {
         <li>
           <img
@@ -68,6 +58,13 @@
             alt="saída"
             class="doorImage"
           />
+        </li>
+        } @else if(!authService.isLoggedIn()) {
+        <li>
+          <a href="/login">Login</a>
+        </li>
+        <li>
+          <a href="/cadastro">Cadastro</a>
         </li>
         }
       </ul>
