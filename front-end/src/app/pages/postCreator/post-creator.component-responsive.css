@@ -1,0 +1,54 @@
+@media only screen and (max-width: 480px) {
+  .FormPost {
+    max-width: calc(100% - 3rem);
+  }
+
+  .FormPost label {
+    font-size: 1rem;
+  }
+
+  .FormPost textarea {
+    font-size: 1.2rem;
+  }
+
+  .FormPost h1 {
+    font-size: 1.7rem;
+  }
+}
+@media only screen and (min-width: 481px) and (max-width: 767px) {
+  .FormPost {
+    width: 80%;
+  }
+}
+@media only screen and (min-width: 768px) and (max-width: 991px) {
+  .FormPost {
+    width: 65%;
+  }
+}
+@media only screen and (min-width: 992px) and (max-width: 1199px) {
+  .FormPost {
+    width: 55%;
+  }
+}
+@media only screen and (min-width: 1200px) and (max-width: 1919px) {
+  .FormPost {
+    width: 40%;
+  }
+}
+@media only screen and (min-width: 1920px) {
+  .FormPost {
+    width: 35rem;
+  }
+
+  .FormPost label {
+    font-size: 1.1rem;
+  }
+
+  .FormPost textarea {
+    font-size: 1.1rem;
+  }
+
+  .FormPost h1 {
+    font-size: 2rem;
+  }
+}
