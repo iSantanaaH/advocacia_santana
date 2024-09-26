@@ -136,16 +136,6 @@ export default class LoginComponent implements OnDestroy {
             this.TOAST_MESSAGE = errorMessage;
             this.toastComponent.message = this.TOAST_MESSAGE;
             this.toastComponent.showToast();
-            this.passwordInput.nativeElement.classList.remove('AcceptInput');
-            this.emailInput.nativeElement.classList.remove('AcceptInput');
-            this.emailInput.nativeElement.classList.add('ErrorInput');
-            this.passwordInput.nativeElement.classList.add('ErrorInput');
-            setTimeout(() => {
-              this.emailInput.nativeElement.classList.remove('ErrorInput');
-              this.passwordInput.nativeElement.classList.remove('ErrorInput');
-              this.emailInput.nativeElement.classList.remove('AcceptInput');
-              this.passwordInput.nativeElement.classList.remove('AcceptInput');
-            }, 1500);
           }
         },
       });
