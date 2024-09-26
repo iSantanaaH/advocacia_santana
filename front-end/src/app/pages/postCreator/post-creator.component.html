@@ -1,8 +1,16 @@
 <main class="MainPostCreator">
   <form class="FormPost">
-    <a title="Página inicial" href="/" class="redirectHome">
-      <img src="/assets/Images/home.png" alt="" />
-    </a>
+    <section class="RedirectAndTitle">
+      <div>
+        <a title="Página inicial" href="/" class="redirectHome">
+          <img src="/assets/Images/home.png" alt="" />
+        </a>
+      </div>
+      <div>
+        <h1>Criar Post</h1>
+      </div>
+    </section>
+
     <div>
       <label>
         Título do post
@@ -15,11 +23,14 @@
         <textarea name="" class="description"> </textarea>
       </label>
     </div>
-    <div>
-      <label><input type="file" /></label>
-    </div>
-    <div>
-      <input type="submit" value="Criar post" />
-    </div>
+
+    <section class="FileAndSubmit">
+      <div>
+        <label><input type="file" /></label>
+      </div>
+      <div>
+        <input type="submit" value="Criar post" />
+      </div>
+    </section>
   </form>
 </main>
