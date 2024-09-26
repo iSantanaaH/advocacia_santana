@@ -292,10 +292,14 @@ export default class RegisterComponent implements OnInit {
             this.toastComponent.showToast();
           },
           error: (error) => {
-            console.error(error.message);
-            this.TOAST_MESSAGE = 'Falha no registro. Tente novamente.';
-            this.toastComponent.message = this.TOAST_MESSAGE;
-            this.toastComponent.showToast();
+            if (error.status === 400) {
+              const errorMessage =
+                error.error.message ||
+                'Erro desconhecido. Por favor, tente novamente';
+              this.TOAST_MESSAGE = errorMessage;
+              this.toastComponent.message = this.TOAST_MESSAGE;
+              this.toastComponent.showToast();
+            }
           },
           complete: () => {
             this.registerForm.reset();
