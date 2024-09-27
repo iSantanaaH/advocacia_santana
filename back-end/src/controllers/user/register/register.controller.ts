@@ -1,7 +1,7 @@
 /* eslint-disable prettier/prettier */
 import { BadRequestException, Body, Controller, Post } from '@nestjs/common';
-import { RegisterService } from 'src/controllers/admin/create-post/user/services/register/register.service';
-import { UserDataProps } from 'src/controllers/admin/create-post/user/services/register/userDataProps';
+import { RegisterService } from 'src//services/user/register/register.service';
+import { UserDataProps } from 'src/services/user/register/userDataProps';
 
 @Controller('api/auth/register')
 export class RegisterController {
