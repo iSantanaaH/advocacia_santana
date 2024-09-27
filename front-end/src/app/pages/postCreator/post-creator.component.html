@@ -1,5 +1,8 @@
 <main class="MainPostCreator">
-  <form class="FormPost">
+  <div class="ToastContainer">
+    <app-toast [message]="TOAST_MESSAGE" />
+  </div>
+  <form (ngSubmit)="onSubmit()" [formGroup]="createPostForm" class="FormPost">
     <section class="RedirectAndTitle">
       <div>
         <a title="Página inicial" href="/" class="redirectHome">
@@ -14,19 +17,20 @@
     <div>
       <label>
         Título do post
-        <textarea name="" class="title"></textarea>
+        <textarea formControlName="title" name="" class="title"></textarea>
       </label>
     </div>
     <div>
       <label
         >Descrição do post
-        <textarea name="" class="description"> </textarea>
+        <textarea formControlName="description" name="" class="description">
+        </textarea>
       </label>
     </div>
 
     <section class="FileAndSubmit">
       <div>
-        <label><input type="file" /></label>
+        <label><input formControlName="image" type="file" /></label>
       </div>
       <div>
         <input type="submit" value="Criar post" />
