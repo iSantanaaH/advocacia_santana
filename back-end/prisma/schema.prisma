@@ -1,9 +1,3 @@
-// This is your Prisma schema file,
-// learn more about it in the docs: https://pris.ly/d/prisma-schema
-
-// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
-// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
-
 generator client {
   provider = "prisma-client-js"
 }
@@ -25,9 +19,8 @@ model User {
   updated_at DateTime? @updatedAt
   roleId     Int
   status     Boolean
-
-  Role Role?  @relation(fields: [roleId], references: [id])
-  Post Post[]
+  Post       Post[]
+  Role       Role      @relation(fields: [roleId], references: [id])
 }
 
 model Role {
@@ -38,16 +31,17 @@ model Role {
 }
 
 model Post {
-  id         Int       @id @default(autoincrement())
-  title      String    @unique @db.VarChar(120)
-  content    String
-  published  Boolean   @default(false)
-  comments   String?
-  author     User      @relation(fields: [authorId], references: [id])
-  authorId   Int
-  created_at DateTime  @default(now())
-  updated_at DateTime? @updatedAt
-  deleted_at DateTime?
+  id          Int       @id @default(autoincrement())
+  title       String    @unique @db.VarChar(120)
+  description String
+  published   Boolean   @default(false)
+  comments    String?
+  authorId    Int
+  created_at  DateTime  @default(now())
+  updated_at  DateTime? @updatedAt
+  deleted_at  DateTime?
+  image       String
+  author      User      @relation(fields: [authorId], references: [id])
 }
 
 model Image {
