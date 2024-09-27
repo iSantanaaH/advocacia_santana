@@ -6,7 +6,7 @@ import {
   HttpCode,
   Post,
 } from '@nestjs/common';
-import { LoginService } from 'src/controllers/admin/create-post/user/services/login/login.service';
+import { LoginService } from 'src/services/user/login/login.service';
 
 @Controller('api/auth/login')
 export class LoginController {
