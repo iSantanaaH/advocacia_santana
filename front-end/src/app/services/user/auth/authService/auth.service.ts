@@ -45,7 +45,7 @@ export class AuthService {
     return this.userName;
   }
 
-  private getToken(): string | null {
+  public getToken(): string | null {
     if (typeof window !== 'undefined') {
       const cookies = document.cookie.split(';');
       for (let i = 0; i < cookies.length; i++) {
