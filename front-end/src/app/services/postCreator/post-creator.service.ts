@@ -11,15 +11,9 @@ export class PostCreatorService {
 
   private apiUrl = 'http://localhost:3000/api/admin/createPost';
 
-  createPost(
-    title: string,
-    description: string,
-    image: string
-  ): Observable<HttpResponse<CreatePostResponse>> {
-    return this.http.post<CreatePostResponse>(
-      this.apiUrl,
-      { title, description, image },
-      { observe: 'response' }
-    );
+  createPost(formData: FormData): Observable<HttpResponse<CreatePostResponse>> {
+    return this.http.post<CreatePostResponse>(this.apiUrl, formData, {
+      observe: 'response',
+    });
   }
 }
