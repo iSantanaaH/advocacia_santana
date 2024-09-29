@@ -18,7 +18,6 @@ export class LoginController {
     if (userData) {
       try {
         const loginResult = await this.loginService.login(userData);
-        console.log(loginResult);
         return loginResult;
       } catch (error) {
         throw new BadRequestException(error.message);
