@@ -30,7 +30,12 @@
 
     <section class="FileAndSubmit">
       <div>
-        <label><input formControlName="image" type="file" /></label>
+        <label
+          ><input
+            formControlName="image"
+            type="file"
+            (change)="onFileSelected($event)"
+        /></label>
       </div>
       <div>
         <input type="submit" value="Criar post" />
