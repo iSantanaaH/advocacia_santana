@@ -20,7 +20,15 @@ export const routes: Routes = [
   },
   {
     path: 'admin/createPost',
-    loadComponent: () => import('./pages/postCreator/post-creator.component'),
+    loadComponent: () =>
+      import('./pages/admin/post-creator/post-creator.component'),
+    pathMatch: 'full',
+    canActivate: [createPostGuard],
+  },
+  {
+    path: 'admin/manage-post',
+    loadComponent: () =>
+      import('./pages/admin/manage-post/manage-post.component'),
     pathMatch: 'full',
     canActivate: [createPostGuard],
   },
