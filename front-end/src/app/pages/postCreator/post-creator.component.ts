@@ -4,7 +4,7 @@ import { PostCreatorService } from '../../services/postCreator/post-creator.serv
 import { ToastComponent } from '../../components/toast/toast/toast.component';
 import { Subscription } from 'rxjs';
 import { HttpResponse } from '@angular/common/http';
-import { CreatePostResponse } from '../../services/postCreator/createPostResponse';
+import { CreatePostDataModel } from '../../services/postCreator/createPostDataModel';
 import { AuthService } from '../../services/user/auth/authService/auth.service';
 
 @Component({
@@ -71,7 +71,7 @@ export default class PostCreatorComponent implements OnDestroy {
         const createPostSub = this.postCreatorService
           .createPost(formData)
           .subscribe({
-            next: (response: HttpResponse<CreatePostResponse>) => {
+            next: (response: HttpResponse<CreatePostDataModel>) => {
               if (response.status === 200) {
                 const postResponse = response.body;
                 if (postResponse) {
