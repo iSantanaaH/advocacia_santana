@@ -1,0 +1,67 @@
+.MainContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background: url("/assets/Images/justica3.jpg") no-repeat center;
+  background-size: cover;
+}
+
+.ContentManager {
+  display: grid;
+  grid-template-columns: 12rem 1fr;
+  background: rgba(9, 19, 20, 0.8);
+  filter: drop-shadow(0.1rem 0.1rem 0.1rem var(--blackFull));
+  padding: 1rem;
+  border-radius: 0.3rem;
+  gap: 1rem;
+  width: 50%;
+  padding: 1rem;
+}
+
+.Menu {
+  height: 40rem;
+  /* padding: 1.3rem; */
+  border-radius: 1rem;
+  background: var(--whiteFull);
+}
+
+.Menu h1 {
+  font-size: 1.5rem;
+  font-weight: 600;
+  text-align: center;
+  margin-top: 1rem;
+  color: var(--gray800);
+  transition: color 0.3s ease-out;
+}
+
+.Menu h1:hover {
+  color: var(--gray600);
+  cursor: pointer;
+}
+
+.Navegation {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  gap: 2rem;
+  margin-top: 3.5rem;
+}
+
+.Navegation a {
+  color: var(--blackFull);
+  transition: border 0.5s ease-out;
+  padding: 0.5rem;
+  width: 100%;
+  text-align: center;
+  border-bottom: 0.1rem solid transparent;
+}
+
+.Navegation a:hover {
+  border-bottom-color: var(--blue150);
+}
+
+.Navegation .Dashboard {
+  border-radius: 1rem;
+  background: blue;
+}

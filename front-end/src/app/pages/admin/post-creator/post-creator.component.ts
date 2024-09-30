@@ -1,11 +1,11 @@
 import { Component, OnDestroy, ViewChild } from '@angular/core';
 import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
-import { PostCreatorService } from '../../services/postCreator/post-creator.service';
-import { ToastComponent } from '../../components/toast/toast/toast.component';
+import { PostCreatorService } from '../../../services/postCreator/post-creator.service';
+import { ToastComponent } from '../../../components/toast/toast/toast.component';
 import { Subscription } from 'rxjs';
 import { HttpResponse } from '@angular/common/http';
-import { CreatePostDataModel } from '../../services/postCreator/createPostDataModel';
-import { AuthService } from '../../services/user/auth/authService/auth.service';
+import { CreatePostDataModel } from '../../../services/postCreator/createPostDataModel';
+import { AuthService } from '../../../services/user/auth/authService/auth.service';
 
 @Component({
   selector: 'app-post-creator',
