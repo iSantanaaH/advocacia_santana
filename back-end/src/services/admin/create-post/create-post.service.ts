@@ -32,7 +32,6 @@ export class CreatePostService {
         },
       },
     });
-    console.log(`Post criado com sucesso! ${JSON.stringify(post)}`);
     return post;
   }
 }
