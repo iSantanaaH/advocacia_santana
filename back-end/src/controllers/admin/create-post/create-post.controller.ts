@@ -40,7 +40,6 @@ export class CreatePostController {
   ) {
     const userId = Number(postData.userId);
     postData.userId = userId;
-    console.log(postData);
     if (
       !postData.title ||
       !postData.description ||
@@ -55,7 +54,7 @@ export class CreatePostController {
           imageName,
           imagePath,
         );
-        return postResult;
+        return { message: 'Post criado com sucesso!' };
       } catch (error) {
         throw new BadRequestException(error.message);
       }
