@@ -73,10 +73,25 @@ export default class PostCreatorComponent implements OnDestroy {
           .subscribe({
             next: (response: HttpResponse<CreatePostResponse>) => {
               if (response.status === 200) {
-                const responseBody = response.body;
+                const postResponse = response.body;
+                if (postResponse) {
+                  this.TOAST_MESSAGE = postResponse.message;
+                  this.toastComponent.message = this.TOAST_MESSAGE;
+                  this.toastComponent.showToast();
+                }
+                this.createPostForm.reset();
               }
             },
-            error: (error) => {},
+            error: (error) => {
+              if (error.status === 400) {
+                const errorMessage =
+                  error.error.message ||
+                  'Erro desconhecido. Por favor, tente novamente';
+                const TOAST_MESSAGE = errorMessage;
+                this.toastComponent.message = TOAST_MESSAGE;
+                this.toastComponent.showToast();
+              }
+            },
           });
         this.subscription.add(createPostSub);
       } else {
