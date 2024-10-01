@@ -29,7 +29,22 @@ export const routes: Routes = [
     path: 'admin/manage-post',
     loadComponent: () =>
       import('./pages/admin/manage-post/manage-post.component'),
-    pathMatch: 'full',
+    children: [
+      {
+        path: 'published',
+        loadComponent: () =>
+          import('./pages/admin/published/published.component').then(
+            (c) => c.PublishedComponent
+          ),
+      },
+      {
+        path: 'unpublished',
+        loadComponent: () =>
+          import('./pages/admin/unpublished/unpublished.component').then(
+            (c) => c.UnpublishedComponent
+          ),
+      },
+    ],
     canActivate: [createPostGuard],
   },
   {
