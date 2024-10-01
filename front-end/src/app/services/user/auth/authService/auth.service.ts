@@ -10,12 +10,48 @@ export class AuthService {
   private userName: string | null = null;
 
   constructor(private cookieService: CookieService) {
-    const token = this.getToken();
+    this.initializeUser();
+  }
+
+  private async initializeUser() {
+    const token = await this.getToken();
     if (token) {
       const decoded = this.decodedToken(token);
       if (decoded && decoded.user) {
         this.userName = decoded.user.name;
       }
+    }
+  }
+
+  public async getUserIdToken(): Promise<string | null> {
+    try {
+      const token = await this.getToken();
+      if (token) {
+        const decoded = this.decodedToken(token);
+        const userId = decoded.user.id;
+        console.log(userId);
+        return userId;
+      }
+      return null;
+    } catch (error: any) {
+      console.error(error.message);
+      return null;
+    }
+  }
+
+  public async getUserRole(): Promise<number | null> {
+    try {
+      const token = await this.getToken();
+      if (token) {
+        const decoded = this.decodedToken(token);
+        const userRoleId = decoded.user.roleId;
+        console.log(userRoleId);
+        return userRoleId;
+      }
+      return null;
+    } catch (error: any) {
+      console.error(error.message);
+      return null;
     }
   }
 
@@ -45,7 +81,7 @@ export class AuthService {
     return this.userName;
   }
 
-  public getToken(): string | null {
+  public async getToken(): Promise<string | null> {
     if (typeof window !== 'undefined') {
       const cookies = document.cookie.split(';');
       for (let i = 0; i < cookies.length; i++) {
