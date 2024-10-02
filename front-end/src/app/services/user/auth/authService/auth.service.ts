@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
-import { CookieService } from '../cookie/cookie.service';
 import { jwtDecode } from 'jwt-decode';
+import { CookieService } from 'ngx-cookie-service';
 
 @Injectable({
   providedIn: 'root',
@@ -13,8 +13,8 @@ export class AuthService {
     this.initializeUser();
   }
 
-  private async initializeUser() {
-    const token = await this.getToken();
+  private initializeUser(): void {
+    const token = this.getToken();
     if (token) {
       const decoded = this.decodedToken(token);
       if (decoded && decoded.user) {
@@ -23,13 +23,14 @@ export class AuthService {
     }
   }
 
-  public async getUserIdToken(): Promise<string | null> {
+  public getUserIdToken(): number | null {
     try {
-      const token = await this.getToken();
-      if (token) {
+      const token = this.getToken();
+      const validToken = this.verifyExpiresToken();
+
+      if (token && validToken) {
         const decoded = this.decodedToken(token);
         const userId = decoded.user.id;
-        console.log(userId);
         return userId;
       }
       return null;
@@ -39,13 +40,14 @@ export class AuthService {
     }
   }
 
-  public async getUserRole(): Promise<number | null> {
+  public getUserRole(): number | null {
     try {
-      const token = await this.getToken();
-      if (token) {
+      const token = this.getToken();
+      const validToken = this.verifyExpiresToken();
+
+      if (token && validToken) {
         const decoded = this.decodedToken(token);
         const userRoleId = decoded.user.roleId;
-        console.log(userRoleId);
         return userRoleId;
       }
       return null;
@@ -55,42 +57,75 @@ export class AuthService {
     }
   }
 
-  public isLoggedIn(): boolean {
-    const token = this.getToken();
-    return !!token;
+  public getUserName(): string | null {
+    return this.userName;
   }
 
-  public login(token: string, userName: string): void {
-    this.cookieService.setCookie(this.COOKIE_NAME, token);
-    this.userName = userName;
+  public getToken(): string | null {
+    const authToken = this.cookieService.get(this.COOKIE_NAME);
+    return authToken;
   }
 
   public decodedToken(token: string): any {
     return jwtDecode(token);
   }
 
+  public verifyExpiresToken(): boolean {
+    const token = this.getToken();
+
+    if (token) {
+      const decodedToken = this.decodedToken(token);
+      if (!decodedToken) return false;
+
+      const currentTime = Math.floor(Date.now() / 1000);
+      return decodedToken.exp > currentTime;
+    }
+    return false;
+  }
+
+  public setAuthTokenInCookies(token: string): boolean {
+    try {
+      if (token) {
+        const expires = new Date(Date.now() + 60 * 60 * 1000);
+        this.cookieService.set(this.COOKIE_NAME, token, {
+          expires,
+          path: '/',
+          secure: true,
+          sameSite: 'Strict',
+        });
+        return true;
+      }
+      return false;
+    } catch (error: any) {
+      console.error(error.message);
+      return false;
+    }
+  }
+
+  public isLoggedIn(): boolean {
+    const validToken: boolean = this.verifyExpiresToken();
+    return validToken;
+  }
+
+  public authUser(token: string, userName: string): boolean {
+    try {
+      const cookieSet = this.setAuthTokenInCookies(token);
+
+      if (cookieSet) {
+        this.userName = userName;
+        return true;
+      }
+      return false;
+    } catch (error: any) {
+      console.error(error.message);
+      return false;
+    }
+  }
+
   public logout(): void {
-    this.cookieService.deleteCookie(this.COOKIE_NAME);
-    this.userName = null;
-    if (typeof window !== 'undefined') {
+    this.cookieService.delete(this.COOKIE_NAME);
+    if (typeof window !== undefined || typeof document !== 'undefined') {
       window.location.reload();
     }
-  }
-
-  public getUserName(): string | null {
-    return this.userName;
-  }
-
-  public async getToken(): Promise<string | null> {
-    if (typeof window !== 'undefined') {
-      const cookies = document.cookie.split(';');
-      for (let i = 0; i < cookies.length; i++) {
-        const cookie = cookies[i].trim();
-        if (cookie.startsWith(`${this.COOKIE_NAME}`)) {
-          return cookie.split('=')[1];
-        }
-      }
-    }
-    return null;
   }
 }
