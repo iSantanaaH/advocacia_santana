@@ -1,4 +1,10 @@
-import { Component, ElementRef, OnDestroy, ViewChild } from '@angular/core';
+import {
+  Component,
+  ElementRef,
+  OnDestroy,
+  OnInit,
+  ViewChild,
+} from '@angular/core';
 import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
 import { ToastComponent } from '../../components/toast/toast/toast.component';
 import { NgIf } from '@angular/common';
@@ -117,7 +123,7 @@ export default class LoginComponent implements OnDestroy {
             const token = responseBody!.token;
             const decodedToken = this.authService.decodedToken(token);
             const userName = decodedToken.user.name;
-            this.authService.login(token, userName);
+            this.authService.authUser(token, userName);
 
             this.TOAST_MESSAGE = `Bem vindo, ${userName}`;
             this.toastComponent.message = this.TOAST_MESSAGE;
