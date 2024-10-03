@@ -50,6 +50,7 @@ img {
 }
 
 .navegation-auth li a,
+.navegation-auth li,
 .datePost span,
 .copyRight p,
 .aboutPost p {
@@ -58,15 +59,26 @@ img {
   cursor: pointer;
 }
 
-.navegation-auth .doorImage {
+.navegation-auth .userDetails {
+  display: flex;
+  align-items: center;
+}
+
+.userDetails .showUserName {
+  width: 9rem;
+}
+
+.userDetails .navegation-auth .doorImage {
   width: 1.5rem;
 }
 
 .navegation-auth .userImage {
-  width: 2rem;
+  margin-top: 0.5rem;
+  width: 2.3rem;
 }
 
 .navegation-auth li a:hover,
+.navegation-auth li:hover,
 .datePost span:hover,
 .copyRight p:hover,
 .latestPost .titleLatest h1:hover,

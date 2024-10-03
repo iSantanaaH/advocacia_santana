@@ -41,15 +41,22 @@
     <nav class="navegation-auth">
       <ul>
         @if(authService.isLoggedIn()) {
-        <li>
-          <img
-            src="/assets/Images/avatar3.png"
-            [title]="authService.getUserName()"
-            alt="user"
-            class="userImage"
-          />
-        </li>
-        <li></li>
+        <li><a href="/admin/createPost">Postar</a></li>
+        <li><a href="/admin/manage-post">Gerencia</a></li>
+        <li><a href="/login">Login</a></li>
+        <div class="userDetails">
+          <li>
+            <img
+              src="/assets/Images/avatar3.png"
+              alt="user"
+              class="userImage"
+            />
+          </li>
+          <li>
+            <p class="showUserName">{{ authService.getUserName() }}</p>
+          </li>
+        </div>
+
         <li>
           <img
             (click)="authService.logout()"
