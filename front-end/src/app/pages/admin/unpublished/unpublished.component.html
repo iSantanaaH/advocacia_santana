@@ -1,2 +1,17 @@
 <h1 style="background-color: aqua">unpublished works!</h1>
 <h2>teste</h2>
+<button (click)="GetPosts()">Chamar posts</button>
+
+<ul>
+  <li *ngFor="let post of posts">
+    <h3>{{ post.title }}</h3>
+    <p>{{ post.description }}</p>
+    <img [src]="post.image_path" alt="{{ post.title }}" width="200px" />
+    <p>
+      <strong>Author ID: {{ post.authorId }}</strong>
+    </p>
+    <p>
+      <strong>Criado em: {{ post.created_at }}</strong>
+    </p>
+  </li>
+</ul>
