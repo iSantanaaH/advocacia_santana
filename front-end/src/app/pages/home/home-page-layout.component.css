@@ -68,13 +68,12 @@ img {
   width: 9rem;
 }
 
-.userDetails .navegation-auth .doorImage {
-  width: 1.5rem;
+.navegation-auth .doorImage {
+  width: 1.6rem;
 }
 
 .navegation-auth .userImage {
-  margin-top: 0.5rem;
-  width: 2.3rem;
+  width: 2.4rem;
 }
 
 .navegation-auth li a:hover,
