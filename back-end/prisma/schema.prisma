@@ -35,7 +35,6 @@ model Post {
   title       String    @unique @db.VarChar(120)
   description String
   published   Boolean   @default(false)
-  comments    String?
   authorId    Int
   created_at  DateTime  @default(now())
   updated_at  DateTime? @updatedAt
