@@ -1,10 +1,10 @@
 import { Component, OnDestroy, ViewChild } from '@angular/core';
 import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
-import { PostCreatorService } from '../../../services/postCreator/post-creator.service';
+import { PostCreatorService } from '../../../services/admin/postCreator/post-creator.service';
 import { ToastComponent } from '../../../components/toast/toast/toast.component';
 import { Subscription } from 'rxjs';
 import { HttpResponse } from '@angular/common/http';
-import { CreatePostDataModel } from '../../../services/postCreator/createPostDataModel';
+import { CreatePostDataModel } from '../../../services/admin/postCreator/createPostDataModel';
 import { AuthService } from '../../../services/user/auth/authService/auth.service';
 
 @Component({
@@ -43,26 +43,18 @@ export default class PostCreatorComponent implements OnDestroy {
     }
   }
 
-  getUserIdToken() {
-    const token = this.authService.getToken();
-    if (token) {
-      const decodedToken = this.authService.decodedToken(token);
-      const userId = decodedToken.user.id;
-      return userId;
-    }
-  }
-
   onSubmit() {
     if (this.createPostForm.valid) {
       const title = this.createPostForm.get('title')?.value ?? '';
       const description = this.createPostForm.get('description')?.value ?? '';
       const image = this.createPostForm.get('image')?.value?.[0];
+      const userId = this.authService.getUserIdToken()?.toString();
 
-      if (image) {
+      if (title && description && image && userId) {
         const formData = new FormData();
         formData.append('title', title);
         formData.append('description', description);
-        formData.append('userId', this.getUserIdToken());
+        formData.append('userId', userId);
 
         if (this.SELECTED_FILE) {
           formData.append('image', this.SELECTED_FILE);
