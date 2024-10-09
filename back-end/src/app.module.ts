@@ -9,6 +9,10 @@ import { PrismaService } from './services/prisma/prisma.service';
 import { PrismaModule } from './services/prisma/prisma.module';
 import { CreatePostController } from './controllers/admin/create-post/create-post.controller';
 import { CreatePostService } from './services/admin/create-post/create-post.service';
+import { PublishedPostsController } from './controllers/admin/manage-post/published-posts/published-posts.controller';
+import { UnpublishedPostsController } from './controllers/admin/manage-post/unpublished-posts/unpublished-posts.controller';
+import { UnpublishedPostsService } from './services/admin/manage-post/unpublished-posts/unpublished-posts.service';
+import { PublishedPostsService } from './services/admin/manage-post/published-posts/published-posts.service';
 
 @Module({
   imports: [PrismaModule],
@@ -17,6 +21,8 @@ import { CreatePostService } from './services/admin/create-post/create-post.serv
     RegisterController,
     LoginController,
     CreatePostController,
+    PublishedPostsController,
+    UnpublishedPostsController,
   ],
   providers: [
     AppService,
@@ -24,6 +30,8 @@ import { CreatePostService } from './services/admin/create-post/create-post.serv
     LoginService,
     PrismaService,
     CreatePostService,
+    UnpublishedPostsService,
+    PublishedPostsService,
   ],
 })
 export class AppModule {}
