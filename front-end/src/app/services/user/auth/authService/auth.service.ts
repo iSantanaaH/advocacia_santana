@@ -26,37 +26,27 @@ export class AuthService {
   }
 
   public getUserIdToken(): number | null {
-    try {
-      const token = this.getToken();
-      const validToken = this.verifyExpiresToken();
+    const token = this.getToken();
+    const validToken = this.verifyExpiresToken();
 
-      if (token && validToken) {
-        const decoded = this.decodedToken(token);
-        const userId = decoded.user.id;
-        return userId;
-      }
-      return null;
-    } catch (error: any) {
-      console.error(error.message);
-      return null;
+    if (token && validToken) {
+      const decoded = this.decodedToken(token);
+      const userId = decoded.user.id;
+      return userId;
     }
+    return null;
   }
 
   public getUserRole(): number | null {
-    try {
-      const token = this.getToken();
-      const validToken = this.verifyExpiresToken();
+    const token = this.getToken();
+    const validToken = this.verifyExpiresToken();
 
-      if (token && validToken) {
-        const decoded = this.decodedToken(token);
-        const userRoleId = decoded.user.roleId;
-        return userRoleId;
-      }
-      return null;
-    } catch (error: any) {
-      console.error(error.message);
-      return null;
+    if (token && validToken) {
+      const decoded = this.decodedToken(token);
+      const userRoleId = decoded.user.roleId;
+      return userRoleId;
     }
+    return null;
   }
 
   public getUserName(): string | null {
@@ -130,6 +120,7 @@ export class AuthService {
 
   public logout(): void {
     this.cookieService.delete(this.COOKIE_NAME);
+    this.userName = null;
     if (typeof window !== undefined || typeof document !== 'undefined') {
       window.location.reload();
     }
