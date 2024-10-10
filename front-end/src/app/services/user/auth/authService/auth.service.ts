@@ -60,7 +60,11 @@ export class AuthService {
   }
 
   public getUserName(): string | null {
-    return this.userName;
+    const fullName = this.userName;
+    const nameParts = fullName?.split(' ');
+    const firstName = nameParts![0];
+    const lastName = nameParts![nameParts!.length - 1];
+    return `${firstName} ${lastName}`;
   }
 
   private getToken(): string | null {
