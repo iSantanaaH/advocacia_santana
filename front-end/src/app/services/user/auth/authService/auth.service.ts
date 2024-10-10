@@ -15,7 +15,9 @@ export class AuthService {
 
   private initializeUser(): void {
     const token = this.getToken();
-    if (token) {
+    const validToken = this.verifyExpiresToken();
+
+    if (token && validToken) {
       const decoded = this.decodedToken(token);
       if (decoded && decoded.user) {
         this.userName = decoded.user.name;
@@ -61,9 +63,9 @@ export class AuthService {
     return this.userName;
   }
 
-  public getToken(): string | null {
-    const authToken = this.cookieService.get(this.COOKIE_NAME);
-    return authToken;
+  private getToken(): string | null {
+    const token = this.cookieService.get(this.COOKIE_NAME);
+    return token;
   }
 
   public decodedToken(token: string): any {
