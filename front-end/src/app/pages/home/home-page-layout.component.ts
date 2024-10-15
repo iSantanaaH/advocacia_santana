@@ -10,7 +10,9 @@ import { AuthService } from '../../services/user/auth/authService/auth.service';
   styleUrls: ['./home-page-layout.component.css', './home-page-responsive.css'],
 })
 export default class HomePageLayoutComponent {
-  constructor(public authService: AuthService) {}
+  constructor(public authService: AuthService) {
+    authService.getUserRole();
+  }
   @ViewChild('menuHidden') menuHidden!: ElementRef;
   public showMenu: boolean = false;
 
