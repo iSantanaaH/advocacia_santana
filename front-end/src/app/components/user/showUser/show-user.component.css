@@ -1,0 +1,9 @@
+.main-container {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.main-container img {
+  width: 2.4rem;
+}
