@@ -40,9 +40,12 @@
   <div class="content-nav">
     <nav class="navegation-auth">
       <ul>
-        @if(authService.isLoggedIn()) {
+        @if(authService.isLoggedIn()) { @if(authService.userRoleName ===
+        'ADMINISTRADOR') {
         <li><a href="/admin/createPost">Postar</a></li>
         <li><a href="/admin/manage-post">Gerencia</a></li>
+        }
+
         <div class="userDetails">
           <li>
             <img
