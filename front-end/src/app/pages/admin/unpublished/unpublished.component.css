@@ -1,0 +1,20 @@
+.section-posts .list-posts {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.section-posts li {
+  list-style: none;
+}
+
+.section-posts li img {
+  width: 7rem;
+  border-radius: 0.5rem;
+  filter: drop-shadow(0.1rem 0.1rem 0.1rem var(--blackFull));
+}
+
+.list-posts article {
+  display: flex;
+  gap: 0.8rem;
+}
