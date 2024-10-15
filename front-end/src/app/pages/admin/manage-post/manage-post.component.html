@@ -15,11 +15,23 @@
         </div>
       </div>
     </article>
-    <article class="Dashboard">
+    <article class="Posts">
       <div>
-        <h1>teste</h1>
+        <label>
+          <input class="Search" type="text" placeholder="procure um post" />
+          <img
+            class="MagnifyingGlass"
+            src="/assets/Images/search.png"
+            alt="lupa"
+          />
+        </label>
+
+        <div>
+          <app-show-user />
+        </div>
       </div>
-      <div>
+
+      <div class="RouterOutlet">
         <router-outlet />
       </div>
     </article>
