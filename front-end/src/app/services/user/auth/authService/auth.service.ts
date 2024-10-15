@@ -8,6 +8,7 @@ import { CookieService } from 'ngx-cookie-service';
 export class AuthService {
   private readonly COOKIE_NAME = 'a7fK9Lz0jH';
   private userName: string | null = null;
+  public userRoleName: string | null = null;
 
   constructor(private cookieService: CookieService) {
     this.initializeUser();
@@ -44,6 +45,17 @@ export class AuthService {
     if (token && validToken) {
       const decoded = this.decodedToken(token);
       const userRoleId = decoded.user.roleId;
+
+      switch (userRoleId) {
+        case 1:
+          this.userRoleName = 'ADMINISTRADOR';
+          break;
+        case 2:
+          this.userRoleName = 'USUÁRIO';
+          break;
+        default:
+          this.userRoleName = null;
+      }
       return userRoleId;
     }
     return null;
