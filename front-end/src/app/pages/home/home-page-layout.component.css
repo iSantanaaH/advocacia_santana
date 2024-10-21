@@ -85,7 +85,6 @@ img {
 .footer .flexContainer h1:hover {
   color: var(--gray600);
   cursor: pointer;
-  transition: color 0.3s ease-out;
 }
 
 .attorneyInfo img {
