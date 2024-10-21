@@ -14,7 +14,6 @@ export class UnpublishedPostsController {
     try {
       const getPostResult =
         await this.unPublishedPostsService.searchUnpublishedPosts();
-      console.log(getPostResult);
       return getPostResult;
     } catch (error) {
       throw new BadRequestException(error.message);
