@@ -1,45 +1,59 @@
-<main class="MainPostCreator">
-  <div class="ToastContainer">
-    <app-toast [message]="TOAST_MESSAGE" />
-  </div>
-  <form (ngSubmit)="onSubmit()" [formGroup]="createPostForm" class="FormPost">
-    <section class="RedirectAndTitle">
-      <div>
-        <a title="Página inicial" href="/" class="redirectHome">
-          <img src="/assets/Images/home.png" alt="" />
-        </a>
-      </div>
-      <div>
-        <h1>Criar Post</h1>
-      </div>
-    </section>
-
-    <div>
-      <label>
-        Título do post
-        <textarea formControlName="title" name="" class="title"></textarea>
-      </label>
+<section class="post-creator">
+  <header class="header">
+    <div class="logo">
+      <h3><a href="/">Amanda Sthepany</a></h3>
     </div>
-    <div>
-      <label
-        >Descrição do post
-        <textarea formControlName="description" name="" class="description">
-        </textarea>
-      </label>
+    <div class="links">
+      <ul>
+        <li><a href="admin/manage-post">Gerenciar Post</a></li>
+        <li><a href="/">Página inicial</a></li>
+      </ul>
     </div>
+  </header>
 
-    <section class="FileAndSubmit">
+  <main class="main">
+    <div class="ToastContainer">
+      <app-toast [message]="TOAST_MESSAGE" />
+    </div>
+    <form (ngSubmit)="onSubmit()" [formGroup]="createPostForm" class="FormPost">
+      <section class="RedirectAndTitle">
+        <div class="Icons">
+          <a title="Página inicial" href="/" class="redirectHome">
+            <img src="/assets/Images/home.png" alt="Home" />
+          </a>
+        </div>
+        <div>
+          <h1>Criar Post</h1>
+        </div>
+      </section>
+
+      <div>
+        <label>
+          Título do post
+          <textarea formControlName="title" name="" class="title"></textarea>
+        </label>
+      </div>
       <div>
         <label
-          ><input
-            formControlName="image"
-            type="file"
-            (change)="onFileSelected($event)"
-        /></label>
+          >Descrição do post
+          <textarea formControlName="description" name="" class="description">
+          </textarea>
+        </label>
       </div>
-      <div>
-        <input type="submit" value="Criar post" />
-      </div>
-    </section>
-  </form>
-</main>
+
+      <section class="FileAndSubmit">
+        <div>
+          <label
+            ><input
+              formControlName="image"
+              type="file"
+              (change)="onFileSelected($event)"
+          /></label>
+        </div>
+        <div>
+          <input type="submit" value="Criar post" />
+        </div>
+      </section>
+    </form>
+  </main>
+</section>
