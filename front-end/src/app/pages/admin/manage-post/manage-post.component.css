@@ -1,3 +1,7 @@
+ul li {
+  list-style: none;
+}
+
 .MainContainer {
   display: flex;
   justify-content: center;
@@ -39,11 +43,11 @@
   cursor: pointer;
 }
 
-.Navegation {
+.Navegation ul {
   display: flex;
   align-items: center;
   flex-direction: column;
-  gap: 2rem;
+  gap: 1.5rem;
   margin-top: 3.5rem;
 }
 
