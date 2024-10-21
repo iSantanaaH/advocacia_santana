@@ -31,6 +31,13 @@ export const routes: Routes = [
       import('./pages/admin/manage-post/manage-post.component'),
     children: [
       {
+        path: '',
+        loadComponent: () =>
+          import('./pages/admin/unpublished/unpublished.component').then(
+            (c) => c.UnpublishedComponent
+          ),
+      },
+      {
         path: 'published',
         loadComponent: () =>
           import('./pages/admin/published/published.component').then(
