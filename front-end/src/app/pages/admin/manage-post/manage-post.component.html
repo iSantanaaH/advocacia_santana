@@ -1,36 +1,42 @@
-<main class="MainContainer">
-  <section class="ContentManager">
-    <article class="Menu">
-      <h1>Admin</h1>
-
-      <div class="Navegation">
-        <ul>
-          <li><a href="/">Home</a></li>
-          <li><a href="admin/manage-post/published"> Publicados</a></li>
-          <li>
-            <a href="admin/manage-post/unpublished"> Não publicados</a>
-          </li>
-          <li><a href="/admin/createPost">Postar</a></li>
-        </ul>
-      </div>
+<main class="main-container">
+  <section class="content-manager">
+    <article class="menu">
+      <header class="header">
+        <h1>Gerenciar Post</h1>
+        <img
+          src="/assets/Images/menu-hamburguer.svg"
+          alt="Menu hambúrguer"
+          class="burguer"
+        />
+        <div class="navegation">
+          <ul>
+            <li><a href="/">Home</a></li>
+            <li><a href="admin/manage-post/published">Publicados</a></li>
+            <li>
+              <a href="admin/manage-post/unpublished">Não publicados</a>
+            </li>
+            <li><a href="/admin/createPost">Postar</a></li>
+          </ul>
+        </div>
+      </header>
     </article>
-    <article class="Posts">
+    <article class="posts">
       <div>
         <label>
-          <input class="Search" type="text" placeholder="procure um post" />
+          <input class="search" type="text" placeholder="procure um post" />
           <img
-            class="MagnifyingGlass"
+            class="magnifying-glass"
             src="/assets/Images/search.png"
             alt="lupa"
           />
         </label>
 
-        <div>
+        <div class="show-user">
           <app-show-user />
         </div>
       </div>
 
-      <div class="RouterOutlet">
+      <div class="router-outlet">
         <router-outlet />
       </div>
     </article>
