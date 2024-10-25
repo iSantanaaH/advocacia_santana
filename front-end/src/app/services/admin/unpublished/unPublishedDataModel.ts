@@ -3,7 +3,9 @@ export interface UnPublishedDataModel {
   title: string;
   description: string;
   published: string;
-  authorId: number;
+  author: {
+    name: string;
+  };
   created_at: Date;
   updated_at: Date;
   deleted_at: Date;
