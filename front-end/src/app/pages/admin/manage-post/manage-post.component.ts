@@ -7,6 +7,9 @@ import { ShowUserComponent } from '../../../components/user/showUser/show-user.c
   standalone: true,
   imports: [RouterOutlet, ShowUserComponent],
   templateUrl: './manage-post.component.html',
-  styleUrl: './manage-post.component.css',
+  styleUrls: [
+    './manage-post.component.css',
+    './manage-post-responsive.component.css',
+  ],
 })
 export default class ManagePostComponent {}
