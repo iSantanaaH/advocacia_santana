@@ -32,11 +32,7 @@ export class UnpublishedComponent implements OnDestroy, OnInit {
           try {
             const responseBody = httpResponse.body;
             this.posts = responseBody || [];
-          } catch (error: any) {
-            const errorMessage = error.message || 'Nenhum post encontrado';
-            this.toastComponent.message = errorMessage;
-            this.toastComponent.showToast();
-          }
+          } catch (error) {}
         }
       },
     });
