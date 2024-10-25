@@ -1,4 +1,4 @@
-import { BadRequestException, Injectable, Logger } from '@nestjs/common';
+import { BadRequestException, Injectable } from '@nestjs/common';
 import { Post } from '@prisma/client';
 import { PrismaService } from 'src/services/prisma/prisma.service';
 
@@ -11,6 +11,13 @@ export class UnpublishedPostsService {
       const posts = await this.prisma.post.findMany({
         where: {
           published: false,
+        },
+        include: {
+          author: {
+            select: {
+              name: true,
+            },
+          },
         },
       });
 
