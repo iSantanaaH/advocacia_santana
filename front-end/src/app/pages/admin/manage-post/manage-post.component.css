@@ -1,127 +1,18 @@
-ul li {
-  list-style: none;
-}
-
-.MainContainer {
-  display: flex;
-  justify-content: center;
-  align-items: center;
+.main-container {
   min-height: 100vh;
-  background: url("/assets/Images/justica3.jpg") no-repeat center;
+  /* background: url("/assets/Images/justica3.jpg") no-repeat center; */
   background-size: cover;
 }
 
-.ContentManager {
-  display: grid;
-  grid-template-columns: 12rem 1fr;
-  background: rgba(235, 235, 235);
-  filter: drop-shadow(0.1rem 0.1rem 0.1rem var(--blackFull));
-  padding: 1rem;
-  border-radius: 0.3rem;
-  gap: 1rem;
-  width: 50%;
-  padding: 1rem;
+.header img:hover {
+  cursor: pointer;
 }
 
-.Menu {
-  height: 40rem;
-  border-radius: 1rem;
-  background: var(--whiteFull);
+.header h1 {
+  transition: color 0.3s ease-in;
 }
 
-.Menu h1 {
-  font-size: 1.5rem;
-  font-weight: 600;
-  text-align: center;
-  margin-top: 1rem;
-  color: var(--gray800);
-  transition: color 0.3s ease-out;
-}
-
-.Menu h1:hover {
+.header h1:hover {
+  cursor: pointer;
   color: var(--gray600);
-  cursor: pointer;
-}
-
-.Navegation ul {
-  display: flex;
-  align-items: center;
-  flex-direction: column;
-  gap: 1.5rem;
-  margin-top: 3.5rem;
-}
-
-.Navegation a {
-  color: var(--blackFull);
-  transition: border 0.5s ease-out;
-  padding: 0.5rem;
-  width: 100%;
-  text-align: center;
-  border-bottom: 0.1rem solid transparent;
-}
-
-.Navegation a:hover {
-  border-bottom-color: var(--blue150);
-}
-
-.ContentManager .Posts {
-  border-radius: 1rem;
-}
-
-.Posts {
-  display: flex;
-  flex-direction: column;
-  border-radius: 1rem;
-}
-
-.Posts div:nth-child(1) {
-  display: flex;
-  justify-content: space-between;
-  background: var(--whiteFull);
-  border-radius: 1rem;
-  padding: 0.5rem 0.5rem 0.5rem 0.5rem;
-}
-
-.Posts div:nth-child(1) label {
-  position: relative;
-}
-
-.Posts .MagnifyingGlass {
-  position: absolute;
-  top: 0.55rem;
-  right: 0.5rem;
-  width: 1.3rem;
-}
-
-.Posts .MagnifyingGlass:hover {
-  cursor: pointer;
-}
-
-.Posts .Search {
-  padding: 0.5rem 2.5rem 0.5rem 0.5rem;
-  font-size: 1rem;
-  width: 14.5rem;
-  border-radius: 0.8rem;
-  border: 0.1rem solid transparent;
-  box-shadow: 0 0.1rem 0.125rem 0 rgba(0, 0, 0, 0.05);
-  transition: all 0.3s ease-out;
-  position: relative;
-}
-
-.Posts .Search:focus {
-  outline: none;
-  border-color: var(--blue100);
-  border-width: 0.1rem solid;
-  box-shadow: 0 0 0 0.188rem rgba(66, 153, 225, 0.5);
-}
-
-.Posts .Search::placeholder {
-  color: var(--blueIce);
-}
-
-.Posts .RouterOutlet {
-  padding: 1rem;
-  margin-top: 1rem;
-  background: var(--whiteFull);
-  border-radius: 1rem;
 }
