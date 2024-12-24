@@ -28,13 +28,14 @@ CREATE TABLE "Role" (
 CREATE TABLE "Post" (
     "id" SERIAL NOT NULL,
     "title" VARCHAR(120) NOT NULL,
-    "content" TEXT NOT NULL,
+    "description" TEXT NOT NULL,
     "published" BOOLEAN NOT NULL DEFAULT false,
-    "comments" TEXT,
     "authorId" INTEGER NOT NULL,
     "created_at" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
     "updated_at" TIMESTAMP(3),
     "deleted_at" TIMESTAMP(3),
+    "image_name" TEXT NOT NULL,
+    "image_path" VARCHAR(255) NOT NULL,
 
     CONSTRAINT "Post_pkey" PRIMARY KEY ("id")
 );
