@@ -733,3 +733,220 @@
     font-size: 1.1rem;
   }
 }
+
+@media only screen and (min-width: 1025px) {
+  .header {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    padding: 0.5rem;
+  }
+
+  .containerInput {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .navegation-auth ul {
+    display: flex;
+    align-items: center;
+  }
+
+  .search input {
+    padding: 0.5rem;
+    border-radius: 0.8rem;
+    width: 20rem;
+    font-size: 1rem;
+  }
+
+  .navegation-auth ul {
+    display: flex;
+    gap: 0.7rem;
+  }
+
+  Main {
+    display: flex;
+    flex-direction: column;
+    gap: 3rem;
+    min-height: 100vh;
+  }
+
+  .attorneyInfo {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1rem;
+    gap: 3rem;
+    z-index: 1;
+    position: relative;
+    min-height: 45rem;
+  }
+
+  .attorneyInfo::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: url("../../../assets/Images/justica3.jpg") no-repeat bottom;
+    background-size: cover;
+    z-index: -1;
+    opacity: 0.6;
+  }
+
+  .attorneyInfo img {
+    width: 35rem;
+    box-sizing: border-box;
+    aspect-ratio: 1;
+    object-fit: cover;
+    border-radius: 0.2rem;
+    filter: drop-shadow(0.1rem 0.1rem 0.1rem var(--blackFull));
+  }
+
+  .attorneyInfo .aboutAttorney {
+    width: 35rem;
+  }
+
+  .aboutAttorney div:nth-child(1) {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .attorneyInfo .aboutAttorney h1 {
+    font-size: 2.1rem;
+  }
+
+  .aboutAttorney p {
+    line-height: 1.4rem;
+  }
+
+  .attorneyInfo .aboutAttorney p span {
+    opacity: 0.4;
+  }
+
+  .aboutAttorney a {
+    padding: 0.7rem;
+    border-radius: 0.3rem;
+  }
+
+  .attorneyInfo .redirectToAbout {
+    margin-top: 1rem;
+  }
+
+  .latestPost .titleLatest {
+    display: flex;
+    justify-content: center;
+  }
+
+  .latestPost .titleLatest h1 {
+    font-size: 2.25rem;
+    margin-bottom: 3rem;
+    cursor: pointer;
+  }
+
+  .containerPost {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(20rem, 1fr));
+    grid-template-rows: auto;
+    align-items: center;
+    margin: 0 auto;
+    width: calc(100% - 10rem);
+    padding-bottom: 6rem;
+    gap: 3.5rem;
+  }
+
+  .containerPost.visible {
+    animation: animationLazy 1.5s forwards;
+  }
+
+  .containerPost .post {
+    width: 100%;
+    max-width: 26rem;
+    height: auto;
+    padding-bottom: 4rem;
+  }
+
+  .post .imagePost {
+    width: 100%;
+    height: auto;
+    aspect-ratio: 1;
+    transition: transform 0.3s ease-out;
+  }
+
+  .post .imagePost:hover {
+    transform: scale(1.03);
+  }
+
+  .datePost {
+    display: flex;
+    gap: 0.3rem;
+    margin-top: 0.5rem;
+  }
+
+  .aboutPost h1 {
+    font-size: 1.6rem;
+    font-weight: bold;
+    margin: 0.5rem 0 0.5rem 0;
+  }
+
+  .flexContainer {
+    display: flex;
+    padding: 1rem;
+  }
+
+  .flexContainer div:nth-child(1) h1 {
+    font-size: 1.8rem;
+    margin-bottom: 0.5rem;
+  }
+
+  .flexContainer div:nth-child(2) input {
+    width: 35rem;
+    padding: 1rem;
+    display: block;
+    border: none;
+    border-radius: 1rem;
+    font-size: 0.875rem;
+  }
+
+  .flexContainer div:nth-child(2) p {
+    font-size: 0.9rem;
+  }
+
+  .flexContainer div:nth-child(2) button {
+    padding: 0.5rem 1rem;
+    border-radius: 2rem;
+    color: var(--whiteFull);
+    font-size: 1.25rem;
+    transition: background 0.3s ease;
+    border: none;
+    width: 10rem;
+  }
+
+  .flexContainer button:hover {
+    background: var(--blue150);
+    color: var(--whiteFull);
+    cursor: pointer;
+  }
+
+  .flexContainer div:nth-child(3) p {
+    font-size: 1.1rem;
+  }
+
+  .flexContainer div:nth-child(4) {
+    margin: 3rem 0 2rem 0;
+  }
+
+  .flexContainer .socialNetworks {
+    display: flex;
+    gap: 0.5rem;
+    margin-top: 3rem;
+  }
+
+  .socialNetworks li img {
+    width: 1.875rem;
+    height: auto;
+  }
+}
