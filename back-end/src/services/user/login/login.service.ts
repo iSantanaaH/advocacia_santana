@@ -3,31 +3,45 @@ import { BadRequestException, Injectable } from '@nestjs/common';
 import { PrismaService } from 'src/services/utils/prisma/prisma.service';
 import * as jwt from 'jsonwebtoken';
 import * as dotenv from 'dotenv';
+import * as bcrypt from 'bcrypt';
+import { HashService } from 'src/services/utils/hash-service/hash-service';
 dotenv.config({ path: '../../../.env' });
 
 @Injectable()
 export class LoginService {
-  constructor(private prisma: PrismaService) {}
+  constructor(
+    private prisma: PrismaService,
+    private readonly hashService: HashService,
+  ) {}
 
   async login(userData: LoginDataModel) {
     const user = await this.prisma.user.findUnique({
       where: {
         email: userData.email,
-        password: userData.password,
       },
       select: {
         id: true,
         name: true,
         roleId: true,
+        password: true,
       },
     });
 
-    if (user) {
-      const token = this.generateToken(user);
-      return { token };
-    } else {
-      throw new BadRequestException('Email ou senha inválidos');
+    if (!user) {
+      throw new BadRequestException('O usuário não existe!');
     }
+
+    const isValidPassword = await this.hashService.comparePassword(
+      userData.password,
+      user.password,
+    );
+
+    if (!isValidPassword) {
+      throw new BadRequestException('Senha inválida!');
+    }
+
+    const token = this.generateToken(user);
+    return { token };
   }
 
   private generateToken(user: {
