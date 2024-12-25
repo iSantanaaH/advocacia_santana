@@ -74,7 +74,7 @@
   .FormRegister {
     width: 40vw;
     max-width: 29rem;
-    gap: 1rem;
+    gap: 0.8rem;
     padding: 1rem;
   }
 
@@ -90,9 +90,13 @@
   .FormRegister .InputSubmit,
   .FormRegister .InputDate,
   .FormRegister .InputPhone {
-    padding: 0.6rem;
+    padding: 0.5rem;
     width: 19rem;
     font-size: 1rem;
+  }
+
+  .FormRegister h1 {
+    font-size: 1.8rem;
   }
 
   .RedirectHome {

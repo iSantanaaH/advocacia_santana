@@ -18,11 +18,9 @@
   filter: drop-shadow(0.1rem 0.1rem 0.1rem var(--blackFull));
   position: relative;
   box-sizing: border-box;
-  height: auto;
 }
 
 .FormRegister h1 {
-  font-size: 2.2rem;
   color: var(--whiteFull);
   font-weight: 500;
   margin-bottom: 1rem;
