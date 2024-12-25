@@ -54,11 +54,6 @@
   height: 100%;
 }
 
-.FormRegister .ImageEye:hover {
-  background: white;
-  padding: 10rem;
-}
-
 .FormRegister .AlertCircle {
   position: absolute;
   right: -2rem;
