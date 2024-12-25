@@ -31,8 +31,15 @@
   }
 }
 @media only screen and (min-width: 1200px) and (max-width: 1919px) {
+  .main {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+  }
+
   .FormPost {
-    width: 40%;
+    max-width: 50%;
   }
 }
 @media only screen and (min-width: 1920px) {

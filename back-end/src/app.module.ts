@@ -5,14 +5,16 @@ import { RegisterController } from './controllers/user/register/register.control
 import { LoginController } from './controllers/user/login/login.controller';
 import { RegisterService } from './services/user/register/register.service';
 import { LoginService } from './services/user/login/login.service';
-import { PrismaService } from './services/prisma/prisma.service';
-import { PrismaModule } from './services/prisma/prisma.module';
+import { PrismaService } from './services/utils/prisma/prisma.service';
+import { PrismaModule } from './services/utils/prisma/prisma.module';
 import { CreatePostController } from './controllers/admin/create-post/create-post.controller';
 import { CreatePostService } from './services/admin/create-post/create-post.service';
 import { PublishedPostsController } from './controllers/admin/manage-post/published-posts/published-posts.controller';
 import { UnpublishedPostsController } from './controllers/admin/manage-post/unpublished-posts/unpublished-posts.controller';
 import { UnpublishedPostsService } from './services/admin/manage-post/unpublished-posts/unpublished-posts.service';
 import { PublishedPostsService } from './services/admin/manage-post/published-posts/published-posts.service';
+import { HashServiceService } from './services/utils/hash-service.service';
+import { HashServiceService } from './services/utils/hash-service/hash-service.service';
 
 @Module({
   imports: [PrismaModule],
@@ -32,6 +34,7 @@ import { PublishedPostsService } from './services/admin/manage-post/published-po
     CreatePostService,
     UnpublishedPostsService,
     PublishedPostsService,
+    HashServiceService,
   ],
 })
 export class AppModule {}

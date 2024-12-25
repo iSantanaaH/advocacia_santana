@@ -1,6 +1,6 @@
 import { BadRequestException, Injectable } from '@nestjs/common';
 import { Post } from '@prisma/client';
-import { PrismaService } from 'src/services/prisma/prisma.service';
+import { PrismaService } from 'src/services/utils/prisma/prisma.service';
 
 @Injectable()
 export class UnpublishedPostsService {

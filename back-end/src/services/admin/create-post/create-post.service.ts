@@ -1,6 +1,6 @@
 import { BadRequestException, Injectable } from '@nestjs/common';
 import { CreatePostDataModel } from 'src/controllers/admin/create-post/createPostDataModel';
-import { PrismaService } from 'src/services/prisma/prisma.service';
+import { PrismaService } from 'src/services/utils/prisma/prisma.service';
 
 @Injectable()
 export class CreatePostService {

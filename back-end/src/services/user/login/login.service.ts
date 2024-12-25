@@ -1,6 +1,6 @@
 /* eslint-disable prettier/prettier */
 import { BadRequestException, Injectable } from '@nestjs/common';
-import { PrismaService } from 'src/services/prisma/prisma.service';
+import { PrismaService } from 'src/services/utils/prisma/prisma.service';
 import * as jwt from 'jsonwebtoken';
 import * as dotenv from 'dotenv';
 dotenv.config({ path: '../../../.env' });

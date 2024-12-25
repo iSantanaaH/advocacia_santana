@@ -62,10 +62,6 @@ ul li {
   grid-column: 2;
 }
 
-.main {
-  margin-top: 10.5rem;
-}
-
 .post-creator .FormPost {
   display: flex;
   flex-direction: column;
