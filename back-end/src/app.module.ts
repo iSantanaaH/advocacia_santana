@@ -13,8 +13,7 @@ import { PublishedPostsController } from './controllers/admin/manage-post/publis
 import { UnpublishedPostsController } from './controllers/admin/manage-post/unpublished-posts/unpublished-posts.controller';
 import { UnpublishedPostsService } from './services/admin/manage-post/unpublished-posts/unpublished-posts.service';
 import { PublishedPostsService } from './services/admin/manage-post/published-posts/published-posts.service';
-import { HashServiceService } from './services/utils/hash-service.service';
-import { HashServiceService } from './services/utils/hash-service/hash-service.service';
+import { HashService } from './services/utils/hash-service/hash-service';
 
 @Module({
   imports: [PrismaModule],
@@ -34,7 +33,7 @@ import { HashServiceService } from './services/utils/hash-service/hash-service.s
     CreatePostService,
     UnpublishedPostsService,
     PublishedPostsService,
-    HashServiceService,
+    HashService,
   ],
 })
 export class AppModule {}
