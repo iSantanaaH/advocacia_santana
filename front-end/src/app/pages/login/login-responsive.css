@@ -78,9 +78,13 @@
   .FormLogin .InputEmail,
   .FormLogin .InputPassword,
   .FormLogin .InputSubmit {
-    padding: 0.6rem;
+    padding: 0.5rem;
     width: 19rem;
     font-size: 1rem;
+  }
+
+  .FormLogin h1 {
+    font-size: 1.8rem;
   }
 
   .RedirectHome {
