@@ -2,6 +2,10 @@ ul li {
   list-style: none;
 }
 
+.main {
+  position: relative;
+}
+
 .post-creator {
   min-height: 100vh;
   display: flex;
@@ -95,12 +99,24 @@ ul li {
   cursor: pointer;
 }
 
-.redirectHome {
+.redirectManage {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  padding: 0.1rem;
+}
+
+.redirectHome,
+.redirectManage {
   background: var(--whiteFull);
   border-radius: 0.3rem;
   cursor: pointer;
 }
 
-.redirectHome img {
-  width: 2rem;
+.redirectHome img,
+.redirectManage img {
+  width: 1.7rem;
 }
