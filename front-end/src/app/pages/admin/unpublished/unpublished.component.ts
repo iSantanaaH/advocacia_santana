@@ -1,7 +1,7 @@
 import { Component, inject, OnDestroy, OnInit, ViewChild } from '@angular/core';
 import { Subscription } from 'rxjs';
-import { UnPublishedDataModel } from '../../../services/admin/unpublished/unPublishedDataModel';
-import { UnpublishedService } from '../../../services/admin/unpublished/unpublished.service';
+import { UnPublishedDataModel } from '../../../services/posts/unpublished/unPublishedDataModel';
+import { UnpublishedService } from '../../../services/posts/unpublished/unpublished.service';
 import { HttpResponse } from '@angular/common/http';
 import { NgFor } from '@angular/common';
 import { ToastComponent } from '../../../components/toast/toast/toast.component';
