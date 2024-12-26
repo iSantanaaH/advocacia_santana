@@ -227,19 +227,19 @@
     margin-top: 6rem;
   }
 
-  .footer .flexContainer {
+  .footer .formNewsletter {
     display: flex;
     flex-direction: column;
   }
 
-  .flexContainer h1 {
+  .formNewsletter h1 {
     font-size: 1.1rem;
     transition: 0.3s ease-in;
     font-weight: 600;
     margin-top: 1.4rem;
   }
 
-  .flexContainer input {
+  .formNewsletter input {
     padding: 0.3rem;
     border: none;
     border-radius: 0.3rem;
@@ -247,13 +247,13 @@
     margin-top: 0.5rem;
   }
 
-  .flexContainer p {
+  .formNewsletter p {
     text-align: center;
     font-size: 0.85rem;
     width: calc(100vw - 2rem);
   }
 
-  .flexContainer button {
+  .formNewsletter button {
     padding: 0.5rem;
     width: 7rem;
     border: none;
@@ -317,7 +317,7 @@
   }
 
   .containerInput input {
-    padding: 0.4rem;
+    padding: 0.5rem;
     border-radius: 0.3rem;
     width: 20rem;
     font-size: 0.9rem;
@@ -412,7 +412,7 @@
   }
 
   .search input {
-    padding: 0.3rem;
+    padding: 0.5rem;
     border-radius: 0.5rem;
     font-size: 0.9rem;
     box-sizing: border-box;
@@ -455,7 +455,7 @@
   .attorneyInfo .aboutAttorney h1,
   .containerPost .aboutPost h1,
   .containerPost .aboutPost p,
-  .footer .flexContainer h1 {
+  .footer .formNewsletter h1 {
     color: var(--gray800);
     transition: 0.3s ease-in;
   }
@@ -498,12 +498,15 @@
   }
 
   .post {
-    max-width: 25rem;
+    width: 100%;
+    max-width: 27rem;
+    /* margin: 0 auto 4rem auto; */
+    margin-bottom: 4rem;
   }
 
   .post img {
     width: 100%;
-    max-width: 25rem;
+    /* max-width: 25rem; */
     margin: 0 auto;
   }
 
@@ -522,33 +525,33 @@
     margin-top: 6rem;
   }
 
-  .footer .flexContainer {
+  .footer .formNewsletter {
     display: flex;
     flex-direction: column;
   }
 
-  .flexContainer h1 {
+  .formNewsletter h1 {
     font-size: 1.1rem;
     transition: 0.3s ease-in;
     font-weight: 600;
     margin-top: 1.4rem;
   }
 
-  .flexContainer input {
-    padding: 0.3rem;
+  .formNewsletter input {
+    padding: 0.5rem;
     border: none;
     border-radius: 0.3rem;
     width: calc(100vw - 4.5rem);
     margin-top: 0.5rem;
   }
 
-  .flexContainer p {
+  .formNewsletter p {
     text-align: center;
     font-size: 0.85rem;
     width: calc(100vw - 2rem);
   }
 
-  .flexContainer button {
+  .formNewsletter button {
     padding: 0.5rem;
     width: 7rem;
     border: none;
@@ -894,17 +897,17 @@
     margin: 0.5rem 0 0.5rem 0;
   }
 
-  .flexContainer {
+  .formNewsletter {
     display: flex;
     padding: 1rem;
   }
 
-  .flexContainer div:nth-child(1) h1 {
+  .formNewsletter div:nth-child(1) h1 {
     font-size: 1.8rem;
     margin-bottom: 0.5rem;
   }
 
-  .flexContainer div:nth-child(2) input {
+  .formNewsletter div:nth-child(2) input {
     width: 35rem;
     padding: 1rem;
     display: block;
@@ -913,11 +916,11 @@
     font-size: 0.875rem;
   }
 
-  .flexContainer div:nth-child(2) p {
+  .formNewsletter div:nth-child(2) p {
     font-size: 0.9rem;
   }
 
-  .flexContainer div:nth-child(2) button {
+  .formNewsletter div:nth-child(2) button {
     padding: 0.5rem 1rem;
     border-radius: 2rem;
     color: var(--whiteFull);
@@ -927,21 +930,21 @@
     width: 10rem;
   }
 
-  .flexContainer button:hover {
+  .formNewsletter button:hover {
     background: var(--blue150);
     color: var(--whiteFull);
     cursor: pointer;
   }
 
-  .flexContainer div:nth-child(3) p {
+  .formNewsletter div:nth-child(3) p {
     font-size: 1.1rem;
   }
 
-  .flexContainer div:nth-child(4) {
+  .formNewsletter div:nth-child(4) {
     margin: 3rem 0 2rem 0;
   }
 
-  .flexContainer .socialNetworks {
+  .formNewsletter .socialNetworks {
     display: flex;
     gap: 0.5rem;
     margin-top: 3rem;
