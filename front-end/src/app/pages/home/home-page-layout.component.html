@@ -4,7 +4,12 @@
       <h1 class="title-attorney">Amanda Stephany</h1>
     </a>
     <div class="search">
-      <input type="text" placeholder="procure..." />
+      <label>
+        <input [(ngModel)]="searchQuery" type="text" placeholder="procure..." />
+        <button (click)="onSearch()">
+          <img src="/assets/Images/search.png" alt="Lupa de pesquisa" />
+        </button>
+      </label>
     </div>
   </div>
 

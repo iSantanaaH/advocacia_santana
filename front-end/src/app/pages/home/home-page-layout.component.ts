@@ -1,11 +1,12 @@
 import { NgOptimizedImage } from '@angular/common';
 import { Component, ElementRef, ViewChild } from '@angular/core';
 import { AuthService } from '../../services/user/auth/authService/auth.service';
+import { FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-home-page-layout',
   standalone: true,
-  imports: [NgOptimizedImage],
+  imports: [NgOptimizedImage, FormsModule],
   templateUrl: './home-page-layout.component.html',
   styleUrls: ['./home-page-layout.component.css', './home-page-responsive.css'],
 })
@@ -15,6 +16,7 @@ export default class HomePageLayoutComponent {
   }
   @ViewChild('menuHidden') menuHidden!: ElementRef;
   public showMenu: boolean = false;
+  public searchQuery: string = '';
 
   toggleMenu(): void {
     this.showMenu = !this.showMenu;
@@ -26,4 +28,6 @@ export default class HomePageLayoutComponent {
       this.showMenu = false;
     }, 700);
   }
+
+  onSearch() {}
 }

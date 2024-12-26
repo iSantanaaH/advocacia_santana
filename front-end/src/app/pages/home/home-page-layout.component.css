@@ -42,6 +42,27 @@ img {
   transition: all 0.3s ease-out;
 }
 
+.search img {
+  width: 1.3rem;
+}
+
+.search label {
+  position: relative;
+}
+
+.search label input {
+  padding-right: 2.5rem;
+  box-sizing: border-box;
+}
+
+.search button {
+  border: none;
+  position: absolute;
+  top: -0.1rem;
+  right: 0.5rem;
+  background: transparent;
+}
+
 .search input:focus,
 .formNewsletter div:nth-child(2) input:focus {
   outline: none;
