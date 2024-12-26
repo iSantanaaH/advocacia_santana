@@ -14,6 +14,10 @@ img {
   background: var(--gray200);
 }
 
+.header .button-menu {
+  background: transparent;
+}
+
 .header .title-attorney,
 .attorneyInfo .aboutAttorney h1,
 .latestPost .titleLatest h1,
