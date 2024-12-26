@@ -1,4 +1,4 @@
-import { Component, inject, OnDestroy, OnInit, ViewChild } from '@angular/core';
+import { Component, OnDestroy, OnInit, ViewChild } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { UnPublishedDataModel } from '../../../services/posts/unpublished/unPublishedDataModel';
 import { UnpublishedService } from '../../../services/posts/unpublished/unpublished.service';
