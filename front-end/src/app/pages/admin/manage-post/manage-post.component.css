@@ -1,6 +1,12 @@
+/* CSS Global */
+
+ul li {
+  list-style: none;
+}
+
 .main-container {
   min-height: 100vh;
-  /* background: url("/assets/Images/justica3.jpg") no-repeat center; */
+  background: url("/assets/Images/justica3.jpg") no-repeat center;
   background-size: cover;
 }
 
@@ -15,4 +21,8 @@
 .header h1:hover {
   cursor: pointer;
   color: var(--gray600);
+}
+
+.show-user button:hover {
+  cursor: pointer;
 }
