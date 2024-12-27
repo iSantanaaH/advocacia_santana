@@ -1,9 +1,3 @@
-@media only screen and (min-width: 768px) {
-  .header .burguer {
-    display: none;
-  }
-}
-
 @media only screen and (max-width: 480px) {
   .main-container {
     background: var(--gray150);
@@ -33,11 +27,11 @@
     width: 2rem;
   }
 
-  .posts .magnifying-glass {
+  .container-search .magnifying-glass {
     width: 1.5rem;
   }
 
-  .posts {
+  .container-search {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -45,7 +39,7 @@
     gap: 3rem;
   }
 
-  .posts input {
+  .container-search input {
     padding: 1rem 2.8rem 1rem 1rem;
     border-radius: 0.3rem;
     border: none;
@@ -53,35 +47,182 @@
     margin-top: 1rem;
   }
 
-  .posts input:focus {
+  .container-search input:focus {
     outline: none;
   }
 
-  .posts label {
+  .container-search label {
     position: relative;
   }
 
-  .posts img {
+  .container-search img {
     position: absolute;
     top: 0;
     right: 0.5rem;
   }
 
-  .posts img:hover {
+  .container-search img:hover {
     cursor: pointer;
   }
 
-  .posts div:nth-child(1) {
+  .container-search div:nth-child(1) {
   }
 }
 
 @media only screen and (min-width: 481px) and (max-width: 767px) {
 }
 
-@media only screen and (min-width: 768px) and (max-width: 991px) {
+@media only screen and (min-width: 768px) {
+  .header .burguer {
+    display: none;
+  }
 }
 
-@media only screen and (min-width: 992px) and (max-width: 1199px) {
+@media only screen and (min-width: 768px) and (max-width: 1024px) {
+}
+
+@media only screen and (min-width: 1025px) {
+  .main-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .content-manager {
+    display: grid;
+    grid-template-columns: 13rem 1fr;
+    filter: drop-shadow(0.1rem 0.1rem 0.1rem var(--blackFull));
+    padding: 1rem;
+    border-radius: 0.3rem;
+    gap: 1rem;
+    width: 100%;
+    padding: 1rem;
+    height: 100vh;
+  }
+
+  .menu {
+    height: 100%;
+    border-radius: 1rem;
+    background: var(--whiteFull);
+  }
+
+  .render-posts {
+    background: var(--whiteFull);
+    border-radius: 1rem;
+    margin-top: 1rem;
+    height: 100%;
+    opacity: 1;
+  }
+
+  .menu h1 {
+    font-size: 1.5rem;
+    font-weight: 600;
+    text-align: center;
+    margin-top: 1rem;
+    color: var(--gray800);
+    transition: color 0.3s ease-out;
+  }
+
+  .menu h1:hover {
+    color: var(--gray600);
+    cursor: pointer;
+  }
+
+  .navegation ul {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    gap: 1.5rem;
+    margin-top: 3.5rem;
+  }
+
+  .navegation a {
+    color: var(--blackFull);
+    transition: border 0.5s ease-out;
+    padding: 0.5rem;
+    width: 100%;
+    text-align: center;
+    border-bottom: 0.1rem solid transparent;
+  }
+
+  .navegation a:hover {
+    border-bottom-color: var(--blue150);
+  }
+
+  .show-user {
+    display: flex;
+    gap: 1rem;
+  }
+
+  .show-user img {
+    width: 1.6rem;
+  }
+
+  .show-user button {
+    border: none;
+    background: transparent;
+  }
+
+  .container-search {
+    display: flex;
+    flex-direction: column;
+    border-radius: 1rem;
+  }
+
+  .container-search div:nth-child(1) {
+    display: flex;
+    justify-content: space-between;
+    background: var(--whiteFull);
+    border-radius: 1rem;
+    padding: 0.5rem 0.5rem 0.5rem 0.5rem;
+  }
+
+  .container-search div:nth-child(1) label {
+    position: relative;
+  }
+
+  .container-search .magnifying-glass {
+    position: absolute;
+    top: 0.55rem;
+    right: 0.5rem;
+    width: 1.3rem;
+  }
+
+  .container-search .magnifying-glass:hover {
+    cursor: pointer;
+  }
+
+  .container-search .search {
+    padding: 0.5rem 2.5rem 0.5rem 0.5rem;
+    font-size: 1rem;
+    width: 20rem;
+    border-radius: 0.8rem;
+    border: 0.1rem solid transparent;
+    box-shadow: 0 0.1rem 0.125rem 0 rgba(0, 0, 0, 0.05);
+    transition: all 0.3s ease-out;
+    position: relative;
+  }
+
+  .container-search .search:focus {
+    outline: none;
+    border-color: var(--blue100);
+    border-width: 0.1rem solid;
+    box-shadow: 0 0 0 0.188rem rgba(66, 153, 225, 0.5);
+  }
+
+  .container-search .search::placeholder {
+    color: var(--blueIce);
+  }
+
+  .render-posts .router-outlet {
+    padding: 1rem;
+    margin-top: 1rem;
+    background: var(--whiteFull);
+    border-radius: 1rem;
+  }
+}
+
+/* @media only screen and (min-width: 1920px) {
   ul li {
     list-style: none;
   }
@@ -148,17 +289,17 @@
     border-bottom-color: var(--blue150);
   }
 
-  .content-manager .posts {
+  .content-manager .container-search {
     border-radius: 1rem;
   }
 
-  .posts {
+  .container-search {
     display: flex;
     flex-direction: column;
     border-radius: 1rem;
   }
 
-  .posts div:nth-child(1) {
+  .container-search div:nth-child(1) {
     display: flex;
     justify-content: space-between;
     background: var(--whiteFull);
@@ -166,22 +307,22 @@
     padding: 0.5rem 0.5rem 0.5rem 0.5rem;
   }
 
-  .posts div:nth-child(1) label {
+  .container-search div:nth-child(1) label {
     position: relative;
   }
 
-  .posts .magnifying-glass {
+  .container-search .magnifying-glass {
     position: absolute;
     top: 0.55rem;
     right: 0.5rem;
     width: 1.3rem;
   }
 
-  .posts .magnifying-glass:hover {
+  .container-search .magnifying-glass:hover {
     cursor: pointer;
   }
 
-  .posts .search {
+  .container-search .search {
     padding: 0.5rem 2.5rem 0.5rem 0.5rem;
     font-size: 1rem;
     width: 14.5rem;
@@ -192,151 +333,21 @@
     position: relative;
   }
 
-  .posts .search:focus {
+  .container-search .search:focus {
     outline: none;
     border-color: var(--blue100);
     border-width: 0.1rem solid;
     box-shadow: 0 0 0 0.188rem rgba(66, 153, 225, 0.5);
   }
 
-  .posts .search::placeholder {
+  .container-search .search::placeholder {
     color: var(--blueIce);
   }
 
-  .posts .RouterOutlet {
+  .container-search .router-outlet {
     padding: 1rem;
     margin-top: 1rem;
     background: var(--whiteFull);
     border-radius: 1rem;
   }
-}
-
-@media only screen and (min-width: 1920px) {
-  ul li {
-    list-style: none;
-  }
-
-  .main-container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    min-height: 100vh;
-    background: url("/assets/Images/justica3.jpg") no-repeat center;
-    background-size: cover;
-  }
-
-  .content-manager {
-    display: grid;
-    grid-template-columns: 12rem 1fr;
-    background: rgba(235, 235, 235);
-    filter: drop-shadow(0.1rem 0.1rem 0.1rem var(--blackFull));
-    padding: 1rem;
-    border-radius: 0.3rem;
-    gap: 1rem;
-    width: 50%;
-    padding: 1rem;
-  }
-
-  .menu {
-    height: 40rem;
-    border-radius: 1rem;
-    background: var(--whiteFull);
-  }
-
-  .menu h1 {
-    font-size: 1.5rem;
-    font-weight: 600;
-    text-align: center;
-    margin-top: 1rem;
-    color: var(--gray800);
-    transition: color 0.3s ease-out;
-  }
-
-  .menu h1:hover {
-    color: var(--gray600);
-    cursor: pointer;
-  }
-
-  .navegation ul {
-    display: flex;
-    align-items: center;
-    flex-direction: column;
-    gap: 1.5rem;
-    margin-top: 3.5rem;
-  }
-
-  .navegation a {
-    color: var(--blackFull);
-    transition: border 0.5s ease-out;
-    padding: 0.5rem;
-    width: 100%;
-    text-align: center;
-    border-bottom: 0.1rem solid transparent;
-  }
-
-  .navegation a:hover {
-    border-bottom-color: var(--blue150);
-  }
-
-  .content-manager .posts {
-    border-radius: 1rem;
-  }
-
-  .posts {
-    display: flex;
-    flex-direction: column;
-    border-radius: 1rem;
-  }
-
-  .posts div:nth-child(1) {
-    display: flex;
-    justify-content: space-between;
-    background: var(--whiteFull);
-    border-radius: 1rem;
-    padding: 0.5rem 0.5rem 0.5rem 0.5rem;
-  }
-
-  .posts div:nth-child(1) label {
-    position: relative;
-  }
-
-  .posts .magnifying-glass {
-    position: absolute;
-    top: 0.55rem;
-    right: 0.5rem;
-    width: 1.3rem;
-  }
-
-  .posts .magnifying-glass:hover {
-    cursor: pointer;
-  }
-
-  .posts .search {
-    padding: 0.5rem 2.5rem 0.5rem 0.5rem;
-    font-size: 1rem;
-    width: 14.5rem;
-    border-radius: 0.8rem;
-    border: 0.1rem solid transparent;
-    box-shadow: 0 0.1rem 0.125rem 0 rgba(0, 0, 0, 0.05);
-    transition: all 0.3s ease-out;
-    position: relative;
-  }
-
-  .posts .search:focus {
-    outline: none;
-    border-color: var(--blue100);
-    border-width: 0.1rem solid;
-    box-shadow: 0 0 0 0.188rem rgba(66, 153, 225, 0.5);
-  }
-
-  .posts .search::placeholder {
-    color: var(--blueIce);
-  }
-
-  .posts .router-outlet {
-    padding: 1rem;
-    margin-top: 1rem;
-    background: var(--whiteFull);
-    border-radius: 1rem;
-  }
-}
+} */
