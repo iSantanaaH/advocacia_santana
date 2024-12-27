@@ -2,7 +2,7 @@
   <section class="content-manager">
     <article class="menu">
       <header class="header">
-        <h1>Gerenciar Post</h1>
+        <h1>Painel Admin</h1>
         <img
           src="/assets/Images/menu-hamburguer.svg"
           alt="Menu hambúrguer"
@@ -20,10 +20,15 @@
         </div>
       </header>
     </article>
-    <article class="posts">
+
+    <article class="container-search">
       <div>
         <label>
-          <input class="search" type="text" placeholder="procure um post" />
+          <input
+            class="search"
+            type="text"
+            placeholder="Procure pelo id ou titulo"
+          />
           <img
             class="magnifying-glass"
             src="/assets/Images/search.png"
@@ -33,12 +38,17 @@
 
         <div class="show-user">
           <app-show-user />
+          <button title="Desconectar">
+            <img src="/assets/Images/exit.png" alt="" />
+          </button>
         </div>
       </div>
 
-      <div class="router-outlet">
-        <router-outlet />
-      </div>
+      <article class="render-posts">
+        <div class="router-outlet">
+          <router-outlet />
+        </div>
+      </article>
     </article>
   </section>
 </main>
