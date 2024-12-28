@@ -11,7 +11,7 @@ import { ToastComponent } from '../../../components/toast/toast/toast.component'
   standalone: true,
   imports: [NgFor],
   templateUrl: './unpublished.component.html',
-  styleUrls: ['./unpublished.component.css'],
+  styleUrls: ['./unpublished.component.css', 'unpublished-responsive.css'],
 })
 export class UnpublishedComponent implements OnDestroy, OnInit {
   constructor(private unpublishedService: UnpublishedService) {}
