@@ -1,20 +1,45 @@
-.section-posts .list-posts {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 1rem;
-}
-
-.section-posts li {
+ul li {
   list-style: none;
 }
 
 .section-posts li img {
-  width: 7rem;
-  border-radius: 0.5rem;
   filter: drop-shadow(0.1rem 0.1rem 0.1rem var(--blackFull));
+  transition: all 0.3 ease-in;
+  border-radius: 0.5rem;
+}
+
+.section-posts li img:hover {
+  transform: scale(1.025);
 }
 
 .list-posts article {
   display: flex;
+  align-items: center;
   gap: 0.8rem;
+}
+
+.list-posts .date,
+.list-posts .author-name {
+  color: var(--orange600);
+  transition: color 0.3s ease-in;
+}
+
+.list-posts .date:hover,
+.list-posts .author-name:hover {
+  color: var(--orange800);
+  cursor: pointer;
+}
+
+.list-posts .date span,
+.list-posts h3,
+.list-posts .author-name span {
+  color: var(--gray800);
+  transition: color 0.3s ease-in;
+}
+
+.list-posts .date span:hover,
+.list-posts h3:hover,
+.list-posts .author-name span:hover {
+  color: var(--gray600);
+  cursor: pointer;
 }
