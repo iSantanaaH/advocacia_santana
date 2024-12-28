@@ -22,7 +22,8 @@ img {
 .attorneyInfo .aboutAttorney h1,
 .latestPost .titleLatest h1,
 .aboutPost h1,
-.copyRight p {
+.copyRight p,
+.footer .formNewsletter h1 {
   color: var(--gray800);
   transition: color 0.3s ease-in;
   cursor: pointer;
@@ -107,7 +108,7 @@ img {
 .attorneyInfo .aboutAttorney h1:hover,
 .attorneyInfo .aboutAttorney p:hover,
 .containerPost .aboutPost p:hover,
-.footer .flexContainer h1:hover {
+.footer .formNewsletter h1:hover {
   color: var(--gray600);
   cursor: pointer;
 }
