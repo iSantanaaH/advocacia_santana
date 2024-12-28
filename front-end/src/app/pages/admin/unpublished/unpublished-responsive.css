@@ -1,0 +1,37 @@
+@media only screen and (min-width: 1025px) {
+  .section-posts .list-posts {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+  }
+
+  .section-posts li img {
+    width: 11rem;
+  }
+
+  .list-posts {
+    max-height: 30rem;
+    overflow-y: auto;
+  }
+
+  ::-webkit-scrollbar {
+    width: 10px;
+  }
+
+  /* Personaliza o fundo da barra */
+  ::-webkit-scrollbar-track {
+    background: #f1f1f1;
+    border-radius: 10px;
+  }
+
+  /* Personaliza o "thumb" (a parte que você arrasta) */
+  ::-webkit-scrollbar-thumb {
+    background: var(--blue200);
+    border-radius: 10px;
+  }
+
+  /* Quando o "thumb" é interagido */
+  ::-webkit-scrollbar-thumb:hover {
+    background: #555;
+  }
+}
