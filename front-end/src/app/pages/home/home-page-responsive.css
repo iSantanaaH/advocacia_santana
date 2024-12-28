@@ -128,7 +128,7 @@
   }
 
   .search input {
-    padding: 0.3rem;
+    padding: 0.5rem;
     border-radius: 0.5rem;
     font-size: 0.9rem;
     box-sizing: border-box;
@@ -898,7 +898,6 @@
   }
 
   .formNewsletter {
-    display: flex;
     padding: 1rem;
   }
 
@@ -944,10 +943,14 @@
     margin: 3rem 0 2rem 0;
   }
 
-  .formNewsletter .socialNetworks {
+  .footer .socialNetworks {
     display: flex;
     gap: 0.5rem;
     margin-top: 3rem;
+  }
+
+  .footer {
+    padding-bottom: 1rem;
   }
 
   .socialNetworks li img {
