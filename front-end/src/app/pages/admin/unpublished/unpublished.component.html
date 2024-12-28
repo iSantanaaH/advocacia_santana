@@ -9,11 +9,13 @@
           <div></div>
 
           <h3>{{ post.title }}</h3>
-          <p>
-            <strong>Autor: {{ post.author.name }}</strong>
+          <p></p>
+          <p class="author-name">
+            Autor: <span>{{ post.author.name }}</span>
           </p>
-          <p>
-            <strong>Criado em: {{ post.created_at }}</strong>
+          <p></p>
+          <p class="date">
+            Criado em: <span>{{ post.created_at }}</span>
           </p>
         </article>
       </li>
