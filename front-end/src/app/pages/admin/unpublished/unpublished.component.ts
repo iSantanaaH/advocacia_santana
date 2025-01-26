@@ -14,29 +14,43 @@ import { ToastComponent } from '../../../components/toast/toast/toast.component'
   styleUrls: ['./unpublished.component.css', 'unpublished-responsive.css'],
 })
 export class UnpublishedComponent implements OnDestroy, OnInit {
+  ngOnInit(): void {
+    this.getPosts();
+  }
+
   constructor(private unpublishedService: UnpublishedService) {}
   @ViewChild(ToastComponent) toastComponent!: ToastComponent;
+  private subscription: Subscription = new Subscription();
 
   public posts: UnPublishedDataModel[] = [];
 
-  ngOnInit(): void {
-    this.GetPosts();
-  }
-
-  private subscription: Subscription = new Subscription();
-
-  public GetPosts() {
+  public getPosts() {
     const getPostSub = this.unpublishedService.getUnpublishedPosts().subscribe({
       next: (httpResponse: HttpResponse<UnPublishedDataModel[]>) => {
         if (httpResponse.status === 200) {
           try {
             const responseBody = httpResponse.body;
-            this.posts = responseBody || [];
+            this.posts =
+              responseBody?.map((post) => ({
+                ...post,
+                formattedDate: this.convertDateCreationPost(post.created_at),
+              })) || [];
           } catch (error) {}
         }
       },
     });
     this.subscription.add(getPostSub);
+    return this.posts;
+  }
+
+  public convertDateCreationPost(createdAt: Date) {
+    const date = new Date(createdAt);
+    const formattedDate = date.toLocaleDateString('pt-BR', {
+      day: 'numeric',
+      month: 'long',
+      year: 'numeric',
+    });
+    return formattedDate;
   }
 
   ngOnDestroy(): void {
