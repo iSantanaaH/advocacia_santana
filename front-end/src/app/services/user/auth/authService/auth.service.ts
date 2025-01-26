@@ -131,10 +131,10 @@ export class AuthService {
   }
 
   public logout(): void {
-    this.cookieService.delete(this.COOKIE_NAME);
+    this.cookieService.delete(this.COOKIE_NAME, '/');
     this.userName = null;
     if (typeof window !== undefined || typeof document !== 'undefined') {
-      window.location.reload();
+      window.location.href = '/';
     }
   }
 }
