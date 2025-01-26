@@ -169,9 +169,13 @@
     border-radius: 1rem;
   }
 
-  .container-search div:nth-child(1) {
+  .separator {
     display: flex;
     justify-content: space-between;
+  }
+
+  .container-search div:nth-child(1) {
+    display: flex;
     background: var(--whiteFull);
     border-radius: 1rem;
     padding: 0.5rem 0.5rem 0.5rem 0.5rem;
@@ -215,10 +219,11 @@
   }
 
   .render-posts .router-outlet {
-    padding: 1rem;
-    margin-top: 1rem;
-    background: var(--whiteFull);
-    border-radius: 1rem;
+    display: flex;
+    align-items: start;
+    justify-content: flex-start;
+    width: 100%;
+    box-sizing: border-box;
   }
 }
 
