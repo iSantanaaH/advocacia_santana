@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { ShowUserComponent } from '../../../components/user/showUser/show-user.component';
+import { AuthService } from '../../../services/user/auth/authService/auth.service';
 
 @Component({
   selector: 'app-manage-post',
@@ -12,4 +13,6 @@ import { ShowUserComponent } from '../../../components/user/showUser/show-user.c
     './manage-post-responsive.component.css',
   ],
 })
-export default class ManagePostComponent {}
+export default class ManagePostComponent {
+  constructor(public readonly authService: AuthService) {}
+}

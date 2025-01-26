@@ -38,7 +38,7 @@
 
         <div class="show-user">
           <app-show-user />
-          <button title="Desconectar">
+          <button (click)="authService.logout()" title="Desconectar">
             <img src="/assets/Images/exit.png" alt="" />
           </button>
         </div>
