@@ -7,7 +7,8 @@
   }
 
   .list-posts li img {
-    width: 11rem;
+    max-width: 12rem;
+    aspect-ratio: 1;
   }
 
   .list-posts {

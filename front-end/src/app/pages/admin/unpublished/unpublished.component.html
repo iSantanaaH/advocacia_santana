@@ -4,7 +4,10 @@
       <li *ngFor="let post of posts">
         <article class="items">
           <a href="/">
-            <img src="/assets/Images/justica.jpg" alt="{{ post.title }}" />
+            <img
+              src="http://localhost:3000/{{ post.image_path }}"
+              alt="{{ post.title }}"
+            />
           </a>
 
           <div class="align">
