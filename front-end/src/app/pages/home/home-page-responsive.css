@@ -500,13 +500,11 @@
   .post {
     width: 100%;
     max-width: 27rem;
-    /* margin: 0 auto 4rem auto; */
     margin-bottom: 4rem;
   }
 
   .post img {
     width: 100%;
-    /* max-width: 25rem; */
     margin: 0 auto;
   }
 
