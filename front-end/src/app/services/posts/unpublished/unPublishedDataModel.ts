@@ -11,4 +11,5 @@ export interface UnPublishedDataModel {
   deleted_at: Date;
   image_name: string;
   image_path: string;
+  formattedDate?: string;
 }
