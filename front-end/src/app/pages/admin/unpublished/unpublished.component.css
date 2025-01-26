@@ -2,20 +2,14 @@ ul li {
   list-style: none;
 }
 
-.section-posts li img {
+.list-posts li img {
   filter: drop-shadow(0.1rem 0.1rem 0.1rem var(--blackFull));
-  transition: all 0.3 ease-in;
+  transition: all 0.1s ease-in;
   border-radius: 0.5rem;
 }
 
-.section-posts li img:hover {
-  transform: scale(1.025);
-}
-
-.list-posts article {
-  display: flex;
-  align-items: center;
-  gap: 0.8rem;
+.list-posts li img:hover {
+  transform: scale(1.05);
 }
 
 .list-posts .date,

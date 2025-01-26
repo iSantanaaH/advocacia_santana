@@ -2,10 +2,11 @@
   .section-posts .list-posts {
     display: flex;
     flex-wrap: wrap;
-    gap: 1rem;
+    padding: 0.5rem 0.5rem;
+    gap: 1.5rem;
   }
 
-  .section-posts li img {
+  .list-posts li img {
     width: 11rem;
   }
 
@@ -14,23 +15,37 @@
     overflow-y: auto;
   }
 
+  .list-posts .items {
+    display: flex;
+    gap: 1.3rem;
+    align-items: center;
+  }
+
+  .list-posts .align {
+    display: flex;
+    flex-direction: column;
+    gap: 0.3rem;
+  }
+
+  .list-posts .title {
+    max-width: 10rem;
+    overflow: hidden;
+  }
+
   ::-webkit-scrollbar {
     width: 10px;
   }
 
-  /* Personaliza o fundo da barra */
   ::-webkit-scrollbar-track {
     background: #f1f1f1;
     border-radius: 10px;
   }
 
-  /* Personaliza o "thumb" (a parte que você arrasta) */
   ::-webkit-scrollbar-thumb {
-    background: var(--blue200);
+    background: var(--gray400);
     border-radius: 10px;
   }
 
-  /* Quando o "thumb" é interagido */
   ::-webkit-scrollbar-thumb:hover {
     background: #555;
   }

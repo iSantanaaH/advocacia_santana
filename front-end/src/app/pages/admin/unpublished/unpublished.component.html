@@ -2,21 +2,23 @@
   <section class="section-posts">
     <ul class="list-posts">
       <li *ngFor="let post of posts">
-        <article>
+        <article class="items">
           <a href="/">
             <img src="/assets/Images/justica.jpg" alt="{{ post.title }}" />
           </a>
-          <div></div>
 
-          <h3>{{ post.title }}</h3>
-          <p></p>
-          <p class="author-name">
-            Autor: <span>{{ post.author.name }}</span>
-          </p>
-          <p></p>
-          <p class="date">
-            Criado em: <span>{{ post.created_at }}</span>
-          </p>
+          <div class="align">
+            <div class="title">
+              <h3>{{ post.title }}</h3>
+            </div>
+
+            <p class="author-name">
+              Autor: <span>{{ post.author.name }}</span>
+            </p>
+            <p class="date">
+              Criado em: <span>{{ post.formattedDate }}</span>
+            </p>
+          </div>
         </article>
       </li>
     </ul>
