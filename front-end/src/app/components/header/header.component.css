@@ -1,0 +1,94 @@
+/* CSS Global */
+
+ul li,
+.flexContainer .socialNetworks li {
+  list-style: none;
+}
+
+img {
+  cursor: pointer;
+}
+
+.header {
+  background: var(--gray200);
+}
+
+.header .button-menu {
+  background: transparent;
+}
+
+.header {
+  color: var(--gray800);
+  transition: color 0.3s ease-in;
+  cursor: pointer;
+}
+
+.header .title-attorney {
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: var(--blue150);
+  transition: color 0.3s ease-in;
+}
+
+.header .title-attorney:hover {
+  color: var(--blue200);
+}
+
+.search input {
+  border: 0.1rem solid var(--gray150);
+  box-shadow: 0 0.1rem 0.125rem 0 rgba(0, 0, 0, 0.05);
+  transition: all 0.3s ease-out;
+}
+
+.search img {
+  width: 1.3rem;
+}
+
+.search label {
+  position: relative;
+}
+
+.search label input {
+  padding-right: 2.5rem;
+  box-sizing: border-box;
+}
+
+.search button {
+  border: none;
+  position: absolute;
+  top: -0.1rem;
+  right: 0.5rem;
+  background: transparent;
+}
+
+.search input:focus {
+  outline: none;
+  border-color: var(--blue100);
+  box-shadow: 0 0 0 0.188rem rgba(66, 153, 225, 0.5);
+}
+
+.navegation-auth li a,
+.navegation-auth li {
+  color: var(--blackFull);
+  transition: color 0.3s ease-in;
+  cursor: pointer;
+}
+
+.navegation-auth .userDetails {
+  display: flex;
+  align-items: center;
+}
+
+.navegation-auth .doorImage {
+  width: 1.6rem;
+}
+
+.navegation-auth .userImage {
+  width: 2.4rem;
+}
+
+.navegation-auth li a:hover,
+.navegation-auth li:hover {
+  color: var(--gray600);
+  cursor: pointer;
+}

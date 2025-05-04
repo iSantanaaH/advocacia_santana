@@ -1,0 +1,86 @@
+<header class="header">
+  <div class="containerInput">
+    <a href="/">
+      <h1 class="title-attorney">Amanda Stephany</h1>
+    </a>
+    <div class="search">
+      <label>
+        <input type="text" placeholder="procure..." />
+        <button>
+          <img src="/assets/Images/search.png" alt="Lupa de pesquisa" />
+        </button>
+      </label>
+    </div>
+  </div>
+
+  @if(showMenu) {
+  <div (click)="disableMenu()" class="background-disable"></div>
+  <div #menuHidden class="content-menu visible">
+    <h1>Advocacia Santana</h1>
+    <details>
+      <summary>Conta</summary>
+      <ul>
+        @if(!authService.isLoggedIn()) {
+        <li>
+          <a href="/login">Login</a>
+        </li>
+        }
+        <li>
+          <a href="/cadastro">Cadastro</a>
+        </li>
+        <li>
+          <a (click)="authService.logout()" href="/">Sair</a>
+        </li>
+      </ul>
+    </details>
+    <details>
+      <summary><a href="/sobre">Sobre</a></summary>
+    </details>
+  </div>
+  }
+  <button type="button" (click)="toggleMenu()" class="button-menu">
+    <img class="menu" src="/assets/Images/menu-hamburguer.svg" alt="menu" />
+  </button>
+
+  <div class="content-nav">
+    <nav class="navegation-auth">
+      <ul>
+        @if(authService.isLoggedIn()) { @if(authService.userRoleName ===
+        'ADMINISTRADOR') {
+        <li><a href="/admin/createPost">Postar</a></li>
+        <li><a href="/admin/manage-post">Gerencia</a></li>
+        }
+        <div class="userDetails">
+          <li>
+            <img
+              src="/assets/Images/avatar3.png"
+              alt="user"
+              class="userImage"
+            />
+          </li>
+          <li>
+            <p class="showUserName">{{ authService.getUserName() }}</p>
+          </li>
+        </div>
+
+        <li>
+          <img
+            (click)="authService.logout()"
+            src="/assets/Images/exit.png"
+            title="Sair"
+            alt="saída"
+            class="doorImage"
+          />
+        </li>
+        } @else if(!authService.isLoggedIn()) {
+        <li>
+          <a href="/login">Login</a>
+        </li>
+        <li>
+          <a href="/cadastro">Cadastro</a>
+        </li>
+        }
+      </ul>
+    </nav>
+  </div>
+</header>
