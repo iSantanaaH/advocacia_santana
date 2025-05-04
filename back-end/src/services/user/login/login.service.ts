@@ -3,7 +3,6 @@ import { BadRequestException, Injectable } from '@nestjs/common';
 import { PrismaService } from 'src/services/utils/prisma/prisma.service';
 import * as jwt from 'jsonwebtoken';
 import * as dotenv from 'dotenv';
-import * as bcrypt from 'bcrypt';
 import { HashService } from 'src/services/utils/hash-service/hash-service';
 dotenv.config({ path: '../../../.env' });
 
