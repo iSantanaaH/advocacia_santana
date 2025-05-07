@@ -5,17 +5,17 @@ import { roleGuard } from './guards/roleGuard/role.guard';
 export const routes: Routes = [
   {
     path: '',
-    loadComponent: () => import('./pages/home/home-page-layout.component'),
+    loadComponent: () => import('./pages/public/home/home.component'),
   },
   {
     path: 'login',
-    loadComponent: () => import('./pages/login/login.component'),
+    loadComponent: () => import('./pages/public/login/login.component'),
     pathMatch: 'full',
     canActivate: [authGuard],
   },
   {
     path: 'cadastro',
-    loadComponent: () => import('./pages/register/register.component'),
+    loadComponent: () => import('./pages/public/register/register.component'),
     pathMatch: 'full',
   },
   {
@@ -56,7 +56,7 @@ export const routes: Routes = [
   },
   {
     path: 'page-not-found',
-    loadComponent: () => import('./pages/not-found/not-found.component'),
+    loadComponent: () => import('./pages/public/not-found/not-found.component'),
     pathMatch: 'full',
   },
   {

@@ -1,6 +1,12 @@
 <header>
-  <app-header />
+  <app-header (search)="handleResult($event)" />
 </header>
+
+@if(searchResult) {
+<div>
+  <p>Você buscou por: {{ searchResult }}</p>
+</div>
+}
 
 <main class="main">
   <section class="attorneyInfo">

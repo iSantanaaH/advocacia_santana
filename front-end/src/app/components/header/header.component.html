@@ -5,8 +5,8 @@
     </a>
     <div class="search">
       <label>
-        <input type="text" placeholder="procure..." />
-        <button>
+        <input [(ngModel)]="searchQuery" type="text" placeholder="procure..." />
+        <button (click)="onSearch()">
           <img src="/assets/Images/search.png" alt="Lupa de pesquisa" />
         </button>
       </label>

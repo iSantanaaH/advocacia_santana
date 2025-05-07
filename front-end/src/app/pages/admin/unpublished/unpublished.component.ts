@@ -4,7 +4,7 @@ import { UnPublishedDataModel } from '../../../services/posts/unpublished/unPubl
 import { UnpublishedService } from '../../../services/posts/unpublished/unpublished.service';
 import { HttpResponse } from '@angular/common/http';
 import { NgFor } from '@angular/common';
-import { ToastComponent } from '../../../components/toast/toast/toast.component';
+import { ToastComponent } from '../../../components/toast/toast.component';
 
 @Component({
   selector: 'app-unpublished',

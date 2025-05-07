@@ -1,7 +1,7 @@
 import { Component, OnDestroy, ViewChild } from '@angular/core';
 import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
 import { PostCreatorService } from '../../../services/admin/postCreator/post-creator.service';
-import { ToastComponent } from '../../../components/toast/toast/toast.component';
+import { ToastComponent } from '../../../components/toast/toast.component';
 import { Subscription } from 'rxjs';
 import { HttpResponse } from '@angular/common/http';
 import { CreatePostDataModel } from '../../../services/admin/postCreator/createPostDataModel';

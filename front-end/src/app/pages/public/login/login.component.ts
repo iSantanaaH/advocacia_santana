@@ -6,15 +6,15 @@ import {
   ViewChild,
 } from '@angular/core';
 import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
-import { ToastComponent } from '../../components/toast/toast/toast.component';
+import { ToastComponent } from '../../../components/toast/toast.component';
 import { NgIf } from '@angular/common';
 import {
   LoginResponse,
   LoginService,
-} from '../../services/user/auth/login/login.service';
+} from '../../../services/user/auth/login/login.service';
 import { Router } from '@angular/router';
 import { Subscription } from 'rxjs';
-import { AuthService } from '../../services/user/auth/authService/auth.service';
+import { AuthService } from '../../../services/user/auth/authService/auth.service';
 import { HttpResponse } from '@angular/common/http';
 
 @Component({
