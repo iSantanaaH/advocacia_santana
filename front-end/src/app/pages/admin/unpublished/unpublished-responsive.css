@@ -11,6 +11,10 @@
     aspect-ratio: 1;
   }
 
+  .list-posts li {
+    position: relative;
+  }
+
   .list-posts {
     max-height: 30rem;
     overflow-y: auto;
@@ -49,5 +53,23 @@
 
   ::-webkit-scrollbar-thumb:hover {
     background: #555;
+  }
+
+  .edit-container {
+    display: flex;
+    gap: 1rem;
+    position: absolute;
+    top: 0;
+    right: 0;
+  }
+
+  .edit-container button {
+    border: none;
+    background: none;
+    cursor: pointer;
+  }
+
+  .edit-container img {
+    width: 1.3rem;
   }
 }
