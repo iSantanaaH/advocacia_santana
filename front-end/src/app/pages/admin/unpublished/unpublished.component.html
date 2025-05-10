@@ -1,37 +1,42 @@
-<main class="main-container">
-  <section class="section-posts">
-    <ul class="list-posts">
-      <li *ngFor="let post of posts">
-        <article class="items">
-          <a href="/">
-            <img
-              src="http://localhost:3000/{{ post.image_path }}"
-              alt="{{ post.title }}"
-            />
-          </a>
+<main class="main">
+  <ul class="list-posts">
+    <li *ngFor="let post of posts">
+      <article class="items">
+        <a href="/">
+          <img
+            src="http://localhost:3000/{{ post.image_path }}"
+            alt="{{ post.title }}"
+          />
+        </a>
 
-          <div class="align">
-            <div class="title">
-              <h3>{{ post.title }}</h3>
-            </div>
-
-            <p class="author-name">
-              Autor: <span>{{ post.author.name }}</span>
-            </p>
-            <p class="date">
-              Criado em: <span>{{ post.formattedDate }}</span>
-            </p>
+        <div class="align">
+          <div class="title">
+            <h3>{{ post.title }}</h3>
           </div>
-        </article>
-        <article class="edit-container">
-          <button>
-            <img src="/assets/Images/pen.png" alt="editar" title="editar" />
-          </button>
-          <button>
-            <img src="/assets/Images/trash.png" alt="deletar" title="deletar" />
-          </button>
-        </article>
-      </li>
-    </ul>
-  </section>
+
+          <p class="author-name">
+            Autor: <span>{{ post.author.name }}</span>
+          </p>
+          <p class="date">
+            Criado em: <span>{{ post.formattedDate }}</span>
+          </p>
+        </div>
+      </article>
+      <article class="edit-container">
+        <button>
+          <img
+            src="/assets/Images/complete.png"
+            alt="publicar"
+            title="publicar"
+          />
+        </button>
+        <button>
+          <img src="/assets/Images/pen.png" alt="editar" title="editar" />
+        </button>
+        <button>
+          <img src="/assets/Images/trash.png" alt="deletar" title="deletar" />
+        </button>
+      </article>
+    </li>
+  </ul>
 </main>

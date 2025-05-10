@@ -2,6 +2,10 @@ ul li {
   list-style: none;
 }
 
+.list-posts {
+  min-height: 100%;
+}
+
 .list-posts li img {
   filter: drop-shadow(0.1rem 0.1rem 0.1rem var(--blackFull));
   transition: all 0.1s ease-in;

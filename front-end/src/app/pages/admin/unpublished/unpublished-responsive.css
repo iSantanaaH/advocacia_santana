@@ -1,14 +1,17 @@
 @media only screen and (min-width: 1025px) {
-  .section-posts .list-posts {
-    display: flex;
-    flex-wrap: wrap;
+  .main .list-posts {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-auto-rows: 12rem;
     padding: 0.5rem 0.5rem;
-    gap: 1.5rem;
+    gap: 2rem;
+    min-height: 85vh;
   }
 
   .list-posts li img {
     max-width: 12rem;
     aspect-ratio: 1;
+    object-fit: cover;
   }
 
   .list-posts li {
