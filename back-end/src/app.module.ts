@@ -14,6 +14,8 @@ import { UnpublishedPostsController } from './controllers/admin/manage-post/unpu
 import { UnpublishedPostsService } from './services/admin/manage-post/unpublished-posts/unpublished-posts.service';
 import { PublishedPostsService } from './services/admin/manage-post/published-posts/published-posts.service';
 import { HashService } from './services/utils/hash-service/hash-service';
+import { PostController } from './controllers/admin/manage-post/post/post.controller';
+import { PostService } from './services/admin/manage-post/post/post.service';
 
 @Module({
   imports: [PrismaModule],
@@ -24,6 +26,7 @@ import { HashService } from './services/utils/hash-service/hash-service';
     CreatePostController,
     PublishedPostsController,
     UnpublishedPostsController,
+    PostController,
   ],
   providers: [
     AppService,
@@ -34,6 +37,7 @@ import { HashService } from './services/utils/hash-service/hash-service';
     UnpublishedPostsService,
     PublishedPostsService,
     HashService,
+    PostService,
   ],
 })
 export class AppModule {}
