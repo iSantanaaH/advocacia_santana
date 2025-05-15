@@ -1,8 +1,8 @@
 import { BadRequestException, Injectable } from '@nestjs/common';
 import { PrismaService } from 'src/services/utils/prisma/prisma.service';
-import { UserDataProps } from './userDataProps';
 import { User } from '@prisma/client';
 import { HashService } from 'src/services/utils/hash-service/hash-service';
+import { CadastroModel } from 'src/models/user/CadastroModel';
 
 @Injectable()
 export class RegisterService {
@@ -11,7 +11,7 @@ export class RegisterService {
     private readonly hashService: HashService,
   ) {}
 
-  async register(userData: UserDataProps): Promise<User> {
+  async register(userData: CadastroModel): Promise<User> {
     const existingUser = await this.prisma.user.findFirst({
       where: {
         OR: [{ name: userData.name }, { email: userData.email }],

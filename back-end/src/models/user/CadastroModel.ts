@@ -1,4 +1,4 @@
-export interface UserDataProps {
+export interface CadastroModel {
   name: string;
   email: string;
   password: string;

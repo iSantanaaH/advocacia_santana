@@ -7,12 +7,6 @@ import { RegisterService } from './services/user/register/register.service';
 import { LoginService } from './services/user/login/login.service';
 import { PrismaService } from './services/utils/prisma/prisma.service';
 import { PrismaModule } from './services/utils/prisma/prisma.module';
-import { CreatePostController } from './controllers/admin/create-post/create-post.controller';
-import { CreatePostService } from './services/admin/create-post/create-post.service';
-import { PublishedPostsController } from './controllers/admin/manage-post/published-posts/published-posts.controller';
-import { UnpublishedPostsController } from './controllers/admin/manage-post/unpublished-posts/unpublished-posts.controller';
-import { UnpublishedPostsService } from './services/admin/manage-post/unpublished-posts/unpublished-posts.service';
-import { PublishedPostsService } from './services/admin/manage-post/published-posts/published-posts.service';
 import { HashService } from './services/utils/hash-service/hash-service';
 import { PostController } from './controllers/admin/manage-post/post/post.controller';
 import { PostService } from './services/admin/manage-post/post/post.service';
@@ -23,9 +17,6 @@ import { PostService } from './services/admin/manage-post/post/post.service';
     AppController,
     RegisterController,
     LoginController,
-    CreatePostController,
-    PublishedPostsController,
-    UnpublishedPostsController,
     PostController,
   ],
   providers: [
@@ -33,9 +24,6 @@ import { PostService } from './services/admin/manage-post/post/post.service';
     RegisterService,
     LoginService,
     PrismaService,
-    CreatePostService,
-    UnpublishedPostsService,
-    PublishedPostsService,
     HashService,
     PostService,
   ],

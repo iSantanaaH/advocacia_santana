@@ -4,6 +4,7 @@ import { PrismaService } from 'src/services/utils/prisma/prisma.service';
 import * as jwt from 'jsonwebtoken';
 import * as dotenv from 'dotenv';
 import { HashService } from 'src/services/utils/hash-service/hash-service';
+import { LoginModel } from 'src/models/user/LoginModel';
 dotenv.config({ path: '../../../.env' });
 
 @Injectable()
@@ -13,7 +14,7 @@ export class LoginService {
     private readonly hashService: HashService,
   ) {}
 
-  async login(userData: LoginDataModel) {
+  async login(userData: LoginModel) {
     const user = await this.prisma.user.findUnique({
       where: {
         email: userData.email,

@@ -6,6 +6,7 @@ import {
   HttpCode,
   Post,
 } from '@nestjs/common';
+import { LoginModel } from 'src/models/user/LoginModel';
 import { LoginService } from 'src/services/user/login/login.service';
 
 @Controller('api/auth/login')
@@ -14,7 +15,7 @@ export class LoginController {
 
   @Post()
   @HttpCode(200)
-  async loginUser(@Body() userData: LoginDataModel) {
+  async loginUser(@Body() userData: LoginModel) {
     if (userData) {
       try {
         const loginResult = await this.loginService.login(userData);

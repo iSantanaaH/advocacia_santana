@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { PostModel } from './postModel';
 import { CreatePostModel } from '../../../models/posts/createPost';
+import { UnpublishedModel } from '../../../models/posts/unpublishedPostModel';
 
 @Injectable({
   providedIn: 'root',
@@ -17,7 +18,7 @@ export class PostService {
     return this.http.get<PostModel[]>(this.apiUrl, { params });
   }
 
-  getUnpublishedPosts(): Observable<PostModel[]> {
+  getUnpublishedPosts(): Observable<UnpublishedModel[]> {
     const params = new HttpParams().set('published', 'false');
     return this.http.get<PostModel[]>(this.apiUrl, { params });
   }

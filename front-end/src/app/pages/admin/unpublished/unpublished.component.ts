@@ -1,10 +1,9 @@
 import { Component, OnDestroy, OnInit, ViewChild } from '@angular/core';
 import { Subscription } from 'rxjs';
-import { UnPublishedDataModel } from '../../../services/posts/unpublished/unPublishedDataModel';
-import { UnpublishedService } from '../../../services/posts/unpublished/unpublished.service';
-import { HttpResponse } from '@angular/common/http';
 import { NgFor } from '@angular/common';
 import { ToastComponent } from '../../../components/toast/toast.component';
+import { PostService } from '../../../services/admin/post/post.service';
+import { UnpublishedModel } from '../../../models/posts/unpublishedPostModel';
 
 @Component({
   selector: 'app-unpublished',
@@ -18,25 +17,19 @@ export class UnpublishedComponent implements OnDestroy, OnInit {
     this.getPosts();
   }
 
-  constructor(private unpublishedService: UnpublishedService) {}
+  constructor(private postService: PostService) {}
   @ViewChild(ToastComponent) toastComponent!: ToastComponent;
   private subscription: Subscription = new Subscription();
 
-  public posts: UnPublishedDataModel[] = [];
+  public posts: UnpublishedModel[] = [];
 
   public getPosts() {
-    const getPostSub = this.unpublishedService.getUnpublishedPosts().subscribe({
-      next: (httpResponse: HttpResponse<UnPublishedDataModel[]>) => {
-        if (httpResponse.status === 200) {
-          try {
-            const responseBody = httpResponse.body;
-            this.posts =
-              responseBody?.map((post) => ({
-                ...post,
-                formattedDate: this.convertDateCreationPost(post.created_at),
-              })) || [];
-          } catch (error) {}
-        }
+    const getPostSub = this.postService.getUnpublishedPosts().subscribe({
+      next: (postModel: UnpublishedModel[]) => {
+        this.posts = postModel.map((post) => ({
+          ...post,
+          formattedDate: this.convertDateCreationPost(post.created_at),
+        }));
       },
     });
     this.subscription.add(getPostSub);
