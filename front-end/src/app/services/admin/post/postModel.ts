@@ -1,4 +1,4 @@
-export interface PublishedDataModel {
+export interface PostModel {
   id: number;
   title: string;
   description: string;
@@ -11,4 +11,5 @@ export interface PublishedDataModel {
   deleted_at: Date;
   image_name: string;
   image_path: string;
+  formattedDate?: string;
 }
