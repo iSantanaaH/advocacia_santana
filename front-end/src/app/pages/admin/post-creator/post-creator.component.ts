@@ -62,15 +62,13 @@ export default class PostCreatorComponent implements OnDestroy {
 
         const createPostSub = this.postService.createPost(formData).subscribe({
           next: (response: HttpResponse<CreatePostModel>) => {
-            if (response.status === 200) {
-              const postResponse = response.body;
-              if (postResponse) {
-                this.TOAST_MESSAGE = postResponse.message;
-                this.toastComponent.message = this.TOAST_MESSAGE;
-                this.toastComponent.showToast();
-              }
-              this.createPostForm.reset();
+            const postResponse = response.body;
+            if (postResponse) {
+              this.TOAST_MESSAGE = postResponse.message;
+              this.toastComponent.message = this.TOAST_MESSAGE;
+              this.toastComponent.showToast();
             }
+            this.createPostForm.reset();
           },
           error: (error: any) => {
             if (error.status === 400) {
