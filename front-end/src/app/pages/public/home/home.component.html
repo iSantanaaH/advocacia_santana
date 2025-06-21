@@ -55,180 +55,39 @@
 
     @defer (on viewport) {
     <div class="containerPost visible">
-      <div class="post">
-        <div>
-          <a href="/">
-            <img
-              class="imagePost"
-              ngSrc="/assets/Images/advocacia.png"
-              width="1"
-              height="1"
-              alt=""
-            />
-          </a>
-        </div>
+      <ul class="post">
+        <li *ngFor="let post of posts">
+          <div>
+            <a href="/">
+              <img
+                class="imagePost"
+                ngSrc="http://localhost:3000/{{ post.image_path }}"
+                width="1"
+                height="1"
+                alt=""
+              />
+            </a>
+          </div>
 
-        <div class="datePost">
-          <a href="/">
-            <p>Criado em:</p>
-          </a>
-          <a href="/">
-            <span>Maio, 10 2024</span>
-          </a>
-        </div>
+          <div class="datePost">
+            <a href="/">
+              <p>Criado em:</p>
+            </a>
+            <a href="/">
+              <span>{{ post.created_at }}</span>
+            </a>
+          </div>
 
-        <div class="aboutPost">
-          <a href="/">
-            <h1>O que fazer quando o banco cobra juros</h1>
-          </a>
-          <p>
-            Lorem Ipsum is simply dummy text of the printing and typesetting
-            industry. Lorem Ipsum has been the industry's standard dummy text
-            ever since the 1500s, when an unknown printer took a galley of type
-            and scrambled it to make a type specimen book.
-          </p>
-        </div>
-      </div>
-
-      <div class="post">
-        <div>
-          <a href="/">
-            <img
-              class="imagePost"
-              ngSrc="/assets/Images/advocacia.png"
-              width="1"
-              height="1"
-              alt=""
-            />
-          </a>
-        </div>
-
-        <div class="datePost">
-          <a href="/">
-            <p>Criado em:</p>
-          </a>
-          <a href="/">
-            <span>Maio, 10 2024</span>
-          </a>
-        </div>
-
-        <div class="aboutPost">
-          <a href="/">
-            <h1>O que fazer quando o banco cobra juros</h1>
-          </a>
-          <p>
-            Lorem Ipsum is simply dummy text of the printing and typesetting
-            industry. Lorem Ipsum has been the industry's standard dummy text
-            ever since the 1500s, when an unknown printer took a galley of type
-            and scrambled it to make a type specimen book.
-          </p>
-        </div>
-      </div>
-
-      <div class="post">
-        <div>
-          <a href="/">
-            <img
-              class="imagePost"
-              ngSrc="/assets/Images/advocacia.png"
-              width="1"
-              height="1"
-              alt=""
-            />
-          </a>
-        </div>
-
-        <div class="datePost">
-          <a href="/">
-            <p>Criado em:</p>
-          </a>
-          <a href="/">
-            <span>Maio, 10 2024</span>
-          </a>
-        </div>
-
-        <div class="aboutPost">
-          <a href="/">
-            <h1>O que fazer quando o banco cobra juros</h1>
-          </a>
-          <p>
-            Lorem Ipsum is simply dummy text of the printing and typesetting
-            industry. Lorem Ipsum has been the industry's standard dummy text
-            ever since the 1500s, when an unknown printer took a galley of type
-            and scrambled it to make a type specimen book.
-          </p>
-        </div>
-      </div>
-
-      <div class="post">
-        <div>
-          <a href="/">
-            <img
-              class="imagePost"
-              ngSrc="/assets/Images/advocacia.png"
-              width="1"
-              height="1"
-              alt=""
-            />
-          </a>
-        </div>
-
-        <div class="datePost">
-          <a href="/">
-            <p>Criado em:</p>
-          </a>
-          <a href="/">
-            <span>Maio, 10 2024</span>
-          </a>
-        </div>
-
-        <div class="aboutPost">
-          <a href="/">
-            <h1>O que fazer quando o banco cobra juros</h1>
-          </a>
-          <p>
-            Lorem Ipsum is simply dummy text of the printing and typesetting
-            industry. Lorem Ipsum has been the industry's standard dummy text
-            ever since the 1500s, when an unknown printer took a galley of type
-            and scrambled it to make a type specimen book.
-          </p>
-        </div>
-      </div>
-
-      <div class="post">
-        <div>
-          <a href="/">
-            <img
-              class="imagePost"
-              ngSrc="/assets/Images/advocacia.png"
-              width="1"
-              height="1"
-              alt=""
-            />
-          </a>
-        </div>
-
-        <div class="datePost">
-          <a href="/">
-            <p>Criado em:</p>
-          </a>
-          <a href="/">
-            <span>Maio, 10 2024</span>
-          </a>
-        </div>
-
-        <div class="aboutPost">
-          <a href="/">
-            <h1>O que fazer quando o banco cobra juros</h1>
-          </a>
-          <p>
-            Lorem Ipsum is simply dummy text of the printing and typesetting
-            industry. Lorem Ipsum has been the industry's standard dummy text
-            ever since the 1500s, when an unknown printer took a galley of type
-            and scrambled it to make a type specimen book.
-          </p>
-        </div>
-      </div>
+          <div class="aboutPost">
+            <a href="/">
+              <h1 class="title">{{ post.title }}</h1>
+            </a>
+            <p class="description">
+              {{ post.description }}
+            </p>
+          </div>
+        </li>
+      </ul>
     </div>
     } @placeholder {
     <p></p>
