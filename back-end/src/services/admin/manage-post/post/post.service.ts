@@ -6,8 +6,7 @@ import { CreatePostModel } from 'src/models/post/CreatePostModel';
 @Injectable()
 export class PostService {
   constructor(private readonly prisma: PrismaService) {}
-
-  //   Retorna todos os posts não publicados
+  //   Retorna todos os posts não publicados.
   async searchUnpublished(): Promise<PostModel[]> {
     try {
       const post = await this.prisma.post.findMany({
@@ -32,7 +31,7 @@ export class PostService {
     }
   }
 
-  //   Retorna todos os posts publicados
+  //   Retorna todos os posts publicados.
   async searchPublished(): Promise<PostModel[]> {
     try {
       const post = await this.prisma.post.findMany({
@@ -57,7 +56,7 @@ export class PostService {
     }
   }
 
-  // Cria um novo post
+  // Cria um novo post.
   async addNewPost(
     postData: CreatePostModel,
     imageName: string,
