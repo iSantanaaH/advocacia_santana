@@ -1,14 +1,13 @@
-/* eslint-disable prettier/prettier */
 import { BadRequestException, Injectable } from '@nestjs/common';
-import { PrismaService } from 'src/services/utils/prisma/prisma.service';
 import * as jwt from 'jsonwebtoken';
 import * as dotenv from 'dotenv';
-import { HashService } from 'src/services/utils/hash-service/hash-service';
-import { LoginModel } from 'src/models/user/LoginModel';
 dotenv.config({ path: '../../../.env' });
+import { PrismaService } from '../utils/prisma/prisma.service';
+import { HashService } from '../utils/hash-service/hash-service';
+import { LoginModel } from 'src/models/user/LoginModel';
 
 @Injectable()
-export class LoginService {
+export class UserService {
   constructor(
     private prisma: PrismaService,
     private readonly hashService: HashService,
