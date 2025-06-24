@@ -58,7 +58,7 @@
       <ul class="post">
         <li *ngFor="let post of posts">
           <div>
-            <a href="/">
+            <a [routerLink]="['/post', post.id]">
               <img
                 class="imagePost"
                 ngSrc="http://localhost:3000/{{ post.image_path }}"
@@ -70,16 +70,16 @@
           </div>
 
           <div class="datePost">
-            <a href="/">
+            <a [routerLink]="['/post', post.id]">
               <p>Criado em:</p>
             </a>
-            <a href="/">
+            <a [routerLink]="['/post', post.id]">
               <span>{{ post.created_at }}</span>
             </a>
           </div>
 
           <div class="aboutPost">
-            <a href="/">
+            <a [routerLink]="['/post', post.id]">
               <h1 class="title">{{ post.title }}</h1>
             </a>
             <p class="description">
