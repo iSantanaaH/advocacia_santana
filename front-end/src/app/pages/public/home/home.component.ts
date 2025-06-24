@@ -5,11 +5,18 @@ import { FormsModule } from '@angular/forms';
 import { HeaderComponent } from '../../../components/header/header.component';
 import { PostService } from '../../../services/admin/post/post.service';
 import { UnpublishedModel } from '../../../models/posts/unpublishedPostModel';
+import { RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [NgOptimizedImage, FormsModule, HeaderComponent, CommonModule],
+  imports: [
+    NgOptimizedImage,
+    FormsModule,
+    HeaderComponent,
+    CommonModule,
+    RouterLink,
+  ],
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.css', './home-responsive.component.css'],
 })
