@@ -9,7 +9,7 @@ import {
   UploadedFile,
   UseInterceptors,
 } from '@nestjs/common';
-import { PostService } from 'src/services/admin/manage-post/post/post.service';
+import { PostService } from 'src/services/admin/post/post.service';
 import { Post as PostModel } from '@prisma/client';
 import { FileInterceptor } from '@nestjs/platform-express';
 import { diskStorage } from 'multer';
