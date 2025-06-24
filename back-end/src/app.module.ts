@@ -10,6 +10,8 @@ import { PrismaModule } from './services/utils/prisma/prisma.module';
 import { HashService } from './services/utils/hash-service/hash-service';
 import { PostController } from './controllers/admin/manage-post/post/post.controller';
 import { PostService } from './services/admin/manage-post/post/post.service';
+import { UserController } from './controllers/user/user.controller';
+import { UserService } from './services/user/user.service';
 
 @Module({
   imports: [PrismaModule],
@@ -18,6 +20,7 @@ import { PostService } from './services/admin/manage-post/post/post.service';
     RegisterController,
     LoginController,
     PostController,
+    UserController,
   ],
   providers: [
     AppService,
@@ -26,6 +29,7 @@ import { PostService } from './services/admin/manage-post/post/post.service';
     PrismaService,
     HashService,
     PostService,
+    UserService,
   ],
 })
 export class AppModule {}
