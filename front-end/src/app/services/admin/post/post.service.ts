@@ -18,6 +18,10 @@ export class PostService {
     return this.http.get<PostModel[]>(this.apiUrl, { params });
   }
 
+  getPostById(id: number): Observable<PostModel> {
+    return this.http.get<PostModel>(`${this.apiUrl}/${id}`);
+  }
+
   getUnpublishedPosts(): Observable<UnpublishedModel[]> {
     const params = new HttpParams().set('published', 'false');
     return this.http.get<PostModel[]>(this.apiUrl, { params });
