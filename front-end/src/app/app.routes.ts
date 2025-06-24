@@ -19,6 +19,11 @@ export const routes: Routes = [
     pathMatch: 'full',
   },
   {
+    path: 'post/:id',
+    loadComponent: () => import('./pages/public/post-page/post-page.component'),
+    pathMatch: 'full',
+  },
+  {
     path: 'admin/createPost',
     loadComponent: () =>
       import('./pages/admin/post-creator/post-creator.component'),
