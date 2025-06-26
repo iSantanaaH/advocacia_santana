@@ -1,7 +1,7 @@
 import { BadRequestException, Body, Controller, Post } from '@nestjs/common';
 import { CadastroModel } from 'src/models/user/CadastroModel';
 import { LoginModel } from 'src/models/user/LoginModel';
-import { UserService } from 'src/services/user/user.service';
+import { UserService } from 'src/services/public/user/user.service';
 
 @Controller('user')
 export class UserController {
