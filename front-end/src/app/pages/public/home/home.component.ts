@@ -22,7 +22,7 @@ import { RouterLink } from '@angular/router';
 })
 export default class HomeComponent implements OnInit {
   ngOnInit(): void {
-    this.postService.getUnpublishedPosts().subscribe({
+    this.postService.getPublishedPosts().subscribe({
       next: (posts) => {
         this.posts = posts;
         this.isLoading = false;
