@@ -16,6 +16,7 @@ async function bootstrap() {
     optionsSuccessStatus: 204,
   };
   app.enableCors(options);
+  app.setGlobalPrefix('api');
 
   config();
 
