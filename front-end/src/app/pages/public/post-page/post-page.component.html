@@ -3,7 +3,12 @@
   <section>
     <h1>{{ post.title }}</h1>
     <p>{{ post.created_at }}</p>
-    <img [ngSrc]="'http://localhost:3000' + post.image_path" alt="" />
+    <img
+      width="10"
+      height="10"
+      [ngSrc]="'http://localhost:3000/api' + post.image_path"
+      alt=""
+    />
     <p>{{ post.description }}</p>
   </section>
   }
