@@ -16,7 +16,7 @@ import { diskStorage } from 'multer';
 import { extname } from 'path';
 import { CreatePostModel } from 'src/models/post/CreatePostModel';
 
-@Controller('api/admin/manage-post/post')
+@Controller('admin/manage-post/post')
 export class PostController {
   constructor(private readonly postService: PostService) {}
 
