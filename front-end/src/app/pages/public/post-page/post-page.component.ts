@@ -22,8 +22,10 @@ export default class PostPageComponent implements OnInit {
   ngOnInit(): void {
     const postId = Number(this.route.snapshot.paramMap.get('id'));
     this.postService.getPostById(postId).subscribe({
-      next: (data) => (this.post = data),
-      error: (err) => console.error('Erro ao buscar post', err),
+      next: (data) => {
+        this.post = data;
+      },
+      error: (err) => console.error('Erro ao buscar post', err.message),
     });
   }
 }
