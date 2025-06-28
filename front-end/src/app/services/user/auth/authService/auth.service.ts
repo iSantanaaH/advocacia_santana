@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { jwtDecode } from 'jwt-decode';
 import { CookieService } from 'ngx-cookie-service';
+import { Role, RoleName } from '../../../../shared/enums/role.enums';
 
 @Injectable({
   providedIn: 'root',
@@ -16,7 +17,7 @@ export class AuthService {
 
   private initializeUser(): void {
     const token = this.getToken();
-    const validToken = this.verifyExpiresToken();
+    const validToken = this.getValidDecodedToken();
 
     if (token && validToken) {
       const decoded = this.decodedToken(token);
@@ -28,7 +29,7 @@ export class AuthService {
 
   public getUserIdToken(): number | null {
     const token = this.getToken();
-    const validToken = this.verifyExpiresToken();
+    const validToken = this.getValidDecodedToken();
 
     if (token && validToken) {
       const decoded = this.decodedToken(token);
@@ -40,7 +41,7 @@ export class AuthService {
 
   public getUserRole(): number | null {
     const token = this.getToken();
-    const validToken = this.verifyExpiresToken();
+    const validToken = this.getValidDecodedToken();
 
     if (token && validToken) {
       const decoded = this.decodedToken(token);
@@ -48,10 +49,10 @@ export class AuthService {
 
       switch (userRoleId) {
         case 1:
-          this.userRoleName = 'ADMINISTRADOR';
+          this.userRoleName = RoleName[Role.ADMIN];
           break;
         case 2:
-          this.userRoleName = 'USUÁRIO';
+          this.userRoleName = RoleName[Role.USER];
           break;
         default:
           this.userRoleName = null;
@@ -74,21 +75,22 @@ export class AuthService {
     return token;
   }
 
-  public decodedToken(token: string): any {
-    return jwtDecode(token);
+  public decodedToken<T = any>(token: string): T | null {
+    try {
+      return jwtDecode<T>(token);
+    } catch (error) {
+      return null;
+    }
   }
 
-  public verifyExpiresToken(): boolean {
+  public getValidDecodedToken(): boolean | null {
     const token = this.getToken();
+    if (!token) return null;
 
-    if (token) {
-      const decodedToken = this.decodedToken(token);
-      if (!decodedToken) return false;
+    const decoded = this.decodedToken(token);
+    const currentTime = Math.floor(Date.now() / 1000);
 
-      const currentTime = Math.floor(Date.now() / 1000);
-      return decodedToken.exp > currentTime;
-    }
-    return false;
+    return decoded && decoded.exp > currentTime ? decoded : null;
   }
 
   public setAuthTokenInCookies(token: string): boolean {
@@ -110,12 +112,12 @@ export class AuthService {
     }
   }
 
-  public isLoggedIn(): boolean {
-    const validToken: boolean = this.verifyExpiresToken();
+  public isUserAuthenticated(): boolean | null {
+    const validToken = this.getValidDecodedToken();
     return validToken;
   }
 
-  public authUser(token: string, userName: string): boolean {
+  public saveUserCredentials(token: string, userName: string): boolean {
     try {
       const cookieSet = this.setAuthTokenInCookies(token);
 
@@ -133,7 +135,8 @@ export class AuthService {
   public logout(): void {
     this.cookieService.delete(this.COOKIE_NAME, '/');
     this.userName = null;
-    if (typeof window !== undefined || typeof document !== 'undefined') {
+    this.userRoleName = null;
+    if (typeof window !== 'undefined') {
       window.location.href = '/';
     }
   }
