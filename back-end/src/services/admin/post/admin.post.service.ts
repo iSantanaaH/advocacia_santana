@@ -4,7 +4,7 @@ import { Post as PostModel } from '@prisma/client';
 import { CreatePostModel } from 'src/models/post/CreatePostModel';
 
 @Injectable()
-export class PostService {
+export class AdminPostService {
   constructor(private readonly prisma: PrismaService) {}
   //   Retorna todos os posts não publicados.
   async searchUnpublished(): Promise<PostModel[]> {
@@ -12,31 +12,6 @@ export class PostService {
       const post = await this.prisma.post.findMany({
         where: {
           published: false,
-        },
-        include: {
-          author: {
-            select: {
-              name: true,
-            },
-          },
-        },
-      });
-
-      if (post.length === 0) {
-        throw new BadRequestException('Nehum post foi encontrado');
-      }
-      return post;
-    } catch (error) {
-      throw error;
-    }
-  }
-
-  //   Retorna todos os posts publicados.
-  async searchPublished(): Promise<PostModel[]> {
-    try {
-      const post = await this.prisma.post.findMany({
-        where: {
-          published: true,
         },
         include: {
           author: {

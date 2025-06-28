@@ -9,26 +9,15 @@ import {
   UploadedFile,
   UseInterceptors,
 } from '@nestjs/common';
-import { PostService } from 'src/services/admin/post/post.admin.service';
-import { Post as PostModel } from '@prisma/client';
+import { AdminPostService } from 'src/services/admin/post/admin.post.service';
 import { FileInterceptor } from '@nestjs/platform-express';
 import { diskStorage } from 'multer';
 import { extname } from 'path';
 import { CreatePostModel } from 'src/models/post/CreatePostModel';
 
 @Controller('admin')
-export class PostController {
-  constructor(private readonly postService: PostService) {}
-
-  @Get('show-post')
-  @HttpCode(200)
-  async getPosts(@Query('published') published?: string): Promise<PostModel[]> {
-    if (published === 'true') {
-      return await this.postService.searchPublished();
-    } else {
-      return await this.postService.searchUnpublished();
-    }
-  }
+export class AdminPostController {
+  constructor(private readonly adminPostService: AdminPostService) {}
 
   @Post('create-post')
   @UseInterceptors(
@@ -60,7 +49,7 @@ export class PostController {
       try {
         const imagePath = file.path;
         const imageName = file.filename;
-        const postResult = await this.postService.addNewPost(
+        const postResult = await this.adminPostService.addNewPost(
           postData,
           imageName,
           imagePath,
