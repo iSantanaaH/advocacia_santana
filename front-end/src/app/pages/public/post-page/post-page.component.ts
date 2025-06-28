@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { PostService } from '../../../services/admin/post/post.service';
+import { AdminPostService } from '../../../services/admin/post/admin.post.service';
 import { PostModel } from '../../../services/admin/post/postModel';
 import { NgOptimizedImage } from '@angular/common';
 
@@ -14,14 +14,14 @@ import { NgOptimizedImage } from '@angular/common';
 export default class PostPageComponent implements OnInit {
   constructor(
     private route: ActivatedRoute,
-    private postService: PostService
+    private adminPostService: AdminPostService
   ) {}
 
   post!: PostModel;
 
   ngOnInit(): void {
     const postId = Number(this.route.snapshot.paramMap.get('id'));
-    this.postService.getPostById(postId).subscribe({
+    this.adminPostService.getPostById(postId).subscribe({
       next: (data) => {
         this.post = data;
       },
