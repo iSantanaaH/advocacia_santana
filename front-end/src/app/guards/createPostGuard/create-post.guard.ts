@@ -6,7 +6,7 @@ export const createPostGuard: CanActivateFn = (route, state) => {
   const authService = inject(AuthService);
   const router = inject(Router);
 
-  if (!authService.isLoggedIn()) {
+  if (!authService.isUserAuthenticated()) {
     router.navigate(['']);
     return false;
   }
