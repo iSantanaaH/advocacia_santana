@@ -2,7 +2,7 @@ import { Component, OnDestroy, OnInit, ViewChild } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { NgFor } from '@angular/common';
 import { ToastComponent } from '../../../components/toast/toast.component';
-import { PostService } from '../../../services/admin/post/post.service';
+import { AdminPostService } from '../../../services/admin/post/admin.post.service';
 import { UnpublishedModel } from '../../../models/posts/unpublishedPostModel';
 
 @Component({
@@ -17,14 +17,14 @@ export class UnpublishedComponent implements OnDestroy, OnInit {
     this.getPosts();
   }
 
-  constructor(private postService: PostService) {}
+  constructor(private adminPostService: AdminPostService) {}
   @ViewChild(ToastComponent) toastComponent!: ToastComponent;
   private subscription: Subscription = new Subscription();
 
   public posts: UnpublishedModel[] = [];
 
   public getPosts() {
-    const getPostSub = this.postService.getUnpublishedPosts().subscribe({
+    const getPostSub = this.adminPostService.getUnpublishedPosts().subscribe({
       next: (postModel: UnpublishedModel[]) => {
         this.posts = postModel.map((post) => ({
           ...post,
