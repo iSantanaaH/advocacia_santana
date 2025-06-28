@@ -4,7 +4,7 @@ import { ToastComponent } from '../../../components/toast/toast.component';
 import { Subscription } from 'rxjs';
 import { HttpResponse } from '@angular/common/http';
 import { AuthService } from '../../../services/user/auth/authService/auth.service';
-import { PostService } from '../../../services/admin/post/post.service';
+import { AdminPostService } from '../../../services/admin/post/admin.post.service';
 import { CreatePostModel } from '../../../models/posts/createPost';
 
 @Component({
@@ -20,7 +20,7 @@ import { CreatePostModel } from '../../../models/posts/createPost';
 export default class PostCreatorComponent implements OnDestroy {
   constructor(
     private _fb: FormBuilder,
-    private postService: PostService,
+    private adminPostService: AdminPostService,
     private authService: AuthService
   ) {}
 
@@ -60,27 +60,29 @@ export default class PostCreatorComponent implements OnDestroy {
           formData.append('image', this.SELECTED_FILE);
         }
 
-        const createPostSub = this.postService.createPost(formData).subscribe({
-          next: (response: HttpResponse<CreatePostModel>) => {
-            const postResponse = response.body;
-            if (postResponse) {
-              this.TOAST_MESSAGE = postResponse.message;
-              this.toastComponent.message = this.TOAST_MESSAGE;
-              this.toastComponent.showToast();
-            }
-            this.createPostForm.reset();
-          },
-          error: (error: any) => {
-            if (error.status === 400) {
-              const errorMessage =
-                error.error.message ||
-                'Erro desconhecido. Por favor, tente novamente';
-              const TOAST_MESSAGE = errorMessage;
-              this.toastComponent.message = TOAST_MESSAGE;
-              this.toastComponent.showToast();
-            }
-          },
-        });
+        const createPostSub = this.adminPostService
+          .createPost(formData)
+          .subscribe({
+            next: (response: HttpResponse<CreatePostModel>) => {
+              const postResponse = response.body;
+              if (postResponse) {
+                this.TOAST_MESSAGE = postResponse.message;
+                this.toastComponent.message = this.TOAST_MESSAGE;
+                this.toastComponent.showToast();
+              }
+              this.createPostForm.reset();
+            },
+            error: (error: any) => {
+              if (error.status === 400) {
+                const errorMessage =
+                  error.error.message ||
+                  'Erro desconhecido. Por favor, tente novamente';
+                const TOAST_MESSAGE = errorMessage;
+                this.toastComponent.message = TOAST_MESSAGE;
+                this.toastComponent.showToast();
+              }
+            },
+          });
         this.subscription.add(createPostSub);
       } else {
         this.TOAST_MESSAGE = `Por favor, selecione uma imagem`;
