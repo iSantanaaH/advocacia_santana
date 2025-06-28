@@ -2,7 +2,7 @@ import { BadRequestException, Controller, Get, Param } from '@nestjs/common';
 import { PostUserService } from 'src/services/public/user/post/post.user.service';
 
 @Controller('public/post-details')
-export class PostUserController {
+export class PublicPostController {
   constructor(private readonly postUserService: PostUserService) {}
   @Get(':id')
   async showPostById(@Param('id') id: string) {
