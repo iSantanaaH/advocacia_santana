@@ -29,7 +29,6 @@ export default class HomeComponent implements OnInit {
       },
       error: (err) => {
         this.error = 'Erro ao carregar posts.';
-        console.error(err);
         this.isLoading = false;
       },
     });
