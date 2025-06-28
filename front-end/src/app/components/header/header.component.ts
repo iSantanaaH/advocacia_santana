@@ -8,6 +8,7 @@ import {
 import { AuthService } from '../../services/user/auth/authService/auth.service';
 import { FormsModule } from '@angular/forms';
 import { ShowUserComponent } from '../user/showUser/show-user.component';
+import { Role, RoleName } from '../../shared/enums/role.enums';
 
 @Component({
   selector: 'app-header',
@@ -18,6 +19,7 @@ import { ShowUserComponent } from '../user/showUser/show-user.component';
 })
 export class HeaderComponent {
   constructor(public authService: AuthService) {}
+  readonly Role = Role;
 
   @ViewChild('menuHidden') menuHidden!: ElementRef;
   @Output() search = new EventEmitter<string>();
