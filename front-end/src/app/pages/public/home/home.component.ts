@@ -3,9 +3,9 @@ import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../../../services/user/auth/authService/auth.service';
 import { FormsModule } from '@angular/forms';
 import { HeaderComponent } from '../../../components/header/header.component';
-import { PostService } from '../../../services/admin/post/post.service';
 import { UnpublishedModel } from '../../../models/posts/unpublishedPostModel';
 import { RouterLink } from '@angular/router';
+import { AdminPostService } from '../../../services/admin/post/admin.post.service';
 
 @Component({
   selector: 'app-home',
@@ -21,8 +21,15 @@ import { RouterLink } from '@angular/router';
   styleUrls: ['./home.component.css', './home-responsive.component.css'],
 })
 export default class HomeComponent implements OnInit {
+  constructor(
+    public authService: AuthService,
+    private adminPostService: AdminPostService
+  ) {
+    authService.getUserRole();
+  }
+
   ngOnInit(): void {
-    this.postService.getPublishedPosts().subscribe({
+    this.adminPostService.getPublishedPosts().subscribe({
       next: (posts) => {
         this.posts = posts;
         this.isLoading = false;
@@ -32,13 +39,6 @@ export default class HomeComponent implements OnInit {
         this.isLoading = false;
       },
     });
-  }
-
-  constructor(
-    public authService: AuthService,
-    private readonly postService: PostService
-  ) {
-    authService.getUserRole();
   }
 
   public isLoading = true;
