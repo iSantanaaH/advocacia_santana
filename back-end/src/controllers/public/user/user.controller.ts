@@ -1,9 +1,15 @@
-import { BadRequestException, Body, Controller, Post } from '@nestjs/common';
+import {
+  BadRequestException,
+  Body,
+  Controller,
+  HttpCode,
+  Post,
+} from '@nestjs/common';
 import { CadastroModel } from 'src/models/user/CadastroModel';
 import { LoginModel } from 'src/models/user/LoginModel';
 import { UserService } from 'src/services/public/user/user.service';
 
-@Controller('user')
+@Controller('public/user')
 export class UserController {
   constructor(private readonly userService: UserService) {}
 
@@ -21,6 +27,7 @@ export class UserController {
 
   // Faz o login do usuário;
   @Post('authentication')
+  @HttpCode(200)
   async loginUser(@Body() userData: LoginModel) {
     if (userData) {
       try {
