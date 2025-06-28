@@ -8,7 +8,7 @@ import {
 import { AuthService } from '../../services/user/auth/authService/auth.service';
 import { FormsModule } from '@angular/forms';
 import { ShowUserComponent } from '../user/showUser/show-user.component';
-import { Role, RoleName } from '../../shared/enums/role.enums';
+import { Role } from '../../shared/enums/role.enums';
 
 @Component({
   selector: 'app-header',
