@@ -1,7 +1,7 @@
 import { HttpClient, HttpResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { buildApiUrl } from '../../../../shared/utils/url-builder.util';
+import { publicApiUrl } from '../../../../shared/utils/url-builder.util';
 
 export interface LoginResponse {
   token: string;
@@ -18,7 +18,7 @@ export class LoginService {
     password: String
   ): Observable<HttpResponse<LoginResponse>> {
     return this.http.post<LoginResponse>(
-      buildApiUrl('public', 'user/authentication'),
+      publicApiUrl('user/authentication'),
       { email, password },
       { observe: 'response' }
     );
