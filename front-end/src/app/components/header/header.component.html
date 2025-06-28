@@ -20,7 +20,7 @@
     <details>
       <summary>Conta</summary>
       <ul>
-        @if(!authService.isLoggedIn()) {
+        @if(!authService.isUserAuthenticated()) {
         <li>
           <a href="/login">Login</a>
         </li>
@@ -45,22 +45,13 @@
   <div class="content-nav">
     <nav class="navegation-auth">
       <ul>
-        @if(authService.isLoggedIn()) { @if(authService.userRoleName ===
-        'ADMINISTRADOR') {
+        @if(authService.isUserAuthenticated() && authService.getUserRole() ===
+        Role.ADMIN) {
         <li><a href="/admin/createPost">Postar</a></li>
         <li><a href="/admin/manage-post">Gerencia</a></li>
-        }
+
         <div class="userDetails">
-          <li>
-            <img
-              src="/assets/Images/avatar3.png"
-              alt="user"
-              class="userImage"
-            />
-          </li>
-          <li>
-            <p class="showUserName">{{ authService.getUserName() }}</p>
-          </li>
+          <app-show-user />
         </div>
 
         <li>
@@ -72,7 +63,7 @@
             class="doorImage"
           />
         </li>
-        } @else if(!authService.isLoggedIn()) {
+        } @else if(!authService.isUserAuthenticated()) {
         <li>
           <a href="/login">Login</a>
         </li>
