@@ -23,7 +23,6 @@ export class PostController {
   @Get('show-post')
   @HttpCode(200)
   async getPosts(@Query('published') published?: string): Promise<PostModel[]> {
-    console.log(published);
     if (published === 'true') {
       return await this.postService.searchPublished();
     } else {
