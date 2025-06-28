@@ -9,7 +9,7 @@ import {
 import { PublicPostService } from 'src/services/public/post/public.post.service';
 import { Post as PostModel } from '@prisma/client';
 
-@Controller('public/post')
+@Controller('posts')
 export class PublicPostController {
   constructor(private readonly publicPostService: PublicPostService) {}
 
@@ -27,7 +27,7 @@ export class PublicPostController {
     }
   }
 
-  @Get('show-post')
+  @Get('publisheds')
   @HttpCode(200)
   async getPosts(@Query('published') published?: string): Promise<PostModel[]> {
     if (published === 'true') {
