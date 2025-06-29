@@ -5,7 +5,7 @@ import { Subscription } from 'rxjs';
 import { HttpResponse } from '@angular/common/http';
 import { AuthService } from '../../../services/user/auth/authService/auth.service';
 import { AdminPostService } from '../../../services/admin/post/admin.post.service';
-import { CreatePostModel } from '../../../models/posts/createPost';
+import { PostCreateResponse } from '../../../models/posts/create-post-response.model';
 
 @Component({
   selector: 'app-post-creator',
@@ -63,7 +63,7 @@ export default class PostCreatorComponent implements OnDestroy {
         const createPostSub = this.adminPostService
           .createPost(formData)
           .subscribe({
-            next: (response: HttpResponse<CreatePostModel>) => {
+            next: (response: HttpResponse<PostCreateResponse>) => {
               const postResponse = response.body;
               if (postResponse) {
                 this.TOAST_MESSAGE = postResponse.message;

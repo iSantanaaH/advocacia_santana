@@ -3,7 +3,7 @@ import { Subscription } from 'rxjs';
 import { NgFor } from '@angular/common';
 import { ToastComponent } from '../../../components/toast/toast.component';
 import { AdminPostService } from '../../../services/admin/post/admin.post.service';
-import { UnpublishedModel } from '../../../models/posts/unpublishedPostModel';
+import { PostResponse } from '../../../models/posts/post-response.model';
 
 @Component({
   selector: 'app-unpublished',
@@ -21,11 +21,11 @@ export class UnpublishedComponent implements OnDestroy, OnInit {
   @ViewChild(ToastComponent) toastComponent!: ToastComponent;
   private subscription: Subscription = new Subscription();
 
-  public posts: UnpublishedModel[] = [];
+  public posts: PostResponse[] = [];
 
   public getPosts() {
     const getPostSub = this.adminPostService.getUnpublishedPosts().subscribe({
-      next: (postModel: UnpublishedModel[]) => {
+      next: (postModel: PostResponse[]) => {
         this.posts = postModel.map((post) => ({
           ...post,
           formattedDate: this.convertDateCreationPost(post.created_at),

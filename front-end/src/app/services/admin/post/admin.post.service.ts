@@ -1,13 +1,9 @@
 import { HttpClient, HttpParams, HttpResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { PostModel } from './postModel';
-import { CreatePostModel } from '../../../models/posts/createPost';
-import { UnpublishedModel } from '../../../models/posts/unpublishedPostModel';
-import {
-  adminApiUrl,
-  publicApiUrl,
-} from '../../../shared/utils/url-builder.util';
+import { PostResponse } from '../../../models/posts/post-response.model';
+import { PostCreateResponse } from '../../../models/posts/create-post-response.model';
+import { adminApiUrl } from '../../../shared/utils/url-builder.util';
 
 @Injectable({
   providedIn: 'root',
@@ -15,9 +11,8 @@ import {
 export class AdminPostService {
   constructor(private http: HttpClient) {}
 
-  // Admin;
-  createPost(formData: FormData): Observable<HttpResponse<CreatePostModel>> {
-    return this.http.post<CreatePostModel>(
+  createPost(formData: FormData): Observable<HttpResponse<PostCreateResponse>> {
+    return this.http.post<PostCreateResponse>(
       adminApiUrl('create-post'),
       formData,
       {
@@ -26,22 +21,15 @@ export class AdminPostService {
     );
   }
 
-  getPublishedPosts(): Observable<PostModel[]> {
-    const params = new HttpParams().set('published', 'true');
-    return this.http.get<PostModel[]>(publicApiUrl('post/publisheds'), {
-      params,
-    });
-  }
-
-  getUnpublishedPosts(): Observable<UnpublishedModel[]> {
+  getUnpublishedPosts(): Observable<PostResponse[]> {
     const params = new HttpParams().set('published', 'false');
-    return this.http.get<PostModel[]>(adminApiUrl('show-post'), {
+    return this.http.get<PostResponse[]>(adminApiUrl('show-post'), {
       params,
     });
   }
 
-  publishPost(id: string): Observable<PostModel> {
-    return this.http.patch<PostModel>(
+  publishPost(id: string): Observable<PostResponse> {
+    return this.http.patch<PostResponse>(
       `${adminApiUrl('manage-post')}/publish/${id}`,
       {}
     );
@@ -49,10 +37,5 @@ export class AdminPostService {
 
   deletePost(id: string): Observable<void> {
     return this.http.delete<void>(`${adminApiUrl('manage-post')}/delete/${id}`);
-  }
-
-  // Public;
-  getPostById(id: number): Observable<PostModel> {
-    return this.http.get<PostModel>(`${publicApiUrl('post-details')}/${id}`);
   }
 }

@@ -1,12 +1,11 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { publicApiUrl } from '../../../../shared/utils/url-builder.util';
 
 @Injectable({
   providedIn: 'root',
 })
 export class RegisterService {
-  private apiUrl = 'http://localhost:3000/api/auth/register';
-
   constructor(private http: HttpClient) {}
 
   register(
@@ -16,7 +15,7 @@ export class RegisterService {
     birthdate: string,
     phone: string
   ) {
-    return this.http.post(this.apiUrl, {
+    return this.http.post(publicApiUrl('user/register'), {
       name,
       email,
       password,

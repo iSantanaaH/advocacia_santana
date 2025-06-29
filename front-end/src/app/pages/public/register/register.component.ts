@@ -286,7 +286,6 @@ export default class RegisterComponent implements OnInit {
         .register(name, email, password, birthdate, phone)
         .subscribe({
           next: (response) => {
-            console.log(response);
             this.TOAST_MESSAGE = 'Registro realizado com sucesso!';
             this.toastComponent.message = this.TOAST_MESSAGE;
             this.toastComponent.showToast();

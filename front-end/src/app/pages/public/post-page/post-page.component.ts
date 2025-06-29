@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { AdminPostService } from '../../../services/admin/post/admin.post.service';
-import { PostModel } from '../../../services/admin/post/postModel';
+import { PublicPostService } from '../../../services/public/public.post.service';
+import { PostResponse } from '../../../models/posts/post-response.model';
 import { NgOptimizedImage } from '@angular/common';
 
 @Component({
@@ -14,14 +14,14 @@ import { NgOptimizedImage } from '@angular/common';
 export default class PostPageComponent implements OnInit {
   constructor(
     private route: ActivatedRoute,
-    private adminPostService: AdminPostService
+    private publicPostService: PublicPostService
   ) {}
 
-  post!: PostModel;
+  post!: PostResponse;
 
   ngOnInit(): void {
     const postId = Number(this.route.snapshot.paramMap.get('id'));
-    this.adminPostService.getPostById(postId).subscribe({
+    this.publicPostService.getPostDetailsById(postId).subscribe({
       next: (data) => {
         this.post = data;
       },

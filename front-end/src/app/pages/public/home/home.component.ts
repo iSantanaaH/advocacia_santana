@@ -3,9 +3,9 @@ import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../../../services/user/auth/authService/auth.service';
 import { FormsModule } from '@angular/forms';
 import { HeaderComponent } from '../../../components/header/header.component';
-import { UnpublishedModel } from '../../../models/posts/unpublishedPostModel';
+import { PostResponse } from '../../../models/posts/post-response.model';
 import { RouterLink } from '@angular/router';
-import { AdminPostService } from '../../../services/admin/post/admin.post.service';
+import { PublicPostService } from '../../../services/public/public.post.service';
 
 @Component({
   selector: 'app-home',
@@ -23,13 +23,13 @@ import { AdminPostService } from '../../../services/admin/post/admin.post.servic
 export default class HomeComponent implements OnInit {
   constructor(
     public authService: AuthService,
-    private adminPostService: AdminPostService
+    private publicPostService: PublicPostService
   ) {
     authService.getUserRole();
   }
 
   ngOnInit(): void {
-    this.adminPostService.getPublishedPosts().subscribe({
+    this.publicPostService.getPublishedPosts().subscribe({
       next: (posts) => {
         this.posts = posts;
         this.isLoading = false;
@@ -43,7 +43,7 @@ export default class HomeComponent implements OnInit {
 
   public isLoading = true;
   public error: string | null = null;
-  public posts: UnpublishedModel[] = [];
+  public posts: PostResponse[] = [];
 
   searchResult: string = '';
 
