@@ -7,7 +7,10 @@ import { NgOptimizedImage } from '@angular/common';
 @Component({
   selector: 'app-post-page',
   templateUrl: './post-page.component.html',
-  styleUrls: ['./post-page.component.css'],
+  styleUrls: [
+    './post-page.component.css',
+    'post-page-responsive.component.css',
+  ],
   imports: [NgOptimizedImage],
   standalone: true,
 })

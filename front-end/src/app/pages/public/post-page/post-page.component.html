@@ -1,15 +1,24 @@
-<main>
+<header class="header"></header>
+
+<main class="main">
   @if(post) {
-  <section>
-    <h1>{{ post.title }}</h1>
-    <p>{{ post.created_at }}</p>
-    <img
-      width="10"
-      height="10"
-      [ngSrc]="'http://localhost:3000/api' + post.image_path"
-      alt=""
-    />
-    <p>{{ post.description }}</p>
+  <section class="post">
+    <div class="imageAndDescription">
+      <img
+        width="10"
+        height="10"
+        ngSrc="http://localhost:3000/{{ post.image_path }}"
+        alt=""
+      />
+      <p>{{ post.description }}</p>
+    </div>
+
+    <div class="detailsPost">
+      <h1>{{ post.title }}</h1>
+      <p>{{ post.created_at }}</p>
+    </div>
   </section>
   }
 </main>
+
+<footer class="footer"></footer>
