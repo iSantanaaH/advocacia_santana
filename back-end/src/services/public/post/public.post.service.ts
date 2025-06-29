@@ -16,6 +16,11 @@ export class PublicPostService {
         where: {
           id: postId,
         },
+        include: {
+          author: {
+            select: { name: true },
+          },
+        },
       });
 
       if (!post || !post.published) {
