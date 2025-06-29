@@ -9,7 +9,7 @@ import { CadastroModel } from 'src/models/user/CadastroModel';
 import { LoginModel } from 'src/models/user/LoginModel';
 import { UserService } from 'src/services/public/user/user.service';
 
-@Controller('public/user')
+@Controller('user')
 export class UserController {
   constructor(private readonly userService: UserService) {}
 
