@@ -15,6 +15,6 @@ export class PublicPostService {
   }
 
   getPostDetailsById(id: number): Observable<PostResponse> {
-    return this.http.get<PostResponse>(`${publicApiUrl('post-details')}/${id}`);
+    return this.http.get<PostResponse>(`${publicApiUrl('posts')}/${id}`);
   }
 }
