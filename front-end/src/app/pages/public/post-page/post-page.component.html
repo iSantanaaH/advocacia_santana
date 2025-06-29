@@ -3,19 +3,24 @@
 <main class="main">
   @if(post) {
   <section class="post">
+    <div class="detailsPost">
+      <h1>{{ post.title }}</h1>
+    </div>
+
+    <div class="author">
+      <img alt="Foto do autor" />
+      <p>{{ post.author.name }}</p>
+      <p>{{ post.created_at }}</p>
+    </div>
+
     <div class="imageAndDescription">
       <img
         width="10"
         height="10"
         ngSrc="http://localhost:3000/{{ post.image_path }}"
-        alt=""
+        alt="Imagem do Post"
       />
       <p>{{ post.description }}</p>
-    </div>
-
-    <div class="detailsPost">
-      <h1>{{ post.title }}</h1>
-      <p>{{ post.created_at }}</p>
     </div>
   </section>
   }
