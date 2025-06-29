@@ -13,6 +13,12 @@ import { Post as PostModel } from '@prisma/client';
 export class PublicPostController {
   constructor(private readonly publicPostService: PublicPostService) {}
 
+  @Get('publisheds')
+  @HttpCode(200)
+  async getPosts(): Promise<PostModel[]> {
+    return await this.publicPostService.getAllPublished();
+  }
+
   @Get(':id')
   async getPublishedPostById(@Param('id') id: string) {
     try {
@@ -20,18 +26,9 @@ export class PublicPostController {
         Number(id),
       );
 
-      console.log(postResult);
       return postResult;
     } catch (error) {
       throw new BadRequestException(error.message);
-    }
-  }
-
-  @Get('publisheds')
-  @HttpCode(200)
-  async getPosts(@Query('published') published?: string): Promise<PostModel[]> {
-    if (published === 'true') {
-      return await this.publicPostService.getAllPublished();
     }
   }
 }
