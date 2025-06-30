@@ -1,7 +1,7 @@
 import { BadRequestException, Injectable } from '@nestjs/common';
 import { PrismaService } from 'src/services/utils/prisma/prisma.service';
 import { Post as PostModel } from '@prisma/client';
-import { CreatePostModel } from 'src/models/post/CreatePostModel';
+import { CreatePostRequest } from 'src/models/admin/post/create-post-resquest.model';
 
 @Injectable()
 export class AdminPostService {
@@ -33,7 +33,7 @@ export class AdminPostService {
 
   // Cria um novo post.
   async addNewPost(
-    postData: CreatePostModel,
+    postData: CreatePostRequest,
     imageName: string,
     imagePath: string,
   ) {
