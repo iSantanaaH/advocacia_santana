@@ -4,9 +4,10 @@ import * as dotenv from 'dotenv';
 dotenv.config({ path: '../../../.env' });
 import { PrismaService } from '../../utils/prisma/prisma.service';
 import { HashService } from '../../utils/hash-service/hash-service';
-import { LoginModel } from 'src/models/user/LoginModel';
-import { CadastroModel } from 'src/models/user/CadastroModel';
+import { AuthUserResquest } from 'src/models/public/user/sign-in-user-request.model';
+import { SignUpUserRequest } from 'src/models/public/user/sign-up-user-request.model';
 import { User } from '@prisma/client';
+import { UserTokenPayload } from 'src/models/public/user/user-token-payload.model';
 
 @Injectable()
 export class UserService {
@@ -16,30 +17,32 @@ export class UserService {
   ) {}
 
   // Faz o cadastro do usuário;
-  async register(userData: CadastroModel): Promise<User> {
+  async signUp(signUpUserData: SignUpUserRequest): Promise<User> {
     const existingUser = await this.prisma.user.findFirst({
       where: {
-        OR: [{ name: userData.name }, { email: userData.email }],
+        OR: [{ name: signUpUserData.name }, { email: signUpUserData.email }],
       },
     });
 
     if (existingUser) {
-      if (userData.name === existingUser.name) {
+      if (signUpUserData.name === existingUser.name) {
         throw new BadRequestException('Já existe um usuário com esse nome');
-      } else if (userData.email === existingUser.email) {
+      } else if (signUpUserData.email === existingUser.email) {
         throw new BadRequestException('Esse email já está sendo usado');
       }
     }
 
-    const hashPassword = await this.hashService.hashPassword(userData.password);
+    const hashPassword = await this.hashService.hashPassword(
+      signUpUserData.password,
+    );
 
     const user = await this.prisma.user.create({
       data: {
-        name: userData.name,
-        email: userData.email,
+        name: signUpUserData.name,
+        email: signUpUserData.email,
         password: hashPassword,
-        birthdate: userData.birthdate,
-        phone: userData.phone,
+        birthdate: signUpUserData.birthdate,
+        phone: signUpUserData.phone,
         roleId: 2,
         status: true,
       },
@@ -48,10 +51,10 @@ export class UserService {
   }
 
   // Faz o login do usuário;
-  async login(userData: LoginModel) {
+  async signIn(authUserData: AuthUserResquest) {
     const user = await this.prisma.user.findUnique({
       where: {
-        email: userData.email,
+        email: authUserData.email,
       },
       select: {
         id: true,
@@ -66,7 +69,7 @@ export class UserService {
     }
 
     const isValidPassword = await this.hashService.comparePassword(
-      userData.password,
+      authUserData.password,
       user.password,
     );
 
@@ -74,15 +77,12 @@ export class UserService {
       throw new BadRequestException('Senha inválida!');
     }
 
-    const token = this.generateToken(user);
+    const { id, name, roleId } = user;
+    const token = this.generateToken({ id, name, roleId });
     return { token };
   }
 
-  private generateToken(user: {
-    id: number;
-    name: string;
-    roleId: number;
-  }): string {
+  private generateToken(user: UserTokenPayload): string {
     const token = jwt.sign({ user }, process.env.SECRET_KEY, {
       expiresIn: '1h',
     });
