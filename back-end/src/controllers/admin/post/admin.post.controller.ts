@@ -6,7 +6,7 @@ import {
   UploadedFile,
 } from '@nestjs/common';
 import { AdminPostService } from 'src/services/admin/post/admin.post.service';
-import { CreatePostModel } from 'src/models/post/CreatePostModel';
+import { CreatePostRequest } from 'src/models/admin/post/create-post-resquest.model';
 import { UploadImage } from 'src/common/interceptors/upload/upload-image.interceptors';
 
 @Controller('admin')
@@ -16,22 +16,22 @@ export class AdminPostController {
   @Post('create-post')
   @UploadImage('admin', 'post-images')
   async createPost(
-    @Body() postData: CreatePostModel,
+    @Body() postRequestData: CreatePostRequest,
     @UploadedFile() file: Express.Multer.File,
   ) {
-    const userId = Number(postData.userId);
-    postData.userId = userId;
+    const userId = Number(postRequestData.userId);
+    postRequestData.userId = userId;
     if (
-      !postData.title ||
-      !postData.description ||
-      !postData.userId ||
-      !postData.image
+      !postRequestData.title ||
+      !postRequestData.description ||
+      !postRequestData.userId ||
+      !postRequestData.image
     ) {
       try {
         const imagePath = file.path;
         const imageName = file.filename;
         const postResult = await this.adminPostService.addNewPost(
-          postData,
+          postRequestData,
           imageName,
           imagePath,
         );
